@@ -1,9 +1,9 @@
 # Getting Started
 
 > This setup guide is designed to help you get up and running with the
-**FabricCICD** sample application.
+**FabricSolutionDeployment** sample application.
 
-Once you download the **FabricCICD** project, you can open and test it
+Once you download the **FabricSolutionDeployment** project, you can open and test it
 using any version of Visual Studio 2022 including the free community
 version. While I haven't tested this with VS Code, you should be able to
 use instead of Visual Studio as long as you have the .NET/C# extensions
@@ -91,7 +91,7 @@ to look like this.  
 
 <img src="./images/GettingStarted/media/image10.png" style="width:85%" />
 
-You can see the **FabricCICD** project has a class
+You can see the **FabricSolutionDeployment** project has a class
 named **AdoProjectManager** which uses the Azure REST API to interact
 with Azure DevOps.
 
@@ -180,7 +180,7 @@ permissions that this application has requested. You should click
 
 ### Configuring Service Principal Authentication with a Custom Entra Id Application
 
-If you want to run the **FabricCICD** application as a service
+If you want to run the **FabricSolutionDeployment** application as a service
 principal, you must create an Entra Id application that is configured
 with a client secret. The service principal must also be configured
 within the current M365 tenant, so it has permissions to call the Fabric
