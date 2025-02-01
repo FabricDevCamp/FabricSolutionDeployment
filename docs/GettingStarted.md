@@ -17,7 +17,7 @@ Fabric environment.
 
 <img src="./images/GettingStarted/media/image2.png" style="width:96%" />
 
-However, you don't need to modify **AppSettings.cs **before you run this
+However, you don't need to modify **AppSettings.cs** before you run this
 application for the first time. When you start up and run the project
 for the first time, you will be prompted to login. Log in using the user
 account which has access and permissions in your Fabric development
