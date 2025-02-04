@@ -1,0 +1,53 @@
+{
+  "sourceWorkspaceId": "53d733c5-d1d4-47d0-869d-e93abff4c7b0",
+  "sourceItems": [
+    {
+      "id": "41d5c77a-b8fd-4ded-b410-5013709277ef",
+      "displayName": "Product Sales DirectLake",
+      "type": "Report"
+    },
+    {
+      "id": "182574ed-0523-4f61-94c2-0c853bb28a35",
+      "displayName": "sales",
+      "type": "SemanticModel"
+    },
+    {
+      "id": "9c5cc1f6-fff6-48d2-874f-7b8a37d0a157",
+      "displayName": "Product Sales DirectLake",
+      "type": "SemanticModel"
+    },
+    {
+      "id": "4eb537e6-5b77-41b9-aead-27df83de460d",
+      "displayName": "sales",
+      "type": "SQLEndpoint"
+    },
+    {
+      "id": "f2322fb8-a92a-4f88-9eef-155b41d38af8",
+      "displayName": "sales",
+      "type": "Lakehouse"
+    },
+    {
+      "id": "9ae6f48d-deda-4c81-9038-fbcf9b631349",
+      "displayName": "Create Lakehouse Tables",
+      "type": "Notebook"
+    }
+  ],
+  "sourceLakehouses": [
+    {
+      "id": "f2322fb8-a92a-4f88-9eef-155b41d38af8",
+      "displayName": "sales",
+      "server": "4zzdkw4hunvuhp4ttpl5hvkkzm-yuz5ou6u2hiepbu55e5l75ghwa.datawarehouse.fabric.microsoft.com",
+      "database": "4eb537e6-5b77-41b9-aead-27df83de460d",
+      "shortcuts": null
+    }
+  ],
+  "sourceConnections": [
+    {
+      "id": "fd64cc19-6412-40a9-9f71-44405f60b23b",
+      "displayName": "Lakehouse[sales]",
+      "type": "SQL",
+      "path": "4zzdkw4hunvuhp4ttpl5hvkkzm-yuz5ou6u2hiepbu55e5l75ghwa.datawarehouse.fabric.microsoft.com;4eb537e6-5b77-41b9-aead-27df83de460d",
+      "credentialType": "ServicePrincipal"
+    }
+  ]
+}
