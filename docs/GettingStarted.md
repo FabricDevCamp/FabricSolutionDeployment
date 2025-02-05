@@ -326,9 +326,12 @@ If you want to enable a service principal with access to a specific workspace, y
 In multitenant application development, it’s a best practice to automate the creation of workspaces using service principals. When you create a workspace using a service principal, it’s automatically assigned to the **Admin** role which provides full read-write access to the workspace and the workspace items inside.
 
 ### Configure Azure DevOps Organization Permissions for the Service Principal
+If you want to run **demo 5** through **demo 7** as a service principal, you must first 
+configure permissions fof the service principal in the Azure DevOps organization 
+your are using for source control.
 
-
-blah.
+Start by navigating to your organization in Azure DevOps and click the **Organization settings**
+link in the bottom right corner of the page.
 
 <img src="./images/GettingStarted/media/image27A.png" style="width:70%" />
 
