@@ -181,8 +181,8 @@ permissions that this application has requested. You should click
 
 <img src="./images/GettingStarted/media/image17.png" style="width:30%" />
 
-Now the application will run while authenticating with your custom application under the identity of
-your user account.
+> Now the application will authenticate you with the custom Entra Id application and run under 
+the identity of your Entra Id user account.
 
 ### Configuring Service Principal Authentication with a Custom Entra Id Application
 
