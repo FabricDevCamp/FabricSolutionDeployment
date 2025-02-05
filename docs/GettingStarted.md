@@ -28,12 +28,11 @@ account with access to your Fabric development environment.
 
 <img src="./images/GettingStarted/media/image3.png" style="width:25%" />
 
-Once you login, the application will execute two Fabric REST API calls to retrieve and display
-information about the workspace and capacities to which the caller (i.e.
-your user account) has access. The application then displays all the
-workspaces and capacities in the console window as shown in the
-following screenshot. The one thing I want to call out is that it lists
-the capacities that your user account has permissions to access.
+Once you login, the application will execute two Fabric REST API calls to retrieve 
+information about the workspaces and capacities in the current Entra Id tenant to which you have access.
+The application then displays these workspaces and capacities in the console window as shown in the
+following screenshot. You should note that the list of capacities shows you what capacities that your
+user account has permissions to access in your development environment.
 
 <img src="./images/GettingStarted/media/image4.png" style="width:70%" />
 
