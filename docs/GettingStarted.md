@@ -222,12 +222,12 @@ the **the client Id** and the **client secret** of the Entra Id application.
 
 <img src="./images/GettingStarted/media/image17G.png" style="width:72%" />
 
-One part that is kind of tricking is getting
-the **ServicePrincipalObjectId** value for the service principal. You
-need that configuration value so you can demo workflows can add the
-service principal as a workspace member. The easiest way I know to get
-this value is to go to the Entra Id application **Overview** page and
-click the **Managed application in local directly** link.
+The next step for configuring the **ServicePrincipalObjectId** setting for the service principal
+is a little bit tricky. You need to configure the **ServicePrincipalObjectId** setting so you can 
+run deployment workflows that add the service principal as a workspace member. When you want to use the Fabric REST API to add a workspace role assignment for a service principal, you must call the API by pasisng the **service principal object Id** instead of the application's **client Id**.
+
+The discover the **service principal object Id** for an Entra Id application, navigate to 
+the **Overview** page of the Entra Id application and click the **Managed application in local directly** link.
 
 <img src="./images/GettingStarted/media/image19.png" style="width:92%" />
 
