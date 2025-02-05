@@ -359,4 +359,4 @@ On the **Permissions** page, configure your service principal with the following
 
 <img src="./images/GettingStarted/media/image29.png" style="width:70%" />
 
->Congratulations. You have now reach the end of this setup document. 
+>Congratulations. You have now reached the end of this setup guide. 
