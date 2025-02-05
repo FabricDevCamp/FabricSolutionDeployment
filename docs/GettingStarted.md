@@ -217,7 +217,9 @@ used to configure support for a service principal.
 
 <img src="./images/GettingStarted/media/image18.png" style="width:72%" />
 
-Create new client secret.
+Update the first three configuration settings with the **tenant Id**, 
+the **the client Id** and the **client secret** of the Entra Id application you created over 
+the last few steps.
 
 <img src="./images/GettingStarted/media/image17G.png" style="width:72%" />
 
