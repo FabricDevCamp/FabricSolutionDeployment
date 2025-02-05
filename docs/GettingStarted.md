@@ -137,8 +137,7 @@ a setting of either **UserAuth** and **ServicePrincipalAuth**.
 
 <img src="./images/GettingStarted/media/image13.png" style="width:40%" />
 
-> The next two sections explain how to create a custom Entra Id applicationsas and how to configure them in the **FabricSolutionDeployment** application to test out deployment workflows that run as either a user or
-as a service principal.
+> The next two sections explain how to create custom Entra Id applications aswell as  how to configure them in the **FabricSolutionDeployment** application to test out deployment workflows that run as either a user or as a service principal.
 
 ### Configuring User Authentication with a Custom Entra Id Application
 
