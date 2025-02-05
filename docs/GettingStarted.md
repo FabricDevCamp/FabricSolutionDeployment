@@ -205,6 +205,19 @@ Create new client secret.
 
 <img src="./images/GettingStarted/media/image17D.png" style="width:70%" />
 
+Create new client secret.
+
+<img src="./images/GettingStarted/media/image17D\E.png" style="width:70%" />
+Create new client secret.
+
+<img src="./images/GettingStarted/media/image17F.png" style="width:70%" />
+
+Create new client secret.
+
+<img src="./images/GettingStarted/media/image17G.png" style="width:70%" />
+
+Create new client secret.
+
 Get value of client secret so you can paste it into **AppSettings.cs**
 
 Once you have created the Entra Id application, you need to copy its
