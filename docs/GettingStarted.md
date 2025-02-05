@@ -232,14 +232,14 @@ has the label of **Managed application in local directly**.
 
 <img src="./images/GettingStarted/media/image19.png" style="width:92%" />
 
-When you click the **Managed application in local directly** linkyou
-will navigate to page from which you can copy the **Object ID** value
+Click the **Managed application in local directly** link will navigate you
+to new page from which you can copy the **Object ID** value
 which is the service principal object Id. 
 
 <img src="./images/GettingStarted/media/image20.png" style="width:50%" />
 
-Now you have 4 settings which completes configuring the service
-principal.
+As a last step, paste the service principal object Id value into **AppSettings.cs**
+as shown in the following screenshot.
 
 <img src="./images/GettingStarted/media/image21.png" style="width:80%" />
 
