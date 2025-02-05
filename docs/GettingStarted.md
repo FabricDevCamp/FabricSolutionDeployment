@@ -287,7 +287,8 @@ as a **Fabric Administrator**. If you do not have these permissions in your deve
 you must find someone who does to assist you in completing this step. 
 
 Navigate the the Fabric Admin portal using the following URL.
- -- [https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi]{https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi}
+
+ - [https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi]{https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi}
 
 <img src="./images/GettingStarted/media/image25.png" style="width:70%" />
 
