@@ -14,7 +14,7 @@ installed.
 When you open the project, start by examining **AppSettings.cs**. This
 is a settings file with configuration data you need to modify with configuration data for your
 Fabric environment. The following screenshot shows you what this file looks like when
-you first open the application.
+you first open it.
 
 <img src="./images/GettingStarted/media/image2.png" style="width:96%" />
 
