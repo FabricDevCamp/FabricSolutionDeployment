@@ -108,8 +108,7 @@ following to this link.
 
 > Note that Fabric supports using repositories for GIT integration using
 either Azure DevOps or GitHub. However, this project currently only has
-support for Azure DevOps. There are plans add support for GitHub in a
-future update to this project.
+support for Azure DevOps. Adding support for GitHub in currently left as an exercise for the reader.
 
 ## Configuring Authentication Mode
 
@@ -294,5 +293,13 @@ blah
 blah
 
 <img src="./images/GettingStarted/media/image27.png" style="width:70%" />
+
+blah
+
+<img src="./images/GettingStarted/media/image28.png" style="width:70%" />
+
+blah
+
+<img src="./images/GettingStarted/media/image29.png" style="width:70%" />
 
 blah
