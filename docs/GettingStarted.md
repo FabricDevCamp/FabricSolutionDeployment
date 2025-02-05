@@ -18,10 +18,9 @@ you first open the application.
 
 <img src="./images/GettingStarted/media/image2.png" style="width:96%" />
 
-You can see configuration data that requires a GUID-based Id are all configuraed with 
-an empty GUID value of **00000000-0000-0000-0000-000000000000** by default.
-To make various demos run correctly, you will be required to replace these empty GUID
-Id values with Ids that are unique to your development environment.  
+You can see configuration values set to **00000000-0000-0000-0000-000000000000** by default which 
+representempty GUID values. To make various demos run correctly, you will be required to replace these empty GUID
+Id values with Ids that are unique to your development environment. 
 
 However, you don't need to modify anything in **AppSettings.cs** before you run this
 application for the first time. When you start up and run the project
