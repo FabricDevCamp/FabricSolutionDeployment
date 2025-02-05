@@ -133,13 +133,12 @@ is **UserAuthWithAzurePowershell**.
 
 <img src="./images/GettingStarted/media/image12.png" style="width:90%" />
 
-This default authentication mode setting has been designed to get
-started quickly because it just work out-of-the-box. This authentication
-mode does not require you to create an Entra Id application. Note that
-you can configure three different options for the authentication mode as
-shown in the following screenshot. The two other available modes of
-**UserAuth** and **ServicePrincipalAuth** will require you to create
-Entra Id applications in order to use them.
+>As you can see, the default authentication mode setting has been designed to get
+you started quickly because it eliminates the need to create a custom Entra Id application. 
+
+If you want to test the **FabricSolutionDeployment** application using a custom 
+Entra Id application you have created, you can configure the authentication mode to 
+as setting of **UserAuth** and **ServicePrincipalAuth**.
 
 <img src="./images/GettingStarted/media/image13.png" style="width:40%" />
 
