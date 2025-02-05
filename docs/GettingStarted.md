@@ -59,10 +59,9 @@ into the **FabricCapcityId** constant value in **AppSettings.cs**.
 
 <img src="./images/GettingStarted/media/image5.png" style="width:80%" />
 
-> Now you are ready to start running demo code from the application using
-your user account. This will allow you to test out the demo CI/CD
-workflows when authenticating as a user with your Entra Id user
-account. 
+> Now you are ready to start running and testing out deployment workflows 
+under the identity of your user account. This will allow you to test out and experiment 
+with these CI/CD workflows.
 
 Open the source file named **Program.cs.** You should be able to see the
 code is initially set up to call a function named
