@@ -333,7 +333,7 @@ in which you're testing solution deployment workflows.
 
 >This step is required so that the service principal has permissions
 to create and delete ADO projects as well as permissions to read and write files to
-the ADO repositories   
+ADO repositories.   
 
 Start by navigating to your organization in Azure DevOps and click the **Organization settings**
 link in the bottom right corner of the page.
