@@ -282,9 +282,6 @@ in **AppSettings.cs**.
 ### Configure the 'Service principals can use Fabric APIs' Tenant-level Setting
 By default, a service principal does not possess the required permissions to call the Fabric REST APIs. Instead, a service principal must be configured in the Fabric admin portal using the tenant-level setting **Service Principals can use Fabric REST API**.
 
->Note this step can only be completed by a user who has been cofigured in the current Enta Id tenant 
-as a **Fabric Administrator**. If you do not have these permissions in your development environment,
-you must find someone who does to assist you in completing this step. 
 
 
  Here is what you see.
@@ -305,6 +302,12 @@ Navigate the the Fabric Admin portal using the following URL.
 blah
 
 ### Configure Azure DevOps Organization Permissions for the Service Principal
+
+blah.
+
+>Note this step can only be completed by a user who has been cofigured in the current Enta Id tenant 
+as a **Fabric Administrator**. If you do not have these permissions in your development environment,
+you must find someone who does to assist you in completing this step. 
 
 blah.
 
