@@ -212,16 +212,8 @@ you can paste it into **AppSettings.cs** n the next step.
 
 <img src="./images/GettingStarted/media/image17F.png" style="width:85%" />
 
-
-
-Create new client secret.
-
-Get value of client secret so you can paste it into **AppSettings.cs**
-
-Once you have created the Entra Id application, you need to copy its
-tenant id and client Id as well as the client secret so you can add them
-to **AppSettings.cs**. Once you get the configuration information for
-the service principal, you must add its into **AppSettings.cs**.
+Return to the **AppSettings.cs** file in Visual Studio and locate the four constants
+used to configure support for a service principal.
 
 <img src="./images/GettingStarted/media/image18.png" style="width:72%" />
 
