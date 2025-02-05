@@ -277,12 +277,17 @@ in **AppSettings.cs**.
 
 <img src="./images/GettingStarted/media/image24.png" style="width:70%" />
 
->There is one more remaining step to complete the configuration for the service principal.
+>There still remains an extra configuration step that needs accomplished before a service principal has the permissions it needs to call the Fabric REST APIs. 
 
 ### Configure the 'Service principals can use Fabric APIs' Tenant-level Setting
+By default, a service principal does not possess the required permissions to call the Fabric REST APIs. Instead, a service principal must be configured in the Fabric admin portal using the tenant-level setting **Service Principals can use Fabric REST API**.
 
-More stuff here.
+>Note this step can only be completed by a user who has been cofigured in the current Enta Id tenant 
+as a **Fabric Administrator**. If you do not have these permissions in your development environment,
+you must find someone who does to assist you in completing this step. 
 
+Navigate the the Fabric Admin portal using the following URL.
+ -- [https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi]{https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi}
 
 <img src="./images/GettingStarted/media/image25.png" style="width:70%" />
 
