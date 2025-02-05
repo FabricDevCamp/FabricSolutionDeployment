@@ -255,7 +255,7 @@ workspace. That means you will not be able to inspect that workspace in
 the Fabric portal under the identity of your user account. Therefore, the
 sample application has been designed to add any user account (*which
 should be your user account*) as a workspace admin. After a service
-principal creates a workspace, it will add an Admin workspace role assignment
+principal creates a workspace, it will add an **Admin** workspace role assignment
 for your user account so it has full access to inspect the workspace in the Fabric portal.
 
 If you look at the bottom of the following screenshot, you will see a
