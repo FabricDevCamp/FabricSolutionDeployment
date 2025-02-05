@@ -319,7 +319,7 @@ the Fabric REST APIs. Keep in mind that any Fabric REST call from a service prin
 been correctly configured with  the **Service Principals can use Fabric APIs** setting
 will fail with a **401 Unauthorized** error.
 
->Once you have configured a service principal with the **Service Principals can use Fabric APIs** setting, it will have the permissions it needs to call the Fabric REST APIs. But this does not mean that the service principal will automatically have access to any workspaces or workspace items. That’s because a service principal has no default access to any workspaces. In this sense, a service principal is treated just like a user in terms of Fabric authorization policies.
+>Once you have configured a service principal with the **Service Principals can use Fabric APIs** setting, it will have the permissions it needs to call the Fabric REST APIs. But this does not mean that the service principal will automatically have access to any workspaces or workspace items. That’s because a service principal has no default access to any workspaces. In this sense, a service principal is treated just like a user with respect to Fabric authorization policies.
 
 If you want to enable a service principal with access to a specific workspace, you must assign the service principal to a workspace role. You can add a service principal into a workspace role such as Admin, Member, Contributor or Visitor. Once you add a service principal to a workspace in a role such as Admin or Member, the service principal will have the permissions it needs to begin creating workspace items.
 
