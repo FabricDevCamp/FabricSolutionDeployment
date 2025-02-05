@@ -288,8 +288,8 @@ One complication with the **Service Principals can use Fabric APIs** setting is 
  - Add the service principal as members of the **Fabric REST API Applications** group
  - Add the **Fabric REST API Applications** group to the **Service Principals can use Fabric APIs** setting.
 
-Now let's work through each of these three steps. Start by navigating to 
-the Entra Id portal and create a new security group named **Fabric REST API Applications**.
+Now let's work through each of these steps. Start by navigating to 
+the Entra Id portal. Create a new security group named **Fabric REST API Applications**.
 
 <img src="./images/GettingStarted/media/image25.png" style="width:70%" />
 
