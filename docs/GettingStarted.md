@@ -243,21 +243,20 @@ as shown in the following screenshot.
 
 <img src="./images/GettingStarted/media/image21.png" style="width:80%" />
 
-> The next step is to set the **AdminUserId** value in **AppSettings.cs**. This configuration
+The next step is to set the **AdminUserId** value in **AppSettings.cs**. This configuration
 value is important when you start running the demo workflows as a service principal
 because it allows you to access the Fabric portal using your user account to see what has been created 
 by the service principal.
 
-Let's take a step back and examine the issue that is addressed with the **AdminUserId**
+>Let's take a step back and examine the issue that is addressed with the **AdminUserId**
 configuration value. If you create a workspace as a service principal,
 that service principal will be the only identity that can access that
 workspace. That means you will not be able to inspect that workspace in
 the Fabric UI under the identity of your user account. Therefore, the
 sample application has been designed to add any user account (*which
 should be your user account*) as a workspace admin. After a service
-principal creates a workspace, you user account will be given full
-access to that workspace so you can inspect it in the Fabric UI and
-continue to experiment.
+principal creates a workspace, it will add an Admin workspace role assignment
+for your user account so it has full access to inspect the workspace in the Fabric portal.
 
 If you look at the bottom of the following screenshot, you will see a
 constant named **AdminUserId**. You need to configure this constant with
