@@ -43,9 +43,9 @@ with the application. You need to select a Fabric-enabled capacity and
 add its capacity ID to **AppSettings.cs**. This is required so the
 application can assign the workspaces it creates to this capacity.
 
-For testing you can use any Fabric capacity created from an F SKU or a P
-SKU or you can also use a Fabric trial capacity. The screenshot above
-shows that I have a Fabric trial shown by the code **\[FT1\] **. If you
+For testing you can use any Fabric capacity created from an **F SKU** or a **P
+SKU** or you can also use a Fabric trial capacity. The screenshot above
+shows a Fabric trial shown by the code **[FT1]**. If you
 do not see a Fabric-enabled capacity in the capacities list, you must
 acquire one before continuing. If you are using a Fabric trial account,
 note that will make it more difficult (but not impossible) to test
