@@ -192,6 +192,18 @@ as a confidential application with a client secret. The service principal must a
 with a tenant-level **Service principals can use Fabric APIs** setting in the Fabric Admin portal.
  
  >If the service principal is not configured properly, all Fabric REST API calls will fail with a ***401 Unauthorized*** error.
+ 
+ Here are steps to create the app.
+
+<img src="./images/GettingStarted/media/image17B.png" style="width:70%" />
+
+Grb both client Id and enant ID.
+<img src="./images/GettingStarted/media/image17C.png" style="width:70%" />
+
+Create new client secret.
+<img src="./images/GettingStarted/media/image17D.png" style="width:70%" />
+
+Get value of client secret so you can paste it into **AppSettings.cs**
 
 Once you have created the Entra Id application, you need to copy its
 tenant id and client Id as well as the client secret so you can add them
