@@ -14,12 +14,16 @@ installed.
 When you open the project, start by examining **AppSettings.cs**. This
 is a settings file with configuration data you need to modify with configuration data for your
 Fabric environment. The following screenshot shows you what this file looks like when
-you first open the application. You can see configuration data that requires a GUID-based Id
-are all configuraed with an empty GUID value of **00000000-0000-0000-0000-000000000000** by default.
+you first open the application.
 
 <img src="./images/GettingStarted/media/image2.png" style="width:96%" />
 
-However, you don't need to modify **AppSettings.cs** before you run this
+You can see configuration data that requires a GUID-based Id are all configuraed with 
+an empty GUID value of **00000000-0000-0000-0000-000000000000** by default.
+To make various demos run correctly, you will be required to replace these empty GUID
+Id values with Ids that are unique to your development environment.  
+
+However, you don't need to modify anything in **AppSettings.cs** before you run this
 application for the first time. When you start up and run the project
 for the first time, you will be prompted to login. Log in using the user
 account which has access and permissions in your Fabric development
