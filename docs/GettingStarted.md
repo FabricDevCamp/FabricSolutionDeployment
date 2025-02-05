@@ -321,9 +321,9 @@ will fail with a **401 Unauthorized** error.
 
 >Once you have configured a service principal with the **Service Principals can use Fabric APIs** setting, it will have the permissions it needs to call the Fabric REST APIs. But this does not mean that the service principal will automatically have access to any workspaces or workspace items. That’s because a service principal has no default access to any workspaces. In this sense, a service principal is treated just like a user with respect to Fabric authorization policies.
 
-If you want to enable a service principal with access to a specific workspace, you must assign the service principal to a workspace role. You can add a service principal into a workspace role such as Admin, Member, Contributor or Visitor. Once you add a service principal to a workspace in a role such as Admin or Member, the service principal will have the permissions it needs to begin creating workspace items.
+If you want to enable a service principal with access to a specific workspace, you must assign the service principal to a workspace role. You can add a service principal into a workspace role such as **Admin**, **Member**, **Contributor** or **Visitor**. Once you add a service principal to a workspace in a role such as **Admin** or **Member**, the service principal will have the permissions it needs to begin creating workspace items.
 
-In multitenant application development, it’s a best practice to automate the creation of workspaces using service principals. When you create a workspace using a service principal, it’s automatically assigned to the Admin role which provides full read-write access to the workspace and the workspace items inside.
+In multitenant application development, it’s a best practice to automate the creation of workspaces using service principals. When you create a workspace using a service principal, it’s automatically assigned to the **Admin** role which provides full read-write access to the workspace and the workspace items inside.
 
 ### Configure Azure DevOps Organization Permissions for the Service Principal
 
