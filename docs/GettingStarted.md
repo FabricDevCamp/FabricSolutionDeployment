@@ -77,15 +77,12 @@ to run demo **Demo01_DeploySolutionToWorkspace**.
 It is simply a matter of commenting out one functions and then uncommenting the next 
 to test out these demos.
 
-If you want to test out this project support for GIT integration, you
-can uncomment the function named **ConnectWorkspaceToGit**. However, the
-code behind this function will not work correctly until you have
-configured **AppSettings.cs** with the name of the Azure DevOps
-organization you are using for testing.
-
-<img src="./images/GettingStarted/media/image8.png" style="width:57%" />
-
-**AppSettings.cs** contains two constants for Azure DevOps shown below.
+If you want to run demosn 5 through 7, you will need to configure support in 
+**AppSettings.cs** for an Azure Dev Ops organiztion. For this you will need access
+to an Azure Dev Ops organization that must be in the same Entra Id tenant as the
+development environment where you are creating Fabric workspace. Once you have an Azure Dev Ops
+organization to use, you can configure it in **AppSettings.cs** by using the two constant values 
+shown in the following screenshot. **AppSettings.cs** contains two constants for Azure DevOps shown below.
 
 <img src="./images/GettingStarted/media/image9.png" style="width:85%" />
 
