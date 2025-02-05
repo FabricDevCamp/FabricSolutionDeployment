@@ -76,7 +76,6 @@ public class DeploymentManager {
 
     OpenWorkspaceInBrowser(workspace.Id);
 
-
   }
 
   public static void DeployWorkspaceWithLakehouseSolutionWithMultipleNotebooks(string WorkspaceName) {
@@ -598,10 +597,7 @@ public class DeploymentManager {
 
     FabricRestApi.ConnectWorkspaceToGitRepository(workspace.Id, gitConnectRequest);
 
-    AdoProjectManager.CreateBranch(WorkspaceName, "dev");
-
     AppLogger.LogOperationStart("Workspace connection to GIT has been created and synchronized");
-
 
   }
 
