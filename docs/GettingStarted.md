@@ -51,7 +51,7 @@ acquire one before continuing with the setup of this application.
 
 > If you are using a Fabric trial account, this makes it more difficult (but not impossible) to test
 deployment workflows using a service principal. That's because you cannot grant trial capacity 
-permissions to a service principal. You can only execute Fabric the REST API cals to assign a workspace 
+permissions to a service principal. You can only execute the Fabric the REST API call to assign a workspace 
 to a Fabric trial capacity using a user identity.
 
 Once you determine which capacity you want to use, copy its ID value
