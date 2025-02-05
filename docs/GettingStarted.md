@@ -195,7 +195,7 @@ with a tenant-level **Service principals can use Fabric APIs** setting in the Fa
  
  Here are steps to create the app.
 
-<img src="./images/GettingStarted/media/image17B.png" style="width:75%" />
+<img src="./images/GettingStarted/media/image17B.png" style="width:80%" />
 
 Grb both client Id and enant ID.
 
