@@ -54,7 +54,7 @@ deployment workflows using a service principal. That's because you cannot grant 
 permissions to a service principal. You can only execute the Fabric the REST API call to assign a workspace 
 to a Fabric trial capacity using a user identity.
 
-Once you determine which capacity you want to use, copy its ID value
+Once you determine which capacity you want to use, copy its capacity Id value
 into the **FabricCapcityId** constant value in **AppSettings.cs**.
 
 <img src="./images/GettingStarted/media/image5.png" style="width:80%" />
