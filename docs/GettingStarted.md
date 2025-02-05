@@ -71,7 +71,7 @@ Open the source file named **Program.cs** and locate the function named **Setup
 <img src="./images/GettingStarted/media/image6.png" style="width:80%" />
 
 Comment out the line that calls **Setup_ViewWorkspacesAndCapacities** and uncomment the next line
-to call the function named **Demo01_DeploySolutionToWorkspace**.
+to call the function named **Demo01_DeploySolutionToWorkspace**. The next time you run the application it should execute the code for **demo 1** which creates and populates a new workspace named **Contoso**. 
 
 <img src="./images/GettingStarted/media/image7.png" style="width:55%" />
 
