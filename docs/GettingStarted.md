@@ -306,6 +306,7 @@ blah
 
 ### Configure Azure DevOps Organization Permissions for the Service Principal
 
+blah.
 
 <img src="./images/GettingStarted/media/image27A.png" style="width:70%" />
 
