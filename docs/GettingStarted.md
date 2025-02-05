@@ -73,9 +73,9 @@ to run demo **Demo01_DeploySolutionToWorkspace**.
 
 <img src="./images/GettingStarted/media/image7.png" style="width:55%" />
 
-This will let you run tests and demo workflows to create workspaces and
-workspace items. It is simply a matter of uncommenting the functions you
-want to test out.
+> You have now configured what is required to run demos 1 through 4. 
+It is simply a matter of commenting out one functions and then uncommenting the next 
+to test out these demos.
 
 If you want to test out this project support for GIT integration, you
 can uncomment the function named **ConnectWorkspaceToGit**. However, the
