@@ -207,11 +207,11 @@ Create new client secret.
 
 Create new client secret.
 
-<img src="./images/GettingStarted/media/image17E.png" style="width:40%" />
+<img src="./images/GettingStarted/media/image17E.png" style="width:30%" />
 
 Create new client secret.
 
-<img src="./images/GettingStarted/media/image17F.png" style="width:70%" />
+<img src="./images/GettingStarted/media/image17F.png" style="width:85%" />
 
 
 
