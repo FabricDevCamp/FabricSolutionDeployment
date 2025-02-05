@@ -113,16 +113,20 @@ future update to this project.
 
 ## Configuring Authentication Mode
 
-Now a quick word about authentication. If you leave the configuration of
-the application’s authentication mode with the default setting
-in **AppSettings.cs** (shown below), things should just work. There
-should be nothing to configure and no need to create an Entra Id
-application before your run the application in the Visual Studio
-debugger. That's because the application is configure to use a
-pre-installed Entra Id application known as **Azure PowerShell
-application**. This application is automatically available in every M365
-tenant and can be used to acquire user access tokens for the Fabric REST
-APIs as well as the Power BI REST API.
+The **FabricSolutionDeployment** application supports three possible 
+configure settings for the application's **authentication mode**.
+ If you leave the configuration with the default setting
+in **AppSettings.cs** (shown below), things should just work out-of-the-box. 
+There is no need to create an Entra Id application before you run 
+the he **FabricSolutionDeployment** application in the Visual Studio
+debugger. 
+
+The reason that the default auuthentication mode setting *just works* 
+is because the application is configure to use a pre-installed 
+Entra Id application known as **Azure PowerShell** application. 
+This application is automatically available in every M365
+tenant and you can use it to acquire user access tokens for the Fabric REST
+APIs.
 
 The default for the **AuthenticationMode** setting in **AppSettings.cs**
 is **UserAuthWithAzurePowershell**.
