@@ -18,7 +18,7 @@ you first open it.
 
 <img src="./images/GettingStarted/media/image2.png" style="width:96%" />
 
-You can see some configuration values initially set to **00000000-0000-0000-0000-000000000000** which 
+You can see some configuration values are initially set to **00000000-0000-0000-0000-000000000000** which 
 represent empty GUID values. To make various demos run correctly, you will be required to replace these empty GUID
 Id values with Ids that are unique to your development environment. 
 
