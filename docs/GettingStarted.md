@@ -264,9 +264,9 @@ the object id associated with your Entra Id user account.
 
 <img src="./images/GettingStarted/media/image22.png" style="width:80%" />
 
-There are several different ways you can get the Object Id for your Entra Id
-User account. The easiest way is to go to the Entra Id admin center.
-Next, click **Users** in the left nav. If you click on your user
+There are several different ways you can get the object Id for your Entra Id
+User account. One way is to navigate to the Entra Id admin center.
+Next, click **Users** in the left navigation menu. If you click on your user
 account, you should navigate to a page from which you can copy
 the **Object Id** associated with your user account.
 
