@@ -231,7 +231,7 @@ Create new client secret.
 <img src="./images/GettingStarted/media/image17G.png" style="width:72%" />
 
 One part that is kind of tricking is getting
-the **ServicePrincipalObjectId **value for the service principal. You
+the **ServicePrincipalObjectId** value for the service principal. You
 need that configuration value so you can demo workflows can add the
 service principal as a workspace member. The easiest way I know to get
 this value is to go to the Entra Id application **Overview** page and
