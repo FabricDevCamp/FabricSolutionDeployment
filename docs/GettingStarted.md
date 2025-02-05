@@ -199,7 +199,7 @@ with a tenant-level **Service principals can use Fabric APIs** setting in the Fa
 
 Grb both client Id and enant ID.
 
-<img src="./images/GettingStarted/media/image17C.png" style="width:70%" />
+<img src="./images/GettingStarted/media/image17C.png" style="width:60%" />
 
 Create new client secret.
 
