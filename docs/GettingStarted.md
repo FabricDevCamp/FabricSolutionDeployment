@@ -188,13 +188,11 @@ the identity of your Entra Id user account.
 
 If you want to run the **FabricSolutionDeployment** application as a service
 principal, you must create an Entra Id application that is configured
-with a client secret. The service principal must also be configured
-within the current M365 tenant, so it has permissions to call the Fabric
-REST APIs. This includes configuring the service principal in the Fabric
-Admin portal with the **Service principals can use Fabric APIs**
-permissions. If the service principal is not configured properly, any
-call the service principal makes to a Fabric REST API endpoint will fail
-with a 401 error.
+as a confidential application with a client secret. The service principal must also be configured
+with a tenant-level **Service principals can use Fabric APIs** setting in the Fabric Admin portal.
+ 
+ >If the service principal is not configured properly, any Fabric REST API call that the service principal 
+ attempts to execute will fail with a ***401 Unauthorized*** error.
 
 Once you have created the Entra Id application, you need to copy its
 tenant id and client Id as well as the client secret so you can add them
