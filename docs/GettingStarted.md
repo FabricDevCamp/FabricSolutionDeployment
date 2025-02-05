@@ -93,9 +93,8 @@ to look like this.  
 
 <img src="./images/GettingStarted/media/image10.png" style="width:85%" />
 
-You can see the **FabricSolutionDeployment** project has a class
-named **AdoProjectManager** which uses the Azure REST API to interact
-with Azure DevOps.
+Note that this sample application contains code that uses the Azure REST API to create new projects
+in an Azure DevOps organization. It also has code to push files to an Azure DevOps repository and commit the changes as well as code to retrieve files from a repository. For anyone interested in seeing how this code has been written, you can examine the source code for the class named **AdoProjectManager** class.
 
 <img src="./images/GettingStarted/media/image11.png" style="width:99%" />
 
