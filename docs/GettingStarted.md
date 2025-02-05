@@ -76,9 +76,9 @@ to run demo **Demo01_DeploySolutionToWorkspace**.
 
 <img src="./images/GettingStarted/media/image7.png" style="width:55%" />
 
-> You have now configured what is required to run **demo 1** through **demo 4**. 
-It is simply a matter of commenting out one functions and then uncommenting the next 
-to test out these demos. To run through the first four demos now, use the instructions in 
+> You've now configured what's required to run **demo 1** through **demo 4**. 
+It is simply a matter of commenting out one functions and uncommenting the next.
+To run through the first four demos, use the instructions in 
 **[Automating Fabric Solution Deployment](https://github.com/FabricDevCamp/FabricSolutionDeployment/blob/main/docs/Automating%20Fabric%20Solution%20Deployment.md)**.
 
 If you want to run **demo 5** through **demo 7**, you will need to configure support in 
