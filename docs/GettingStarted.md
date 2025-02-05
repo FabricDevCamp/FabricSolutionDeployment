@@ -108,7 +108,7 @@ following to this link.
 either Azure DevOps or GitHub. However, this project currently only has
 support for Azure DevOps. Adding support for GitHub is left as an exercise for the reader.
 
-## Configuring Authentication Mode
+### Configuring Authentication Mode
 
 The **FabricSolutionDeployment** application supports three possible 
 configure settings for the application's **authentication mode**.
@@ -139,7 +139,7 @@ a setting of either **UserAuth** and **ServicePrincipalAuth**.
 
 > The next two sections explain how to create custom Entra Id applications aswell as  how to configure them in the **FabricSolutionDeployment** application to test out deployment workflows that run as either a user or as a service principal.
 
-### Configuring User Authentication with a Custom Entra Id Application
+## Configuring User Authentication with a Custom Entra Id Application
 
 If you want to use **UserAuth** mode, you must create a Entra Id
 application as a public client application in the same Entra Id tenant 
@@ -178,7 +178,7 @@ permissions that this application has requested. You should click
 > Now the application will authenticate you with the custom Entra Id application and run under 
 the identity of your Entra Id user account.
 
-### Configuring Service Principal Authentication with a Custom Entra Id Application
+## Configuring Service Principal Authentication with a Custom Entra Id Application
 If you want to run the **FabricSolutionDeployment** application as a service
 principal, you must create an Entra Id application that is configured
 as a confidential application with a client secret. You must also configure the service principal
