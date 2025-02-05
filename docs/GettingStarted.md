@@ -84,12 +84,11 @@ If you want to run **demo 5** through **demo 7**, you will need to configure add
 **AppSettings.cs** for an Azure DevOps organiztion. For this, you will need access
 to an Azure DevOps organization in the same Entra Id tenant as the development environment where you are creating Fabric workspaces. 
 
-Once you determined which Azure DevOps organization to use, you can configure it in **AppSettings.cs** by updating the value for a constant named **AzureDevOpsOrganizationName** shown in the following screenshot.
+Once you determined which Azure DevOps organization to use, you can configure it in **AppSettings.cs** by updating the value for a constant named **AzureDevOpsOrganizationName** which is shown in the following screenshot.
 
 <img src="./images/GettingStarted/media/image9.png" style="width:85%" />
 
-You need to add the name of an Azure Dev organization. For example, my
-organization is named **FabricDevCamp,** so I have updated my settings
+For example, if you Azure DevOps organization is named **FabricDevCamp**, you should update the configuration value for **AzureDevOpsOrganizationName** in **AppSettings.cs** 
 to look like this.  
 
 <img src="./images/GettingStarted/media/image10.png" style="width:85%" />
