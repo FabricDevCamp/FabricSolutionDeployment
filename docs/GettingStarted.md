@@ -12,7 +12,7 @@ installed.
 <img src="./images/GettingStarted/media/image1.png" style="width:25%" />
 
 When you open the project, start by examining **AppSettings.cs**. This
-is a settings file with configuration data you need to modify for your
+is a settings file with configuration data you need to modify with configuration data for your
 Fabric environment.
 
 <img src="./images/GettingStarted/media/image2.png" style="width:96%" />
