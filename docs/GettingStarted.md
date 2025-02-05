@@ -81,7 +81,7 @@ To run through the first four demos, use the instructions in
 **[Automating Fabric Solution Deployment](https://github.com/FabricDevCamp/FabricSolutionDeployment/blob/main/docs/Automating%20Fabric%20Solution%20Deployment.md)**.
 
 If you want to run **demo 5** through **demo 7**, you will need to configure additional support in 
-**AppSettings.cs** for an Azure DevOps organiztion. For this, you will need access
+**AppSettings.cs** for an Azure DevOps organization. For this, you will need access
 to an Azure DevOps organization in the same Entra Id tenant as the development environment where you are creating Fabric workspaces. Once you determined which Azure DevOps organization to use, you can configure it in **AppSettings.cs** by updating the value for a constant named **AzureDevOpsOrganizationName** which is shown in the following screenshot.
 
 <img src="./images/GettingStarted/media/image9.png" style="width:85%" />
@@ -121,10 +121,10 @@ debugger.
 <img src="./images/GettingStarted/media/image12.png" style="width:90%" />
 
 The default for the **AuthenticationMode** setting is **UserAuthWithAzurePowershell**.
-The reason this default auuthentication mode setting *just works* 
+The reason this default authentication mode setting *just works* 
 is because the application is configured to use a pre-installed 
 Entra Id application known as the **Azure PowerShell** application. 
-This application is automatically available in every M365
+This application is automatically available in every Entra Id
 tenant and you can use it to acquire user access tokens for the Fabric REST
 APIs.
 
@@ -332,8 +332,7 @@ configure permissions for the service principal in the Azure DevOps organization
 in which you're testing solution deployment workflows.
 
 >This step is required so that the service principal has permissions
-to create and delete ADO projects as well as permissions to read and write workspace item definition 
-files to ADO repositories.   
+to create and delete Azure DevOps projects as well as permissions to read and write workspace item definition files to Azure DevOps repositories.   
 
 Start by navigating to your organization in Azure DevOps and click the **Organization settings**
 link in the bottom right corner of the page.
@@ -357,6 +356,6 @@ On the **Permissions** page, configure your service principal with the following
  - **View instance-level information**
 
 
-<img src="./images/GettingStarted/media/image29.png" style="width:50%" />
+<img src="./images/GettingStarted/media/image29.png" style="width:60%" />
 
 >Congratulations. You have now reached the end of this setup guide. 
