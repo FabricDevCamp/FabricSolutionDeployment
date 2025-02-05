@@ -63,9 +63,7 @@ into the **FabricCapcityId** constant value in **AppSettings.cs**.
 under the identity of your user account. This will allow you to test out and experiment 
 with these CI/CD workflows.
 
-Open the source file named **Program.cs.** You should be able to see the
-code is initially set up to call a function named
-**Setup_ViewWorkspacesAndCapacities** .  
+Open the source file named **Program.cs** and locate the function named **Setup_ViewWorkspacesAndCapacities** .  
 
 <img src="./images/GettingStarted/media/image6.png" style="width:50%" />
 
