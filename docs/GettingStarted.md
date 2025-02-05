@@ -207,7 +207,8 @@ Enter a name for the new client secret and then click **Add**.
 
 <img src="./images/GettingStarted/media/image17E.png" style="width:37%" />
 
-Create new client secret.
+After creating the new client secret, copy its value into the Windows clipboard so 
+you can paste it into **AppSettings.cs** n the next step.
 
 <img src="./images/GettingStarted/media/image17F.png" style="width:85%" />
 
