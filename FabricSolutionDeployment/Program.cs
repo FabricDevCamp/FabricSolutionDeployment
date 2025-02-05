@@ -6,9 +6,7 @@ class Program {
 
   public static void Main() {
 
-    DeploymentManager.ExportSolutionFolderFromWorkspace(IsvLakehouseSolution);
-
-    // Setup_ViewWorkspacesAndCapacities();
+    Setup_ViewWorkspacesAndCapacities();
 
     // Demo01_DeploySolutionToWorkspace();
     // Demo02_GetItemDefinitionsFromWorkspace();
