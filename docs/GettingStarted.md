@@ -232,7 +232,7 @@ has the label of **Managed application in local directly**.
 
 <img src="./images/GettingStarted/media/image19.png" style="width:92%" />
 
-Click the **Managed application in local directly** link will navigate you
+When you click the **Managed application in local directly** link, you will navigate 
 to new page from which you can copy the **Object ID** value
 which is the service principal object Id. 
 
