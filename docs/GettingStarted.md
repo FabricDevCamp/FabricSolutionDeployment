@@ -142,8 +142,8 @@ a setting of either **UserAuth** and **ServicePrincipalAuth**.
 ### Configuring User Authentication with a Custom Entra Id Application
 
 If you want to use **UserAuth** mode, you must create a Entra Id
-application in the same Entra Id tenant where you are creating workspaces.
-When you create a new Entra Id application in the
+application as a public client application in the same Entra Id tenant 
+where you are creating workspaces. When you create a new Entra Id application in the
 Entra Id portal, you should configure the **Redirect URI** as **Public
 client/native** and set the URI value to **http<span>://</span>localhost** as shown
 in the following screenshot.
