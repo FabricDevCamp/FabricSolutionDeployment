@@ -181,10 +181,10 @@ the identity of your Entra Id user account.
 ### Configuring Service Principal Authentication with a Custom Entra Id Application
 If you want to run the **FabricSolutionDeployment** application as a service
 principal, you must create an Entra Id application that is configured
-as a confidential application with a client secret. You must also configure the  service principal
+as a confidential application with a client secret. You must also configure the service principal
 in the Fabric Admin portal with the tenant-level setting **Service principals can use Fabric APIs**. 
-If the service principal is not configured properly, all Fabric REST API calls will fail with a ***401 Unauthorized*** error.
- 
+These instructions will cover how to accomplish each of these setup steps.  
+
 When you create a new Entra Id application in the Entra Id portal for a service principal, you should configure the **Redirect URI** as **Web** and leave the URI value blank as shown in the following screenshot.
 
 <img src="./images/GettingStarted/media/image17B.png" style="width:80%" />
