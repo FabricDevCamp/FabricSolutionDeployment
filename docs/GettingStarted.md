@@ -282,3 +282,17 @@ Use that **Object ID** to update the **AdminUserId** constant
 in **AppSettings.cs**.
 
 <img src="./images/GettingStarted/media/image24.png" style="width:70%" />
+
+blah
+
+<img src="./images/GettingStarted/media/image25.png" style="width:70%" />
+
+blah
+
+<img src="./images/GettingStarted/media/image26.png" style="width:70%" />
+
+blah
+
+<img src="./images/GettingStarted/media/image27.png" style="width:70%" />
+
+blah
