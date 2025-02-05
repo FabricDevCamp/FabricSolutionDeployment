@@ -304,6 +304,9 @@ Navigate the the Fabric Admin portal using the following URL.
 
 blah
 
+### Configure Support for an Azure DevOps Organization
+
+
 <img src="./images/GettingStarted/media/image27A.png" style="width:70%" />
 
 blah
