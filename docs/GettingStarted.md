@@ -245,8 +245,8 @@ as shown in the following screenshot.
 
 > The next step is to set the **AdminUserId** value in **AppSettings.cs**. This configuration
 value is important when you start running the demo workflows as a service principal
-you want to be able to see what's been created by logging into the Fabric portal using
-your user account.
+because it allows you to access the Fabric portal using your user account to see what has been created 
+by the service principal.
 
 Let's take a step back and examine the issue that is addressed with the **AdminUserId**
 configuration value. If you create a workspace as a service principal,
