@@ -28,7 +28,7 @@ account with access to your Fabric development environment.
 
 <img src="./images/GettingStarted/media/image3.png" style="width:25%" />
 
-Once you login, the application will execute two Fabric REST APIs to get
+Once you login, the application will execute two Fabric REST API calls to retrieve and display
 information about the workspace and capacities to which the caller (i.e.
 your user account) has access. The application then displays all the
 workspaces and capacities in the console window as shown in the
