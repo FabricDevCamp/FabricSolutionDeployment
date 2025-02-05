@@ -250,7 +250,7 @@ principal.
 
 <img src="./images/GettingStarted/media/image21.png" style="width:80%" />
 
-The next step is to set the **AdminUserId** value in **AppSettings.cs**. This configuration
+> The next step is to set the **AdminUserId** value in **AppSettings.cs**. This configuration
 value is important when you start running the demo workflows as a service principal.
 
 Let's take a step back and explain the issue that is addressed with the **AdminUserId**
