@@ -123,7 +123,7 @@ debugger.
 The default for the **AuthenticationMode** setting is **UserAuthWithAzurePowershell**.
 The reason this default auuthentication mode setting *just works* 
 is because the application is configure to use a pre-installed 
-Entra Id application known as **Azure PowerShell** application. 
+Entra Id application known as the **Azure PowerShell** application. 
 This application is automatically available in every M365
 tenant and you can use it to acquire user access tokens for the Fabric REST
 APIs.
