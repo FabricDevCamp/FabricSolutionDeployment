@@ -288,7 +288,9 @@ you must find someone who does to assist you in completing this step.
 
 Navigate the the Fabric Admin portal using the following URL.
 
- - [https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi]{https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi}
+ - https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi
+
+ Here is what you see.
 
 <img src="./images/GettingStarted/media/image25.png" style="width:70%" />
 
