@@ -31,10 +31,12 @@ account with access to your Fabric development environment.
 Once you login, the application will execute two Fabric REST API calls to retrieve 
 information about the workspaces and capacities in the current Entra Id tenant to which you have access.
 The application then displays these workspaces and capacities in the console window as shown in the
-following screenshot. You should note that the list of capacities shows you what capacities that your
-user account has permissions to access in your development environment.
+following screenshot. 
 
 <img src="./images/GettingStarted/media/image4.png" style="width:70%" />
+
+> You should note that the list of capacities shows you what capacities that your
+user account has permissions to access in your development environment.
 
 Here is where you need to determine which capacity to configure for use
 with the application. You need to select a Fabric-enabled capacity and
