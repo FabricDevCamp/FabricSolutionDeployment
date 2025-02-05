@@ -47,9 +47,12 @@ For testing you can use any Fabric capacity created from an **F SKU** or a **P
 SKU** or you can also use a Fabric trial capacity. The screenshot above
 shows a Fabric trial shown by the code **[FT1]**. If you
 do not see a Fabric-enabled capacity in the capacities list, you must
-acquire one before continuing. If you are using a Fabric trial account,
-note that will make it more difficult (but not impossible) to test
-deployment using a service principal.
+acquire one before continuing with the setup of this application.
+
+> If you are using a Fabric trial account, this makes it more difficult (but not impossible) to test
+deployment workflows using a service principal. That's because you cannot grant trial capacity 
+permissions to a service principal. You can only execute Fabric the REST API cals to assign a workspace 
+to a Fabric trial capacity using a user identity.
 
 Once you determine which capacity you want to use, copy its ID value
 into the **FabricCapcityId** constant value in **AppSettings.cs**.
