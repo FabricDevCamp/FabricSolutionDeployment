@@ -195,12 +195,14 @@ with a tenant-level **Service principals can use Fabric APIs** setting in the Fa
  
  Here are steps to create the app.
 
-<img src="./images/GettingStarted/media/image17B.png" style="width:70%" />
+<img src="./images/GettingStarted/media/image17B.png" style="width:90%" />
 
 Grb both client Id and enant ID.
+
 <img src="./images/GettingStarted/media/image17C.png" style="width:70%" />
 
 Create new client secret.
+
 <img src="./images/GettingStarted/media/image17D.png" style="width:70%" />
 
 Get value of client secret so you can paste it into **AppSettings.cs**
