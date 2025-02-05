@@ -198,11 +198,12 @@ screenshot.
 
 <img src="./images/GettingStarted/media/image17C.png" style="width:60%" />
 
-Next, you need to create a new client secret and paste its value into **AppSettings.cs**.
+Next, you need to create a new client secret and paste its value into **AppSettings.cs**. 
+Navigate to the **Certificates & secrets** page and then click **New client secret**.
 
 <img src="./images/GettingStarted/media/image17D.png" style="width:70%" />
 
-Create new client secret.
+Enter a name for the new client secret and then click **Add**.
 
 <img src="./images/GettingStarted/media/image17E.png" style="width:37%" />
 
