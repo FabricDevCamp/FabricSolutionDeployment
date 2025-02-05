@@ -185,17 +185,20 @@ as a confidential application with a client secret. You must also configure the 
 in the Fabric Admin portal with the tenant-level setting **Service principals can use Fabric APIs**. 
 These instructions will cover how to accomplish each of these setup steps.  
 
-When you create a new Entra Id application in the Entra Id portal for a service principal, you should configure the **Redirect URI** as **Web** and leave the URI value blank as shown in the following screenshot.
+When you create a new Entra Id application for a service principal in the Entra Id portal, you should configure the **Redirect URI** as **Web** and leave the URI value blank as shown in the following screenshot.
 
 <img src="./images/GettingStarted/media/image17B.png" style="width:80%" />
 
 > Redirect URIs are only used for user authentication. There is no need to add a redirect URI when creating an Entra Id application for a service principal.
 
-Grb both client Id and enant ID.
+After clicking **Register** to create the new Entra Id application, you
+should be able to copy the application’s **client Id** and **tenant Id** to the clipboard so
+you can paste it into **AppSettings.cs** as shown in the following
+screenshot.
 
 <img src="./images/GettingStarted/media/image17C.png" style="width:60%" />
 
-Create new client secret.
+Next, you need to create a new client secret and paste its value into **AppSettings.cs**.
 
 <img src="./images/GettingStarted/media/image17D.png" style="width:70%" />
 
