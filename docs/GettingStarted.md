@@ -316,7 +316,7 @@ adding the the **Fabric REST API Applications** group as shown in the following 
 
 After a few minutes, your service principal should be able to successfully execute calls on
 the Fabric REST APIs. Keep in mind that any Fabric REST call from a service principal that has not 
-been cirrectly configured with  the **Service Principals can use Fabric APIs** setting
+been correctly configured with  the **Service Principals can use Fabric APIs** setting
 will fail with a **401 Unauthorized** error.
 
 >Once you have configured a service principal with the **Service Principals can use Fabric APIs** setting, it will have the permissions it needs to call the Fabric REST APIs. But this does not mean that the service principal will automatically have access to any workspaces or workspace items. That’s because a service principal has no default access to any workspaces. In this sense, a service principal is treated just like a user in terms of Fabric authorization policies.
