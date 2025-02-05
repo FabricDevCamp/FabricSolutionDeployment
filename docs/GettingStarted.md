@@ -279,7 +279,7 @@ in **AppSettings.cs**.
 
 >There is one more remaining step to complete the configuration for the service principal.
 
-#### Configure the 'Service principals can use Fabric APIs' Setting
+### Configure the Tenant-level Setting 'Service principals can use Fabric APIs'
 
 More stuff here.
 
