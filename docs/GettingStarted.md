@@ -237,7 +237,7 @@ service principal as a workspace member. The easiest way I know to get
 this value is to go to the Entra Id application **Overview** page and
 click the **Managed application in local directly** link.
 
-<img src="./images/GettingStarted/media/image19.png" style="width:80%" />
+<img src="./images/GettingStarted/media/image19.png" style="width:92%" />
 
 When you click the **Managed application in local directly** linkyou
 will navigate to page from which you can copy the **Object ID** value
