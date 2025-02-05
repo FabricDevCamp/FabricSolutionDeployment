@@ -138,10 +138,12 @@ you started quickly because it eliminates the need to create a custom Entra Id a
 
 If you want to test the **FabricSolutionDeployment** application using a custom 
 application you have created in Entra Id , you can configure **AuthenticationMode** to 
-a setting of either **UserAuth** and **ServicePrincipalAuth**. The next two sections explain how
-to create and configure custom Entra Id applications to support user authentication and service principal authentication. 
+a setting of either **UserAuth** and **ServicePrincipalAuth**. 
 
 <img src="./images/GettingStarted/media/image13.png" style="width:40%" />
+
+> The next two sections explain how to create custom Entra Id applicationsas and how to configure them in the **FabricSolutionDeployment** application to test out deployment workflows that run as either a user or
+as a service principal.
 
 ### Configuring User Authentication with a Custom Entra Id Application
 
