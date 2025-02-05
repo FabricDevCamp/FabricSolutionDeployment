@@ -296,6 +296,10 @@ blah
 
 blah
 
+<img src="./images/GettingStarted/media/image27A.png" style="width:70%" />
+
+blah
+
 <img src="./images/GettingStarted/media/image28.png" style="width:70%" />
 
 blah
