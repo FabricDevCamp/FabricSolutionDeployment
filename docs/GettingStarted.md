@@ -296,7 +296,7 @@ Next, add the service principal as a group member.
 
 <img src="./images/GettingStarted/media/image26.png" style="width:70%" />
 
-Once you have created the Entra Id group and added the service principal as a member, the next step is to navigate to the Fabric Admin portal to configure the **Service Principals can use Fabric REST APIs** setting. 
+Once you have created the Entra Id group and added the service principal as a member, the next step is to navigate to the Fabric Admin portal to configure the **Service Principals can use Fabric APIs** setting. 
 
 >Note the next step can only be completed by a user who has been cofigured in the current Enta Id tenant 
 as a **Fabric Administrator**. If you do not have these permissions in your development environment,
@@ -307,14 +307,14 @@ Navigate the the Fabric Admin portal using the following URL.
  - https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi
 
 Scroll down in the **Tenant settings** page to the **Developer settings** section.
-Enabled the **Service Principals can use Fabric REST APIs** setting and configure it by
+Enabled the **Service Principals can use Fabric APIs** setting and configure it by
 adding the the **Fabric REST API Applications** group as shown in the following screenshot. 
 
 <img src="./images/GettingStarted/media/image27.png" style="width:70%" />
 
 After a few minutes, you service principal should now be able to successfully execute calls on
 the Fabric REST APIs. Keep in mind that any Fabric REST call from a service principal that has not 
-been cirrectly configured with  the **Service Principals can use Fabric REST APIs** setting
+been cirrectly configured with  the **Service Principals can use Fabric APIs** setting
 will fail with a **401 Unauthorized** err.
 
 ### Configure Azure DevOps Organization Permissions for the Service Principal
