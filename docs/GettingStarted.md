@@ -65,7 +65,7 @@ with these CI/CD workflows.
 
 Open the source file named **Program.cs** and locate the function named **Setup_ViewWorkspacesAndCapacities** .  
 
-<img src="./images/GettingStarted/media/image6.png" style="width:50%" />
+<img src="./images/GettingStarted/media/image6.png" style="width:80%" />
 
 Now you can comment out the line that
 calls **Setup_ViewWorkspacesAndCapacities** and uncomment the next line
