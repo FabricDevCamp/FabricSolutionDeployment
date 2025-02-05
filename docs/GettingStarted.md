@@ -284,12 +284,11 @@ By default, a service principal does not possess the required permissions to cal
 
 One complication with the **Service Principals can use Fabric APIs** setting is that you cannot directly add a service principal in the Fabric Admin portal. Instead, you can only configure this setting with users and Entra Id groups. The way to configure permissions for a service principal is by following these steps.
  
- - Create a new security group in Entra Id with a name like **Fabric REST API Applications**
- - Add the service principal as members of the **Fabric REST API Applications** group
- - Add the **Fabric REST API Applications** group to the **Service Principals can use Fabric APIs** setting.
+ 1 Create a new security group in Entra Id with a name like **Fabric REST API Applications**
+ 2 Add the service principal as members of the **Fabric REST API Applications** group
+ 3 Add the **Fabric REST API Applications** group to the **Service Principals can use Fabric APIs** setting.
 
-Now let's work through each of these steps. Start by navigating to 
-the Entra Id portal. 
+Complete step by by navigating to the Entra Id portal and creating. 
 
 Create a new security group named **Fabric REST API Applications**.
 
@@ -319,6 +318,12 @@ After a few minutes, you service principal should now be able to successfully ex
 the Fabric REST APIs. Keep in mind that any Fabric REST call from a service principal that has not 
 been cirrectly configured with  the **Service Principals can use Fabric APIs** setting
 will fail with a **401 Unauthorized** err.
+
+Once you have configured a service principal with the **Service Principals can use Fabric APIs** setting, it will have the permissions it needs to call the Fabric REST APIs. But this does not mean that the service principal will automatically have access to any workspaces or workspace items. That’s because a service principal has no default access to any workspaces. In this sense, a service principal is treated just like a user in the Fabric authorization scheme.
+
+If you want to enable a service principal with access to a specific workspace, you must assign the service principal to a workspace role. You can add a service principal into a workspace role such as Admin, Member, Contributor or Visitor. Once you add a service principal to a workspace in a role such as Admin or Member, the service principal will have the permissions it needs to begin creating workspace items.
+
+>In multitenant application development, it’s a best practice to automate the creation of workspaces using service principals. When you create a workspace using a service principal, it’s automatically assigned to the Admin role which provides full read-write access to the workspace and the workspace items inside.
 
 ### Configure Azure DevOps Organization Permissions for the Service Principal
 
