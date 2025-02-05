@@ -286,9 +286,6 @@ By default, a service principal does not possess the required permissions to cal
 as a **Fabric Administrator**. If you do not have these permissions in your development environment,
 you must find someone who does to assist you in completing this step. 
 
-Navigate the the Fabric Admin portal using the following URL.
-
- - https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi
 
  Here is what you see.
 
@@ -298,7 +295,10 @@ blah
 
 <img src="./images/GettingStarted/media/image26.png" style="width:70%" />
 
-blah
+Navigate the the Fabric Admin portal using the following URL.
+
+ - https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi
+
 
 <img src="./images/GettingStarted/media/image27.png" style="width:70%" />
 
