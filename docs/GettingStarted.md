@@ -227,7 +227,8 @@ is a little bit tricky. You need to configure the **ServicePrincipalObjectId** 
 run deployment workflows that add the service principal as a workspace member. When you want to use the Fabric REST API to add a workspace role assignment for a service principal, you must call the API by pasisng the **service principal object Id** instead of the application's **client Id**.
 
 The discover the **service principal object Id** for an Entra Id application, navigate to 
-the **Overview** page of the Entra Id application and click the **Managed application in local directly** link.
+the **Overview** page of the Entra Id application and then click the link that
+has the label of **Managed application in local directly**.
 
 <img src="./images/GettingStarted/media/image19.png" style="width:92%" />
 
