@@ -329,7 +329,7 @@ In multitenant application development, it’s a best practice to automate the c
 
 If you want to run **demo 5** through **demo 7** as a service principal, you must first 
 configure permissions for the service principal in the Azure DevOps organization 
-which you're using for testing your deoployment workflows.
+in which you're testing solution deployment workflows.
 
 >This step is required so that the service principal has permissions
 to create and delete ADO projects as well as permissions to read and write files to
