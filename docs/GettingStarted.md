@@ -212,9 +212,7 @@ Create new client secret.
 
 <img src="./images/GettingStarted/media/image17F.png" style="width:70%" />
 
-Create new client secret.
 
-<img src="./images/GettingStarted/media/image17G.png" style="width:70%" />
 
 Create new client secret.
 
@@ -226,6 +224,10 @@ to **AppSettings.cs**. Once you get the configuration information for
 the service principal, you must add its into **AppSettings.cs**.
 
 <img src="./images/GettingStarted/media/image18.png" style="width:80%" />
+
+Create new client secret.
+
+<img src="./images/GettingStarted/media/image17G.png" style="width:70%" />
 
 One part that is kind of tricking is getting
 the **ServicePrincipalObjectId **value for the service principal. You
