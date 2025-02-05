@@ -340,8 +340,7 @@ link in the bottom right corner of the page.
 
 <img src="./images/GettingStarted/media/image27A.png" style="width:70%" />
 
-Navigate to the **Users** page and add your service principal as a member of the ADO organization
-with an **Access level** or **Basic**. 
+Navigate to the **Users** page and add your service principal as a member with an **Access level** of **Basic**. 
 
 <img src="./images/GettingStarted/media/image28.png" style="width:70%" />
 
