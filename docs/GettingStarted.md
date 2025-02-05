@@ -5,8 +5,8 @@
 
 Once you download the **FabricSolutionDeployment** project, you can open and test it
 using any version of Visual Studio 2022 including the free community
-version. While I haven't tested this with VS Code, you should be able to
-use instead of Visual Studio as long as you have the .NET/C# extensions
+version. While this project hasn't been tested using VS Code, you should be able to
+use that developer experience instead of Visual Studio as long as you have the .NET/C# extensions
 installed.
 
 <img src="./images/GettingStarted/media/image1.png" style="width:25%" />
