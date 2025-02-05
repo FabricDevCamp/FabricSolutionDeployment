@@ -279,12 +279,16 @@ in **AppSettings.cs**.
 
 >There still remains an extra configuration step that needs accomplished before a service principal has the permissions it needs to call the Fabric REST APIs. 
 
-### Configure the 'Service principals can use Fabric APIs' Tenant-level Setting
+### Configure the [Service principals can use Fabric APIs] Tenant-level Setting
 By default, a service principal does not possess the required permissions to call the Fabric REST APIs. Instead, a service principal must be configured in the Fabric admin portal using the tenant-level setting **Service Principals can use Fabric REST API**.
 
+One complication with the **Service Principals can use Fabric REST APIs** setting is that you cannot directly add a service principal in the Fabric Admin portal. Instead, you can only configure this setting with users and Entra Id groups. The way to configure permissions for a service principal is by following these steps.
+ 
+ - Create a new security group in Entra Id with a name like **Fabric REST API Applications**
+ - Add the service principal as members of the **Fabric REST API Applications** group
+ - Add the **Fabric REST API Applications** group to the **Service Principals can use Fabric REST APIs** setting.
 
-
- Here is what you see.
+Start by navigating to the Entra Id portal and create a new security group named **Fabric REST API Applications**.
 
 <img src="./images/GettingStarted/media/image25.png" style="width:70%" />
 
