@@ -252,7 +252,7 @@ by the service principal.
 configuration value. If you create a workspace as a service principal,
 that service principal will be the only identity that can access that
 workspace. That means you will not be able to inspect that workspace in
-the Fabric UI under the identity of your user account. Therefore, the
+the Fabric portal under the identity of your user account. Therefore, the
 sample application has been designed to add any user account (*which
 should be your user account*) as a workspace admin. After a service
 principal creates a workspace, it will add an Admin workspace role assignment
