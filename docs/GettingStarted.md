@@ -28,6 +28,9 @@ account with access to your Fabric development environment.
 
 <img src="./images/GettingStarted/media/image3.png" style="width:25%" />
 
+>When you login in for the first time, Entra Id might prompt you with a **Permissions request** consent dialog asking you to consent to permissions reuested by the application. You should click **Accept**
+togrant the permission request and continue.
+
 Once you login, the application will execute two Fabric REST API calls to retrieve 
 information about the workspaces and capacities in the current Entra Id tenant to which you have access.
 The application then displays these workspaces and capacities in the console window as shown in the
