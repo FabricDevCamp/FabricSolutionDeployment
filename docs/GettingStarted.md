@@ -344,11 +344,12 @@ Navigate to the **Users** page and add your service principal as a member with a
 
 <img src="./images/GettingStarted/media/image28.png" style="width:70%" />
 
-Navigate to the **Permissions** page and then the **Users** tab. Locate your and click on the 
+Navigate to the **Permissions** page and then the **Users** tab. Locate and click on
+your service principal to open the **Permissions** page. 
 
 <img src="./images/GettingStarted/media/image28B.png" style="width:70%" />
 
-
+More here
 
 <img src="./images/GettingStarted/media/image29.png" style="width:70%" />
 
