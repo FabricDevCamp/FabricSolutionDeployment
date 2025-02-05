@@ -292,6 +292,12 @@ blah
 
 <img src="./images/GettingStarted/media/image26.png" style="width:70%" />
 
+blah.
+
+>Note the next step can only be completed by a user who has been cofigured in the current Enta Id tenant 
+as a **Fabric Administrator**. If you do not have these permissions in your development environment,
+you must find someone who does to assist you in completing this step. 
+
 Navigate the the Fabric Admin portal using the following URL.
 
  - https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi
@@ -303,11 +309,6 @@ blah
 
 ### Configure Azure DevOps Organization Permissions for the Service Principal
 
-blah.
-
->Note this step can only be completed by a user who has been cofigured in the current Enta Id tenant 
-as a **Fabric Administrator**. If you do not have these permissions in your development environment,
-you must find someone who does to assist you in completing this step. 
 
 blah.
 
