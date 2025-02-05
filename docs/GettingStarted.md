@@ -268,7 +268,7 @@ If you look at the bottom of the following screenshot, you will see a
 constant named **AdminUserId**. You need to configure this constant with
 the object id associated with your Entra Id user account.
 
-<img src="./images/GettingStarted/media/image22.png" style="width:90%" />
+<img src="./images/GettingStarted/media/image22.png" style="width:80%" />
 
 There are several different ways you can get the Object Id for your Entra Id
 User account. The easiest way is to go to the Entra Id admin center.
