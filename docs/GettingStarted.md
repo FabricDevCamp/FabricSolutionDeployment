@@ -357,6 +357,6 @@ On the **Permissions** page, configure your service principal with the following
  - **View instance-level information**
 
 
-<img src="./images/GettingStarted/media/image29.png" style="width:70%" />
+<img src="./images/GettingStarted/media/image29.png" style="width:50%" />
 
 >Congratulations. You have now reached the end of this setup guide. 
