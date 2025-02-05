@@ -113,7 +113,7 @@ support for Azure DevOps. Adding support for GitHub is left as an exercise for t
 The **FabricSolutionDeployment** application supports three possible 
 configure settings for the application's **authentication mode**.
  If you leave the configuration with the default setting
-in **AppSettings.cs** (*as shown below*), things should just work out-of-the-box. 
+as shown in the following screenshot, things should just work out-of-the-box. 
 There is no need to create an Entra Id application before you run 
 the he **FabricSolutionDeployment** application in the Visual Studio
 debugger. 
