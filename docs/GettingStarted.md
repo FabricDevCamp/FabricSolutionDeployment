@@ -206,12 +206,11 @@ Create new client secret.
 <img src="./images/GettingStarted/media/image17D.png" style="width:70%" />
 
 Create new client secret.
-<img src="./images/GettingStarted/media/image17D.png" style="width:70%" />
 
-Create new client secret.
 <img src="./images/GettingStarted/media/image17E.png" style="width:70%" />
 
 Create new client secret.
+
 <img src="./images/GettingStarted/media/image17F.png" style="width:70%" />
 
 
