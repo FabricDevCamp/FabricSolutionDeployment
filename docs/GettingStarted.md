@@ -275,6 +275,10 @@ the **Object ID** associated with your user account.
 Use that **Object ID** to update the **AdminUserId** constant
 in **AppSettings.cs**.
 
+#### Configure the 'Service principals can use Fabric APIs' Setting
+
+More stuff here.
+
 <img src="./images/GettingStarted/media/image24.png" style="width:70%" />
 
 blah
