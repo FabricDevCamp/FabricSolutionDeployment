@@ -23,9 +23,8 @@ are empty GUID values. To make various demos run correctly, you will be required
 
 However, you don't need to modify anything in **AppSettings.cs** before you run this
 application for the first time. When you start up and run the project
-for the first time, you will be prompted to login. Log in using the user
-account which has access and permissions in your Fabric development
-environment.
+for the first time, you will be prompted to login. Log in using a user
+account with access to your Fabric development environment.
 
 <img src="./images/GettingStarted/media/image3.png" style="width:25%" />
 
