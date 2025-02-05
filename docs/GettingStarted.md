@@ -62,9 +62,9 @@ into the **FabricCapcityId** constant value in **AppSettings.cs**.
 
 <img src="./images/GettingStarted/media/image5.png" style="width:80%" />
 
-> Now you are ready to start running and testing out deployment workflows 
+> Now you're ready to start running and testing out this application
 under the identity of your user account. This will allow you to test out and experiment 
-with these CI/CD workflows designed to deploy and update Fabric solutions.
+with CI/CD workflows which have been designed to deploy and update Fabric solutions.
 
 Open the source file named **Program.cs** and locate the function named **Setup_ViewWorkspacesAndCapacities** .  
 
