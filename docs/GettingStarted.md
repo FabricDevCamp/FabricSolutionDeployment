@@ -349,8 +349,14 @@ your service principal to open the **Permissions** page.
 
 <img src="./images/GettingStarted/media/image28B.png" style="width:50%" />
 
-More here
+On the **Permissions** page, configure your service principal with the following permissions.
+
+ - **Create new projects**
+ - **Delete team  project**
+ - **Edit instance-level information**
+ - **View instance-level information**
+
 
 <img src="./images/GettingStarted/media/image29.png" style="width:70%" />
 
-blah
+>Congratulations. You have now reach the end of this setup document. 
