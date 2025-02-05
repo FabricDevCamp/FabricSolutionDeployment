@@ -41,7 +41,7 @@ user account has permissions to access in your development environment.
 Here is where you need to determine which capacity to configure for use
 with the application. You need to select a Fabric-enabled capacity and
 add its capacity ID to **AppSettings.cs**. This is required so the
-application can assign the workspaces it created to this capacity.
+application can assign the workspaces it creates to this capacity.
 
 For testing you can use any Fabric capacity created from an F SKU or a P
 SKU or you can also use a Fabric trial capacity. The screenshot above
