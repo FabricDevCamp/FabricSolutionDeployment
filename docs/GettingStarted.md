@@ -137,8 +137,9 @@ is **UserAuthWithAzurePowershell**.
 you started quickly because it eliminates the need to create a custom Entra Id application. 
 
 If you want to test the **FabricSolutionDeployment** application using a custom 
-Entra Id application you have created, you can configure the authentication mode to 
-as setting of **UserAuth** and **ServicePrincipalAuth**.
+application you have created in Entra Id , you can configure **AuthenticationMode** to 
+a setting of either **UserAuth** and **ServicePrincipalAuth**. The next two sections explain how
+to create and configure custom Entra Id applications to support user authentication and service principal authentication. 
 
 <img src="./images/GettingStarted/media/image13.png" style="width:40%" />
 
