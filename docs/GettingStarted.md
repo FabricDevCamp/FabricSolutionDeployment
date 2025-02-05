@@ -73,7 +73,7 @@ Open the source file named **Program.cs** and locate the function named **Setup
 Comment out the line that calls **Setup_ViewWorkspacesAndCapacities** and uncomment the next line
 to call the function named **Demo01_DeploySolutionToWorkspace**. The next time you run the application it should execute the code for **demo 1** which creates and populates a new workspace named **Contoso**. 
 
-<img src="./images/GettingStarted/media/image7.png" style="width:55%" />
+<img src="./images/GettingStarted/media/image7.png" style="width:70%" />
 
 > You've now configured what's required to run **demo 1** through **demo 4**. 
 It is simply a matter of commenting out one functions and uncommenting the next.
