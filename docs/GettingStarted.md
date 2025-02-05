@@ -35,7 +35,7 @@ following screenshot.
 
 <img src="./images/GettingStarted/media/image4.png" style="width:70%" />
 
-> You should note that the **Capacities List** shows you what capacities that your
+> The **Capacities List** shows you what capacities that your
 user account has permissions to access in your development environment.
 
 Here is where you need to determine which capacity to configure for use
