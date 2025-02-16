@@ -25,16 +25,19 @@ public class AppSettings {
   // TODO: configure object id of Entra Id user account of user running demo
   public const string AdminUserId = "00000000-0000-0000-0000-000000000000";
 
-  // TODO: configure access to Azure storage container
+  // TODO: configure location of Azure storage container
   public const string AzureStorageAccountName = "fabricdevcamp";
   public const string AzureStorageContainer = "sampledata";
   public const string AzureStorageContainerPath = "/ProductSales/Dev";
-  public const string AzureStorageAccountKey = "{YOUR_AZURE_DEVOPS_ORGANIZATION_NAME}";
 
-  // No need to changes these two settings
+  // TODO: configure account key or SAS token for Azure storage container
+  public const string AzureStorageAccountKey = "{YOUR_AZURE_STORAGE_ACCOUNT_KEY}";
+
+  // no need to update these two setting
   public const string AzureStorageServer = $"https://{AzureStorageAccountName}.dfs.core.windows.net";
   public const string AzureStoragePath = AzureStorageContainer + AzureStorageContainerPath;
 
+ 
   // TODO: configure Azure DevOps organization
   public const string AzureDevOpsOrganizationName = "{YOUR_AZURE_DEVOPS_ORGANIZATION_NAME}";
   public const string AzureDevOpsApiBaseUrl = $"https://dev.azure.com/{AzureDevOpsOrganizationName}";

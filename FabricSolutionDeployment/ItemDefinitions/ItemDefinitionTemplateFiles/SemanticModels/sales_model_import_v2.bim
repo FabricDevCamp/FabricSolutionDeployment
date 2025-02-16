@@ -1,0 +1,750 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.126.1261.0 (24.02)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Products\",\"CSV_FILE_ROOT\",\"Customers\",\"Sales\",\"Invoices\"]"
+      },
+      {
+        "name": "__LastRPTime",
+        "value": "133549027603029707"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "CSV_FILE_ROOT",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ],
+        "expression": "\"https://fabricdevcamp.blob.core.windows.net/sampledata/ProductSales/Dev/\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "c28eb748-2b18-4002-a15d-ef86447dcf98"
+      },
+      {
+        "name": "Invoices",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = Csv.Document(Web.Contents(CSV_FILE_ROOT, [RelativePath=\"Invoices.csv\"]),[Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+          "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+          "    #\"Changed Type\" = Table.TransformColumnTypes(PromotedHeaders,{{\"Date\", type date}, {\"TotalSalesAmount\", Currency.Type}}),",
+          "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"TotalSalesAmount\"})",
+          "in ",
+          "   #\"Removed Columns\""
+        ],
+        "kind": "m",
+        "lineageTag": "88beae85-75cf-4bc4-93cf-d833a88be5ad"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "355395d2-99ee-426c-ad1a-54215d35a179",
+        "fromColumn": "CustomerId",
+        "fromTable": "Sales",
+        "toColumn": "CustomerId",
+        "toTable": "Customers"
+      },
+      {
+        "name": "53798746-f3d4-4f12-8088-69bdef7a1dc2",
+        "fromColumn": "ProductId",
+        "fromTable": "Sales",
+        "toColumn": "ProductId",
+        "toTable": "Products"
+      },
+      {
+        "name": "b3f8fd27-16c1-49d6-8bff-d1c9ac659d87",
+        "fromColumn": "Date",
+        "fromTable": "Sales",
+        "toColumn": "Date",
+        "toTable": "Calendar"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Products",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ProductId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "896099ee-b9fa-4ff3-bf29-1228785d25ab",
+            "sourceColumn": "ProductId",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Product",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ff20eb54-940f-4bb8-9b68-f98303de9240",
+            "sourceColumn": "Product",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "509d9236-e94c-4d69-9960-b5684675abdb",
+            "sourceColumn": "Category",
+            "summarizeBy": "none"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Product Category",
+            "levels": [
+              {
+                "name": "Category",
+                "column": "Category",
+                "lineageTag": "3f206b7e-11c4-4a9d-bbca-243dc81aebb4",
+                "ordinal": 0
+              },
+              {
+                "name": "Product",
+                "column": "Product",
+                "lineageTag": "8c9c2bf7-eaf2-456a-b732-eadef0f6ba55",
+                "ordinal": 1
+              }
+            ],
+            "lineageTag": "964d734a-12da-49a4-b660-105c3db142c1"
+          }
+        ],
+        "lineageTag": "c6664ca4-71df-4c22-9c27-4acff2f8edfb",
+        "partitions": [
+          {
+            "name": "Products",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(Web.Contents(CSV_FILE_ROOT, [RelativePath=\"Products.csv\"]),[Delimiter=\",\", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(PromotedHeaders,{{\"ProductId\", Int64.Type}, {\"Product\", type text}, {\"Category\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Customers",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "CustomerId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8ef36727-cc0f-49d0-a603-b93728ffb4ef",
+            "sourceColumn": "CustomerId",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Customer",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "caef8177-cc5c-4616-b4b1-90b4dfe286c8",
+            "sourceColumn": "Customer",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "Country",
+            "dataType": "string",
+            "lineageTag": "9971672c-9036-49f6-bff2-3b1c7013d2d8",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "City",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f5a7b58e-90bb-4863-bf2d-bc20c498bfe6",
+            "sourceColumn": "City",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DOB",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1c190208-2d25-42aa-b79f-4366383697c7",
+            "sourceColumn": "DOB",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Age",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": "Floor( (TODAY()-Customers[DOB])/365, 1)",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "710ea202-a41a-4dd3-9cb0-316d0a9ee7a8",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "City Location",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "Place",
+            "dataType": "string",
+            "expression": "[City] & \", \" & [Country]",
+            "isDataTypeInferred": true,
+            "lineageTag": "5de77da1-c0a2-4d88-8edd-bc187f1ed893",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "cc5aacb1-b6b4-4766-9850-699a4fca339d",
+        "partitions": [
+          {
+            "name": "Customers",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(Web.Contents(CSV_FILE_ROOT, [RelativePath=\"Customers.csv\"]),[Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Merged Columns\" = Table.CombineColumns(PromotedHeaders,{\"FirstName\", \"LastName\"},Combiner.CombineTextByDelimiter(\" \", QuoteStyle.None),\"Customer\")",
+                "in ",
+                "   #\"Merged Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sales",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "7b8ca442-d6cb-41af-a75f-00c51e3edb07",
+            "sourceColumn": "Id",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "Quantity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "ef8b2dda-912f-46e3-9fa1-620ab36917ee",
+            "sourceColumn": "Quantity",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Sales",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "decimal",
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "isHidden": true,
+            "lineageTag": "4deb920d-252b-4ed5-a006-f275ad969414",
+            "sourceColumn": "Sales",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ProductId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "edf092b6-d8aa-47f6-ad9d-2283abdce11d",
+            "sourceColumn": "ProductId",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "isHidden": true,
+            "lineageTag": "b8975c2f-ecd5-4530-ab1c-3a6a8cb77a7a",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "eb7585d6-536b-43bd-914c-acd6af6fc9c7",
+            "sourceColumn": "CustomerId",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "ad4c8f4d-6088-48af-87c6-3994a23b98d2",
+        "measures": [
+          {
+            "name": "Sales Revenue",
+            "displayFolder": "Sales Metrics",
+            "expression": "Sum(Sales[Sales])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "lineageTag": "5ea1636a-303f-44db-b500-622529d0749d"
+          },
+          {
+            "name": "Customer Count",
+            "displayFolder": "Sales Metrics",
+            "expression": "DISTINCTCOUNT(Sales[CustomerId])",
+            "formatString": "#,0",
+            "lineageTag": "94141404-6d60-41fe-a767-7af9150d25b2"
+          },
+          {
+            "name": "First Sale",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isCustom\":true}"
+              }
+            ],
+            "displayFolder": "Date Metrics",
+            "expression": "FIRSTDATE(Sales[Date])",
+            "formatString": "mmmm d, yyyy",
+            "lineageTag": "57b47456-57b9-4248-9600-2497e60f375c"
+          },
+          {
+            "name": "Last Sale",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isCustom\":true}"
+              }
+            ],
+            "displayFolder": "Date Metrics",
+            "expression": "LASTDATE(Sales[Date])",
+            "formatString": "mmmm d, yyyy",
+            "lineageTag": "d1101050-6e52-453f-87df-58bdcb744a13"
+          },
+          {
+            "name": "Units Sold",
+            "displayFolder": "Sales Metrics",
+            "expression": "SUM(Sales[Quantity])",
+            "formatString": "#,0",
+            "lineageTag": "5e914420-dc4c-4a47-b376-6fd6ade30050"
+          },
+          {
+            "name": "Customer Rank",
+            "displayFolder": "Ranking Metrics",
+            "expression": [
+              "",
+              "IF( ",
+              "  HASONEVALUE(Customers[CustomerId]), ",
+              "  RANKX( ",
+              "    ALLSELECTED(Customers), ",
+              "    CALCULATE([Sales Revenue])",
+              "  )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "2f823a25-58db-4640-bc89-c14c94552f4b"
+          },
+          {
+            "name": "Product Rank",
+            "displayFolder": "Ranking Metrics",
+            "expression": [
+              "",
+              "IF( ",
+              "  HASONEVALUE(Products[Product]), ",
+              "  RANKX( ",
+              "    ALLSELECTED(Products), ",
+              "    CALCULATE([Sales Revenue])",
+              "  )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "cc3f8a68-da6d-4f12-9b75-9d12af58fedf"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Sales",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(Web.Contents(CSV_FILE_ROOT, [RelativePath=\"InvoiceDetails.csv\"]),[Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Merged Queries\" = Table.NestedJoin(PromotedHeaders, {\"InvoiceId\"}, Invoices, {\"InvoiceId\"}, \"Invoices\", JoinKind.LeftOuter),",
+                "    #\"Expanded Invoices\" = Table.ExpandTableColumn(#\"Merged Queries\", \"Invoices\", {\"Date\", \"CustomerId\"}, {\"Date\", \"CustomerId\"}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Expanded Invoices\",{\"InvoiceId\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Removed Columns\",{{\"ProductId\", Int64.Type}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"SalesAmount\", \"Sales\"}}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"Id\", Int64.Type}, {\"Quantity\", Int64.Type}, {\"Sales\", Currency.Type}, {\"Date\", type date}})",
+                "in ",
+                "   #\"Changed Type1\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Calendar",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "a13d46442e704e5eb4dc38fb51ece3e7"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "fe811ca5-2a1a-42a3-b4b1-81c685a124a3",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "4a439f61-5c7e-46cf-9e3b-2d428ecd778b",
+            "sourceColumn": "[Year]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "358cef97-fc10-49ab-89b1-cd4a1be50ab8",
+            "sourceColumn": "[Quarter]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "c16b1694-33a7-4d37-bbed-00d105532540",
+            "sourceColumn": "[Month]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "MonthInYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "911f3a33-7af2-4ecd-ab66-e054a1b67248",
+            "sortByColumn": "MonthInYearSort",
+            "sourceColumn": "[MonthInYear]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "MonthInYearSort",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "ed2b0c21-2745-4a65-bde4-4138b0572276",
+            "sourceColumn": "[MonthInYearSort]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "DayOfWeek",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "d067e4a2-0cd8-4c9f-af72-57c30c35a744",
+            "sortByColumn": "DayOfWeekSort",
+            "sourceColumn": "[DayOfWeek]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "DayOfWeekSort",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "487997ff-fe9d-46fb-ae23-05503390d726",
+            "sourceColumn": "[DayOfWeekSort]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "d6febbe9-b14f-46b9-b0ec-00cd13e954e5",
+        "partitions": [
+          {
+            "name": "Calendar",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "Var CalenderStart = Date(Year(Min(Sales[Date])) , 1, 1)  ",
+                "Var CalendarEnd = Date(Year(MAX(Sales[Date])), 12, 31)",
+                "Return ADDCOLUMNS(",
+                "    CALENDAR(CalenderStart, CalendarEnd),",
+                "    \"Year\", Year([Date]),",
+                "    \"Quarter\", FORMAT([Date], \"yyyy-\\Qq\"),",
+                "    \"Month\", FORMAT([Date], \"yyyy-dd\"),",
+                "    \"MonthInYear\", FORMAT([Date], \"mmmm\"),",
+                "    \"MonthInYearSort\", MONTH([Date]),",
+                "    \"DayOfWeek\", FORMAT([Date], \"dddd\"),",
+                "    \"DayOfWeekSort\", WEEKDAY([Date])",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
