@@ -8,20 +8,18 @@ class Program {
 
   public static void Main() {
 
-    // Setup_ViewWorkspacesAndCapacities();
+    Setup_ViewWorkspacesAndCapacities();
 
-    Lab01_DeploySolutionsUsingFromItemDefinitions();
-    //Lab02_ExportItemDefinitionsFromWorkspace();
-    //Lab03_DeployWithParameterizeDatasourcePaths();
-    //Lab04_DeploySolutionFromSourceWorkspace();
-    //Lab05_UpdateSolutionFromSourceWorkspace();
-    //Lab06_SetupStagedDeployment();
-    //Lab07_PushSolutionUpdatesToProduction();
-    //Lab08_ConnectDevWorkspaceToGitRepository();
-    //Lab09_ExportWorkspaceToPackagedSolutionFolder();
-    //Lab10_DeployAndUpdateFromSolutionPackageFolder();
-
-
+    // Lab01_DeploySolutionsUsingFromItemDefinitions();
+    // Lab02_ExportItemDefinitionsFromWorkspace();
+    // Lab03_DeployWithParameterizeDatasourcePaths();
+    // Lab04_DeploySolutionFromSourceWorkspace();
+    // Lab05_UpdateSolutionFromSourceWorkspace();
+    // Lab06_SetupStagedDeployment();
+    // Lab07_PushSolutionUpdatesToProduction();
+    // Lab08_ConnectDevWorkspaceToGitRepository();
+    // Lab09_ExportWorkspaceToPackagedSolutionFolder();
+    // Lab10_DeployAndUpdateFromSolutionPackageFolder();
   }
 
   public static void Setup_ViewWorkspacesAndCapacities() {
