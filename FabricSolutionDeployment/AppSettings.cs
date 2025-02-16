@@ -9,6 +9,18 @@ public class AppSettings {
   // TODO: configure capacity Id for Fabric-enabled capacity
   public const string FabricCapacityId = "00000000-0000-0000-0000-000000000000";
 
+ // TODO: configure location of Azure storage container
+  public const string AzureStorageAccountName = "{YOUR_AZURE_STORAGE_ACCOUNT_NAME}"; // e.g. "fabricdevcamp"
+  public const string AzureStorageContainer = "{YOUR_AZURE_CONTAINER_NAME}";         // e.g  "sampledata"
+  public const string AzureStorageContainerPath = "{YOUR_AZURE_CONTAINER_PATH}";     // e.g. "/ProductSales/Dev"
+
+  // no need to update these two setting
+  public const string AzureStorageServer = $"https://{AzureStorageAccountName}.dfs.core.windows.net";
+  public const string AzureStoragePath = AzureStorageContainer + AzureStorageContainerPath;
+
+  // TODO: configure account key or SAS token for Azure storage container
+  public const string AzureStorageAccountKey = "{YOUR_AZURE_STORAGE_ACCOUNT_KEY}";
+
   // TODO: configure authentication mode
   public static AppAuthenticationMode AuthenticationMode = AppAuthenticationMode.UserAuthWithAzurePowershell;
 
@@ -25,19 +37,6 @@ public class AppSettings {
   // TODO: configure object id of Entra Id user account of user running demo
   public const string AdminUserId = "00000000-0000-0000-0000-000000000000";
 
-  // TODO: configure location of Azure storage container
-  public const string AzureStorageAccountName = "fabricdevcamp";
-  public const string AzureStorageContainer = "sampledata";
-  public const string AzureStorageContainerPath = "/ProductSales/Dev";
-
-  // TODO: configure account key or SAS token for Azure storage container
-  public const string AzureStorageAccountKey = "{YOUR_AZURE_STORAGE_ACCOUNT_KEY}";
-
-  // no need to update these two setting
-  public const string AzureStorageServer = $"https://{AzureStorageAccountName}.dfs.core.windows.net";
-  public const string AzureStoragePath = AzureStorageContainer + AzureStorageContainerPath;
-
- 
   // TODO: configure Azure DevOps organization
   public const string AzureDevOpsOrganizationName = "{YOUR_AZURE_DEVOPS_ORGANIZATION_NAME}";
   public const string AzureDevOpsApiBaseUrl = $"https://dev.azure.com/{AzureDevOpsOrganizationName}";
@@ -49,5 +48,3 @@ public class AppSettings {
   public const string LocalPackagedSolutionFolder = @"..\..\..\ItemDefinitions\PackagedSolutionFolders\";
 
 }
-
-
