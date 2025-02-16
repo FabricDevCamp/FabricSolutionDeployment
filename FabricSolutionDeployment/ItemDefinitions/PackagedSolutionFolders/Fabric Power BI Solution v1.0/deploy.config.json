@@ -1,0 +1,26 @@
+{
+  "sourceWorkspaceId": "bb78d80f-ac1f-4576-8bc7-554b2f0d7dac",
+  "sourceWorkspaceDescription": "Fabric Power BI Solution v1.0",
+  "sourceItems": [
+    {
+      "id": "39630b8f-6656-4b05-b69c-598cba1addb6",
+      "displayName": "Product Sales Report",
+      "type": "Report"
+    },
+    {
+      "id": "469cd5ea-946c-41ba-8498-1c2f8288e151",
+      "displayName": "Product Sales Imported Model",
+      "type": "SemanticModel"
+    }
+  ],
+  "sourceLakehouses": [],
+  "sourceConnections": [
+    {
+      "id": "41e69da4-78a1-4625-ac24-8c49b64c37d5",
+      "displayName": "Web",
+      "type": "Web",
+      "path": "https://fabricdevcamp.blob.core.windows.net/sampledata/ProductSales/Dev",
+      "credentialType": "Anonymous"
+    }
+  ]
+}

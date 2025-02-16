@@ -1,0 +1,71 @@
+{
+  "sourceWorkspaceId": "1e1c5c2a-e7a8-4245-98ea-1d297b3124a6",
+  "sourceWorkspaceDescription": "Fabric Data Pipeline Solution v1.0",
+  "sourceItems": [
+    {
+      "id": "7803116f-d926-4dd9-adfc-e30484fdbb7a",
+      "displayName": "Product Sales Report",
+      "type": "Report"
+    },
+    {
+      "id": "3e464959-e152-4aa6-b382-c74481bcab5a",
+      "displayName": "sales",
+      "type": "SemanticModel"
+    },
+    {
+      "id": "708608ee-a563-48e2-ae3f-2938b95362a0",
+      "displayName": "Product Sales DirectLake Model",
+      "type": "SemanticModel"
+    },
+    {
+      "id": "26046e3d-3689-4b66-b495-fb6bf384f458",
+      "displayName": "sales",
+      "type": "SQLEndpoint"
+    },
+    {
+      "id": "d274f391-2eb6-47ba-b041-b5fc0f11f254",
+      "displayName": "sales",
+      "type": "Lakehouse"
+    },
+    {
+      "id": "20537368-6c01-46ee-822f-1a023bbf0f01",
+      "displayName": "Build 01 Silver Layer",
+      "type": "Notebook"
+    },
+    {
+      "id": "d393d889-4478-4f2f-b976-f8ad7abea19f",
+      "displayName": "Build 02 Gold Layer",
+      "type": "Notebook"
+    },
+    {
+      "id": "92f88187-d836-4628-b5c3-5c281c1cbb95",
+      "displayName": "Create Lakehouse Tables",
+      "type": "DataPipeline"
+    }
+  ],
+  "sourceLakehouses": [
+    {
+      "id": "d274f391-2eb6-47ba-b041-b5fc0f11f254",
+      "displayName": "sales",
+      "server": "4zzdkw4hunvuhp4ttpl5hvkkzm-fjobyhvi45cufghkduuxwmjeuy.datawarehouse.fabric.microsoft.com",
+      "database": "26046e3d-3689-4b66-b495-fb6bf384f458",
+      "shortcuts": null
+    }
+  ],
+  "sourceConnections": [
+    {
+      "id": "0f896e69-0187-418c-8420-123c97170902",
+      "displayName": "ADLS",
+      "type": "AzureDataLakeStorage",
+      "path": "https://fabricdevcamp.dfs.core.windows.net/sampledata/ProductSales/Dev",
+      "credentialType": "Key"
+    },
+    {
+      "id": "dda00d8a-cd6a-4a57-915d-9acb57c69385",
+      "displayName": "Lakehouse[sales]",
+      "type": "SQL",
+      "path": "4zzdkw4hunvuhp4ttpl5hvkkzm-fjobyhvi45cufghkduuxwmjeuy.datawarehouse.fabric.microsoft.com;26046e3d-3689-4b66-b495-fb6bf384f458",
+      "credentialType": "ServicePrincipal"
+    }
+  ]
+}
