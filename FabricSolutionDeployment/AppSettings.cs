@@ -29,7 +29,7 @@ public class AppSettings {
   public const string AzureStorageAccountName = "fabricdevcamp";
   public const string AzureStorageContainer = "sampledata";
   public const string AzureStorageContainerPath = "/ProductSales/Dev";
-  public const string AzureStorageAccountKey = "q/A/pCVAM/wTl66sdRFrOOHy0WKg15VtNcFMr5t7K9wJwiZrzhpnrmbhTg38JcAT8KKllKoyXNuT+AStzH/VBA==";
+  public const string AzureStorageAccountKey = "{YOUR_AZURE_DEVOPS_ORGANIZATION_NAME}";
 
   // No need to changes these two settings
   public const string AzureStorageServer = $"https://{AzureStorageAccountName}.dfs.core.windows.net";
