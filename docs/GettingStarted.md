@@ -104,12 +104,13 @@ The following screenshot shows an example of the four standard CSV files in the 
 the **FabricSolutionDeployment** application use these files to build out table sschemas in lakehouses as wel as in imported semantic models.
 Keep in mind that the  only difference between the data files in each folder is that the rows of data are different.
 
-The folders named **Dev**, **Test**, and **Prod** provide different sets of sample data files used to simulate different environments 
-in a staged deployment. This sample data will be used to simulate how a staged deployment requires configuring different 
-environments such as **Dev**, **Test**, and **Prod** with their own unique datasource paths. After all, you don't want all your developers 
-accessing the same data as business users work with in a production environment. 
+The folders named **Dev**, **Test**, and **Prod** provide three different sets of sample data files used to simulate the difference 
+between environments in a staged deployment. 
+This sample data will be used to configure a staged deployment which requires configuring each stage with its own unique 
+datasource paths. After all, you really don't want your developers accessing the same data as business users working 
+in a production environment. 
 
- <img src="./images/GettingStarted/media/image5-4.png" style="width:20%" />
+<img src="./images/GettingStarted/media/image5-4.png" style="width:20%" />
 
 >Now that you have a copy of the sample data files, your next step is to create a new Azure storage account that support ADLS Gen2 storage. For this step, you will need an Azure subscription.
 
