@@ -152,14 +152,16 @@ Drag and drop the local folder **ProductSales** onto the target **drag and drop 
  After the upload of all data files completes, open the **ProductSales** folder in the **smpledata** container. 
 
  <img src="./images/GettingStarted/media/image5-D.png" style="width:80%" />
- Here we go.
+
+ Open the **Dev** folder to examine what's inside.
 
  <img src="./images/GettingStarted/media/image5-E.png" style="width:80%" />
+ 
  Here we go.
 
  <img src="./images/GettingStarted/media/image5-F.png" style="width:80%" />
 
-. Note that the **Dev** folder will be the default location for the datasources for sementic models as well as the connections used for shortcuts and data pipelines. In the lab which cover staged deployments, the configure datasources will move bewtween the **Dev** folder, the **Test** folder and the **Prod** folder.
+>Note that the **Dev** folder will be the default location for the datasources for sementic models as well as the connections used for shortcuts and data pipelines. In the lab which cover staged deployments, the configure datasources will move bewtween the **Dev** folder, the **Test** folder and the **Prod** folder.
 
  To test multitenancy, there are also several customer-specific folders inside the **Customers** folder. 
 
