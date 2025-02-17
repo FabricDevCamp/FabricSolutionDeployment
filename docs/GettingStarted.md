@@ -149,7 +149,7 @@ Drag and drop the local folder **ProductSales** onto the target **drag and drop 
 
  <img src="./images/GettingStarted/media/image5-C.png" style="width:40%" />
 
- Here we go.
+ After the upload of all data files completes, open the **ProductSales** folder in the **smpledata** container. 
 
  <img src="./images/GettingStarted/media/image5-D.png" style="width:80%" />
  Here we go.
