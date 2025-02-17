@@ -46,18 +46,15 @@ with the application. You need to select a Fabric-enabled capacity and
 add its capacity ID to **AppSettings.cs**. This is required so the
 application can assign the workspaces it creates to this capacity.
 
-For testing you can use any Fabric capacity created from an **F SKU** or a **P SKU** 
-or you can also use a Fabric trial capacity with an **FT1 SKU** as shown in the screenshot above.
+For testing, you must have acces to a Fabric-enabled capacity. You can use any capacity created from an **F SKU** or a **P SKU**. Alternatively, you can also use a Fabric trial capacity with an **FT1 SKU** as shown in the screenshot above. Once you determine which capacity you want to use, copy its capacity Id value
+into the **FabricCapcityId** constant value in **AppSettings.cs**.
+
+<img src="./images/GettingStarted/media/image5.png" style="width:80%" />
 
 > If you do not see a Fabric-enabled capacity in the capacities list, that is a problem you must address. 
 You must acquire a Fabric-enabled capacity  before continuing with these setup instructons. That's because the
 **FabricSolutionDeployment** sample application cannot demonstrate running solution deployment workflows
 if it doesn't have the ability to create workspace items such as lakehouse and notebooks.
-
-Once you determine which capacity you want to use, copy its capacity Id value
-into the **FabricCapcityId** constant value in **AppSettings.cs**.
-
-<img src="./images/GettingStarted/media/image5.png" style="width:80%" />
 
 > Now you're ready to start running the **FabricSolutionDeployment** application
 under the identity of your user account. This will allow you to test out and experiment 
