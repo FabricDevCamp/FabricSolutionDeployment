@@ -111,6 +111,15 @@ Navigate the the Azure portal and create a new Storage account.
 
  Here we go.
 
+ <img src="./images/GettingStarted/media/image5-6B.png" style="width:60%" />
+
+Here we go.
+
+ <img src="./images/GettingStarted/media/image5-6C.png" style="width:60%" />
+
+ 
+ Here we go.
+
  <img src="./images/GettingStarted/media/image5-7.png" style="width:80%" />
 
  Here we go.
