@@ -173,7 +173,7 @@ You should be able to verify that this folder contains the four standard files n
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-I.png" style="width:60%" />
+ <img src="./images/GettingStarted/media/image5-I.png" style="width:48%" />
 
  Here we go.
 
