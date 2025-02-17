@@ -169,11 +169,11 @@ You should be able to verify that this folder contains the four standard files n
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-H.png" style="width:70%" />
+ <img src="./images/GettingStarted/media/image5-H.png" style="width:7 0%" />
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-I.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-I.png" style="width:60%" />
 
  Here we go.
 
@@ -181,11 +181,11 @@ You should be able to verify that this folder contains the four standard files n
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-L.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-L.png" style="width:95%" />
 
 Here we go.
 
- <img src="./images/GettingStarted/media/image5-M.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-M.png" style="width:90%" />
 
 Blah
 
