@@ -8,7 +8,7 @@ class Program {
 
   public static void Main() {
 
-    //Setup_ViewWorkspacesAndCapacities();
+    Setup_ViewWorkspacesAndCapacities();
 
     // Lab01_DeploySolutionsUsingFromItemDefinitions();
     // Lab02_ExportItemDefinitionsFromWorkspace();
@@ -17,7 +17,7 @@ class Program {
     // Lab05_UpdateSolutionFromSourceWorkspace();
     // Lab06_SetupStagedDeployment();
     // Lab07_PushSolutionUpdatesToProduction();
-     Lab08_ConnectDevWorkspaceToGitRepository();
+    // Lab08_ConnectDevWorkspaceToGitRepository();
     // Lab09_ExportWorkspaceToPackagedSolutionFolder();
     // Lab10_DeployAndUpdateFromSolutionPackageFolder();
   }
