@@ -52,19 +52,14 @@ into the **FabricCapcityId** constant value in **AppSettings.cs**.
 
 <img src="./images/GettingStarted/media/image5.png" style="width:80%" />
 
-> If you do not see a Fabric-enabled capacity in the capacities list, that is a problem you must address. 
-You must acquire a Fabric-enabled capacity  before continuing with these setup instructons. That's because the
-**FabricSolutionDeployment** sample application cannot demonstrate running solution deployment workflows
+> If you do not see a Fabric-enabled capacity in the capacities list, that is a problem you must address 
+before continuing with these setup instructons. That's because the
+**FabricSolutionDeployment** sample application cannotwork correctly to demonstrate running solution deployment workflows
 if it doesn't have the ability to create workspace items such as lakehouse and notebooks.
 
-> Now you're ready to start running the **FabricSolutionDeployment** application
-under the identity of your user account. This will allow you to test out and experiment 
-with CI/CD workflows which have been designed to deploy and update Fabric solutions.
-
 ## Configuring access to sample data files in an Azure storage container
-This sample application demonstrates two workflows which are required to access data files from a secure Azure storage account. This includes a workflow which creates a OneLake shortcut to connnect a lakehouse to data files in an Azure storage container. It also includes a workflow which uses a data pipeline to copy files from the Azure storage container into the **Files** section fo a lakehouse. In order to successfully run these demo workflows, you will first need to follow these steps.
+The **FabricSolutionDeployment** application provides sample workflows which require access data files from a container in an Azure storage account. More specifically, there is a sample workflows which creates OneLake shortcuts to access data files in an Azure sotrage container. There is also another sample workflow which createsand runs a data pipelinewhich copies data files from the Azure storage container to the **Files** section fo a lakehouse. In order to successfully run these sample workflows, you will neeed to work through these steps.
 
-Yeah
 - Download the sample data files from **ProductSales.zip**.
  - Create or find an Azure stroage account
  - Upload sample data files to a container in that storage account
