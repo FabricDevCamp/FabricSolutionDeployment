@@ -76,19 +76,19 @@ Strt by downloading and inspecting the sample data files.
   - [https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip](https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip)
 
 
- <img src="./images/GettingStarted/media/image5-1.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-1.png" style="width:60%" />
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-2.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-2.png" style="width:35%" />
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-3.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-3.png" style="width:35%" />
 
 Here we go.
 
- <img src="./images/GettingStarted/media/image5-4.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-4.png" style="width:35%" />
 
 Yeah
 
