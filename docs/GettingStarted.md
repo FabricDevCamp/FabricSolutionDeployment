@@ -95,7 +95,7 @@ Take a moment to become familiar with the folder structure inside the **ProductS
 The three folders named named **Dev**, **Test**, and **Prod** will provide data files used for different environments in a staged deployment. 
 each have their own set of data files as well. 
 
- <img src="./images/GettingStarted/media/image5-4.png" style="width:25%" />
+ <img src="./images/GettingStarted/media/image5-4.png" style="width:20%" />
 
 
  Here we go.
