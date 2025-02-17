@@ -151,11 +151,11 @@ Drag and drop the local folder **ProductSales** onto the target **drag and drop 
 
  After the upload of all data files completes, open the **ProductSales** folder in the **smpledata** container. 
 
- <img src="./images/GettingStarted/media/image5-D.png" style="width:70%" />
+ <img src="./images/GettingStarted/media/image5-D.png" style="width:60%" />
 
  Open the **Dev** folder to examine what's inside.
 
- <img src="./images/GettingStarted/media/image5-E.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-E.png" style="width:60%" />
  
 You should be able to verify that this folder contains the four standard files named **Customers.csv**, **Invoicescsv**, **InvoiceDetails.csv**, and **Products.csv**.
 
