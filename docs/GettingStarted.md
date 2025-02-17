@@ -215,28 +215,17 @@ you will use the folders named **Dev**, **Test** and **Prod** to configure a dif
 
  <img src="./images/GettingStarted/media/image5-L.png" style="width:95%" />
 
-Here we go.
+Move up in **AppSettings.cs** and locate the three constants named **AzureStorageAccountName**, **AzureStorageContainer** and **AzureStorageContainerPath**. Update **AzureStorageAccountName** and **AzureStorageContainer** with the name of your storage account and container. Configure **AzureStorageContainerPath** with a path of **/ProductSales/Dev** to set the default location for data files used
+by the **FabricSolutionDeployment**.
 
  <img src="./images/GettingStarted/media/image5-M.png" style="width:80%" />
 
-Blah
+Save your changes to **ApSettings.cs**.
 
+>At this point, you have completed all the setup you need to work through ever lab except for lab 8 in which you will experiment with Fabric GIT integration features with Azure Devs Ops. To complete lab 8, you need to complete the setup steps in the next section. You shouldread through the **Understanding Authentication Modes** section of this setup document if you want to create a custom Entra Id application so you can run
+workflows from the **FabricSolutionDeployment** application under the identity of a service principal.
 
-## Running through lab exercises
-
-Open the source file named **Program.cs** and locate the function named **Setup_ViewWorkspacesAndCapacities** .  
-
-<img src="./images/GettingStarted/media/image6.png" style="width:80%" />
-
-Comment out the line that calls **Setup_ViewWorkspacesAndCapacities** and uncomment the next line
-to call the function named **Demo01_DeploySolutionToWorkspace**. The next time you run the application it should execute the code for **demo 1** which creates and populates a new workspace named **Contoso**. 
-
-<img src="./images/GettingStarted/media/image7.png" style="width:70%" />
-
-> You've now configured what's required to run **demo 1** through **demo 4**. 
-It is simply a matter of commenting out one functions and uncommenting the next.
-To run through the first four demos, use the instructions in 
-**[Automating Fabric Solution Deployment](https://github.com/FabricDevCamp/FabricSolutionDeployment/blob/main/docs/Automating%20Fabric%20Solution%20Deployment.md)**.
+## Configuring support for Azure Dev Ops
 
 If you want to run **demo 5** through **demo 7**, you will need to configure additional support in 
 **AppSettings.cs** for an Azure DevOps organization. For this, you will need access
