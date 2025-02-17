@@ -141,7 +141,7 @@ where you can set the **Enable hierchical namepsace** option.
 
  <img src="./images/GettingStarted/media/image5-6B.png" style="width:48%" />
 
-On the **Review + create** page, verify **Storage account name** and **Enable hierchical namepsace** and then click **Create** to create the storage account.
+On the **Review + create** page, verify **Storage account name** and **Enable hierchical namepsace** and click **Create**.
 
  <img src="./images/GettingStarted/media/image5-6C.png" style="width:42%" />
 
