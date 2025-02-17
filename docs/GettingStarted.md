@@ -74,7 +74,9 @@ Once you have downloaded **ProductSales.zip**, locate the file in the **Download
 
  <img src="./images/GettingStarted/media/image5-1.png" style="width:45%" />
 
- Here we
+ Open **ProductSales.zip** in Windows Explorer. Locate the top-level folder named **ProductSales**. Copy the 
+ **ProductSales** folder from inside the ZIP archive and then paste the folder into a folder on your local
+ drive such as **C:\DataFiles** as shown in the following screenshot.
 
 <img src="./images/GettingStarted/media/image5-1B.png" style="width:60%" />
 
