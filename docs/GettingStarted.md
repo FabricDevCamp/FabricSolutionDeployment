@@ -119,7 +119,7 @@ button instead of the **Review + create** button so you can move to the **Advanc
 
 On the **Review + create** page, verify **Storage account name** and **Enable hierchical namepsace** and then click **Create** to create the storage account.
 
- <img src="./images/GettingStarted/media/image5-6C.png" style="width:60%" />
+ <img src="./images/GettingStarted/media/image5-6C.png" style="width:42%" />
 
  >After creating the new storage account, the next step is to create a new container. 
  
@@ -133,7 +133,7 @@ In the **New container** pane, enter a container name of **sampledata** and clic
 
 After creating the **sampledata** container, click on it to open it in the Azure portal.
 
- <img src="./images/GettingStarted/media/image5-9.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-9.png" style="width:65%" />
 
  Click the **Upload** buttton so you can start the process of uploading your data files.
 
