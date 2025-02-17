@@ -112,9 +112,10 @@ in a production environment.
 
 <img src="./images/GettingStarted/media/image5-4.png" style="width:20%" />
 
->Now that you have a copy of the sample data files, your next step is to create a new Azure storage account 
-that support ADLS Gen2 storage. For this step, you will need an Azure subscription. If you don't have your ownAzure subscription, 
-you will need to find someone that does to complete this step.
+Now that you have a copy of the sample data files, the next step is to create a new Azure storage account with ADLS Gen2 support.
+
+>For the next step, you need an Azure subscription. If you don't have your own Azure subscription, 
+you will need to engage the assistnce of someone that does to complete this step.
 
 ### Create an Azure storage acocunt that support ADLS Gen2 storage
 Navigate the the Azure portal and create a new Storage account. 
