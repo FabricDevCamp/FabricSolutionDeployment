@@ -66,7 +66,7 @@ The **FabricSolutionDeployment** application provides sample workflows which req
  - Obtain an Azure storage account key or SAS key to access the target container 
  - Configure data paths and the Azure account key in the **AppSettings.cs** file 
 
-Start by downloading and inspecting the sample data files. You should be able to download the file named **ProductSales.zip** to the **Downloads** folder on your local PB using the following link, 
+Start by downloading and inspecting the sample data files. Download the **ProductSales.zip** file to the **Downloads** folder on your local machine using the following link, 
 
   - [https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip](https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip)
 
@@ -75,6 +75,10 @@ Once you have downloaded **ProductSales.zip**, locate the file in the **Download
  <img src="./images/GettingStarted/media/image5-1.png" style="width:50%" />
 
  Here we
+
+<img src="./images/GettingStarted/media/image5-1B.png" style="width:50%" />
+
+sss
 
  <img src="./images/GettingStarted/media/image5-2.png" style="width:25%" />
 
