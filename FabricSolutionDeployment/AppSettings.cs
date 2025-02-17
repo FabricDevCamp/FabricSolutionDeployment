@@ -21,25 +21,24 @@ public class AppSettings {
   // TODO: configure account key or SAS token for Azure storage container
   public const string AzureStorageAccountKey = "{YOUR_AZURE_STORAGE_ACCOUNT_KEY}";
 
+ // TODO: configure Azure DevOps organization
+  public const string AzureDevOpsOrganizationName = "{YOUR_AZURE_DEVOPS_ORGANIZATION_NAME}";
+  public const string AzureDevOpsApiBaseUrl = $"https://dev.azure.com/{AzureDevOpsOrganizationName}";
   // TODO: configure authentication mode
   public static AppAuthenticationMode AuthenticationMode = AppAuthenticationMode.UserAuthWithAzurePowershell;
 
-  // TODO: configure Entra Id application for user auth
+  // OPTIONAL TODO: configure Entra Id application for user auth
   public const string UserAuthClientId = "00000000-0000-0000-0000-000000000000";
   public const string UserAuthRedirectUri = "http://localhost";
 
-  // TODO: configure Entra Id application for service principal auth
+  // OPTIONAL TODO: configure Entra Id application for service principal auth
   public const string ServicePrincipalAuthTenantId = "00000000-0000-0000-0000-000000000000";
   public const string ServicePrincipalAuthClientId = "00000000-0000-0000-0000-000000000000";
   public const string ServicePrincipalAuthClientSecret = "YOUR_CLIENT_SECRET";
   public const string ServicePrincipalObjectId = "00000000-0000-0000-0000-000000000000";
 
-  // TODO: configure object id of Entra Id user account of user running demo
+  // OPTIONAL TODO: configure object id of Entra Id user account of user running demo
   public const string AdminUserId = "00000000-0000-0000-0000-000000000000";
-
-  // TODO: configure Azure DevOps organization
-  public const string AzureDevOpsOrganizationName = "{YOUR_AZURE_DEVOPS_ORGANIZATION_NAME}";
-  public const string AzureDevOpsApiBaseUrl = $"https://dev.azure.com/{AzureDevOpsOrganizationName}";
 
   // paths to folders inside this project to read and write files
   public const string LocalExportFolder = @"..\..\..\ItemDefinitionExports\";
