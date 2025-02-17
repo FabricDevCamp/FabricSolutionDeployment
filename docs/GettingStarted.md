@@ -137,7 +137,7 @@ After creating the **sampledata** container, click on it to open it in the Azure
 
  Click the **Upload** buttton so you can start the process of uploading your data files.
 
- <img src="./images/GettingStarted/media/image5-A.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-A.png" style="width:60%" />
 
 > Now you need to return to Windws Explorer and navigate to the local copy of the **ProductSales** folder downloaded earlier.
 
