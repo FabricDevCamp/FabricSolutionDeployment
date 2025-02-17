@@ -85,13 +85,14 @@ Once you have downloaded **ProductSales.zip**, locate the file in the **Download
 
 Take a moment to become familiar with the folder structure inside the **ProductSales** folder. There is a child folder named **Customers** which contains its own child folders named **AdventureWorks**, **Contoso**, **Northwind** and **Wingtip**. There are three additional child folders inside the top-level the **ProductSales** folder named **Dev**, **Test**, and **Prod**.
 
- <img src="./images/GettingStarted/media/image5-2.png" style="width:25%" />
+ <img src="./images/GettingStarted/media/image5-2.png" style="width:20%" />
 
- Here we go.
+ Each of these folders contains 4 files named  named **Customers.csv**, **Invoicescsv**, **InvoiceDetails.csv**, and **Products.csv**.
+ These 4 files are used to build the lakehouse table schemas and sementic models used in the **FabricSolutionDeployment** application. The following screenshot shows these four files in the **Customers/Contoso** folder.
 
- <img src="./images/GettingStarted/media/image5-3.png" style="width:25%" />
+ <img src="./images/GettingStarted/media/image5-3.png" style="width:20%" />
 
-Here we go.
+The three folders named  named **Dev**, **Test**, and **Prod** each have their own set of data files as well. 
 
  <img src="./images/GettingStarted/media/image5-4.png" style="width:25%" />
 
