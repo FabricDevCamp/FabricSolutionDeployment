@@ -87,8 +87,10 @@ Take a moment to become familiar with the structure of child folders inside the 
 
  <img src="./images/GettingStarted/media/image5-2.png" style="width:20%" />
 
- Each of these folders contains 4 files named  named **Customers.csv**, **Invoicescsv**, **InvoiceDetails.csv**, and **Products.csv**.
- These 4 files are used to build the lakehouse table schemas and sementic models used in the **FabricSolutionDeployment** application. The following screenshot shows these four files in the **Customers/Contoso** folder.
+There are seven seperate folders which contain their own unique set of data files. Each of these folders contains four data files files named  named **Customers.csv**, **Invoicescsv**, **InvoiceDetails.csv**, and **Products.csv**.
+ These data files all shared the same table schema and are used to build lakehouse table schemas and sementic models in the **FabricSolutionDeployment** application. 
+ 
+ The following screenshot shows an example of the four standard files in the **Customers/Contoso** folder.
 
  <img src="./images/GettingStarted/media/image5-3.png" style="width:20%" />
 
