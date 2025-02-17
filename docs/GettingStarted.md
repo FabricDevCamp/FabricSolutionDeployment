@@ -117,9 +117,7 @@ button instead of the **Review + create** button so you can move to the **Advanc
 
  <img src="./images/GettingStarted/media/image5-6B.png" style="width:55%" />
 
-On the **Review + create** page, verify the settings for **Storage account name** and **Enable hierchical namepsace**.
-Click **Create** to create the new storage account.  
- button to continue.
+On the **Review + create** page, verify **Storage account name** and **Enable hierchical namepsace** and then click **Create** to create the storage account.
 
  <img src="./images/GettingStarted/media/image5-6C.png" style="width:60%" />
 
