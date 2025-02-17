@@ -155,7 +155,7 @@ In the **New container** pane, enter a container name of **sampledata** and clic
 
  <img src="./images/GettingStarted/media/image5-8.png" style="width:30%" />
 
-After creating the **sampledata** container, click on its name in the **Containers** page to open the container page in the Azure portal.
+After creating the container, click on **sampledata** in the **Containers** page to open it in the Azure portal.
 
  <img src="./images/GettingStarted/media/image5-9.png" style="width:65%" />
 
