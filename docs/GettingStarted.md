@@ -139,11 +139,12 @@ After creating the **sampledata** container, click on it to open it in the Azure
 
  <img src="./images/GettingStarted/media/image5-A.png" style="width:80%" />
 
- Here we go.
+> Now you need to return to the local copy of the **ProductSales** folder downloaded earlier.
 
- Here we go.
+Drag and drop the local copy of the **ProductSales** folder onto the target **drag and drop files here** zone in the **Upload Blob** pane.
 
  <img src="./images/GettingStarted/media/image5-B.png" style="width:95%" />
+ 
  Here we go.
 
  <img src="./images/GettingStarted/media/image5-C.png" style="width:40%" />
