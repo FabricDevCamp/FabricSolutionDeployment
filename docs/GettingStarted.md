@@ -127,7 +127,7 @@ On the **Review + create** page, verify **Storage account name** and **Enable hi
 
  <img src="./images/GettingStarted/media/image5-7.png" style="width:80%" />
 
- Provide a name of **sampledata"" and click create to create the new container.
+In the **New container** pane, enter a container name of **sampledata** and click **Create** to create the new container.
 
  <img src="./images/GettingStarted/media/image5-8.png" style="width:30%" />
 
