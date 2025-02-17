@@ -83,7 +83,7 @@ Once you have downloaded **ProductSales.zip**, locate the file in the **Download
 
 <img src="./images/GettingStarted/media/image5-1B.png" style="width:50%" />
 
-Take a moment to become familiar with the folder structure inside the **ProductSales** folder. 
+Take a moment to become familiar with the folder structure inside the **ProductSales** folder. There is a child folder named **Customers** which contains its own child folders named **AdventureWorks**, **Contoso**, **Northwind** and **Wingtip**. There are three additional child folders inside the top-level the **ProductSales** folder named **Dev**, **Test**, and **Prod**.
 
  <img src="./images/GettingStarted/media/image5-2.png" style="width:25%" />
 
