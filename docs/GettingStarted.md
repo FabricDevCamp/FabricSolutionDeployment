@@ -110,12 +110,12 @@ Navigate the the Azure portal and create a new Storage account.
 When creating the new account enter a name such as **devcampteststorage** as shown in the following screenshot. Make sure to click the **Next** 
 button instead of the **Review + create** button so you can move to the **Advanced** settings page where you can set the **Enable hierchical namepsace** option.
 
- <img src="./images/GettingStarted/media/image5-6.png" style="width:45%" />
+ <img src="./images/GettingStarted/media/image5-6.png" style="width:55%" />
 
  On the **Advanced** settings page, enable the **Enable hierchical namepsace** option and then click the **Review + create** 
  button to continue.
 
- <img src="./images/GettingStarted/media/image5-6B.png" style="width:45%" />
+ <img src="./images/GettingStarted/media/image5-6B.png" style="width:55%" />
 
 On the **Review + create** page, verify the settings for **Storage account name** and **Enable hierchical namepsace**.
 Click **Create** to create the new storage account.  
