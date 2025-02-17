@@ -222,8 +222,13 @@ by the **FabricSolutionDeployment**.
 
 Save your changes to **ApSettings.cs**.
 
->At this point, you have completed all the setup you need to work through ever lab except for lab 8 in which you will experiment with Fabric GIT integration features with Azure Devs Ops. To complete lab 8, you need to complete the setup steps in the next section. You shouldread through the **Understanding Authentication Modes** section of this setup document if you want to create a custom Entra Id application so you can run
-workflows from the **FabricSolutionDeployment** application under the identity of a service principal.
+>At this point, you have completed all the setup steps you need to work through every lab with the exception of lab 8 in which you will experiment with Azure Dev Ops to test out Fabric GIT integration features. To complete lab 8, you need to first complete the setup steps in the next section titled **Configuring support for Azure Dev Ops**.
+
+> If you want to run the **FabricSolutionDeployment** application so it executes Fabric REST API calls under the identity of a service principal.
+ you should read through the **Understanding Authentication Modes** section. There are optional setup instructions with details on 
+ how to create a custom Entra Id application and configure it to allow the the **FabricSolutionDeployment** application to acquire
+ app-only access tokens and execute calls as a service principal. But you can also wait to complete this additonal configuration 
+until you have run through the lab exercices by executing Fabric REST API calls under the indentity of your user account.
 
 ## Configuring support for Azure Dev Ops
 
