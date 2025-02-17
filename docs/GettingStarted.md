@@ -130,9 +130,8 @@ Locate the Microsoft **Storage account** and click **Create** to begin the proce
 This is important when creating a storage account because the settings cannot be changed after the 
 storage account has already been created.
 
-When creating the new account enter a name such as **devcampteststorage** as shown in the following screenshot.
-
->Make sure to click the **Next** button instead of the **Review + create** button so you can move to the **Advanced** settings page
+When creating the new account enter a name such as **devcampteststorage** as shown in the following screenshot. After entering a name,
+ click the **Next** button to navigate to the **Advanced** settings page
 where you can set the **Enable hierchical namepsace** option.
 
  <img src="./images/GettingStarted/media/image5-6.png" style="width:48%" />
