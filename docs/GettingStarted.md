@@ -181,13 +181,13 @@ Drag and drop the local folder **ProductSales** onto the target **drag and drop 
 
  <img src="./images/GettingStarted/media/image5-E.png" style="width:60%" />
  
-You should be able to verify the folder contains four files named **Customers.csv**, **Invoicescsv**, **InvoiceDetails.csv**, and **Products.csv**.
+You should see the **Dev** frolder contains four standard data files named **Customers.csv**, **Invoicescsv**, **InvoiceDetails.csv**, and **Products.csv**.
 
  <img src="./images/GettingStarted/media/image5-F.png" style="width:80%" />
 
 >Note that the **Dev** folder will be configured as the default location for the datasources used for 
-creating connection. shortcuts, data pipelines and semantic models. In the lab which covers staged deployments, 
-you will use trhe folders **Dev**, **Test** and **Prod** to configure a different datasource path for eacg environment.
+creating connections. shortcuts, data pipelines and semantic models. In the lab which covers staged deployments, 
+you will use the folders named **Dev**, **Test** and **Prod** to configure a different datasource path for each environment.
 
  To test multitenancy, there are also several customer-specific folders inside the **Customers** folder. 
 
