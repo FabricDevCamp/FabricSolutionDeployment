@@ -1,5 +1,4 @@
 ﻿
-
 public class AppSettings {
 
   public const string FabricRestApiBaseUrl = "https://api.fabric.microsoft.com/v1";
