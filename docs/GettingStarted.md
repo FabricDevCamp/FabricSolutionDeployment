@@ -108,7 +108,7 @@ Navigate the the Azure portal and create a new Storage account.
 >When creating a new Azure storage account which supports ADLS Gen2 storage, a key point is to enable the **Enable Hierchical Namepsace** option. This is important to do when creating the new storage account because it cannot be changed later.
 
 When creating the new account enter a name such as **devcampteststorage** as shown in the following screenshot. Make sure to click the **Next** 
-button instead of the **Reivew and Create** button so you can set the the **Enable Hierchical Namepsace** option  on the next page.
+button instead of the **Reivew and Create** button so you can move to the **Advanced** settings pahe where you can set the the **Enable Hierchical Namepsace** option.
 
  <img src="./images/GettingStarted/media/image5-6.png" style="width:45%" />
 
