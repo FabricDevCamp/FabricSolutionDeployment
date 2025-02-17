@@ -118,7 +118,11 @@ Now that you have a copy of the sample data files, the next step is to create a 
 you will need to engage the assistnce of someone that does to complete this step.
 
 ### Create an Azure storage account with support for ADLS Gen2 storage
-Navigate the the Azure portal and create a new Storage account. 
+Navigate the the Azure portal and click **Create a resource**. 
+
+ <img src="./images/GettingStarted/media/image5-4B.png" style="width:35%" />
+
+create a new Storage account.
 
  <img src="./images/GettingStarted/media/image5-5.png" style="width:35%" />
 
