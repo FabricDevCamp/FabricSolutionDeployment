@@ -76,11 +76,11 @@ This sample application demonstrates two workflows which are required to access 
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5A.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5A.png" style="width:40%" />
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5B.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5B.png" style="width:50%" />
 
  Here we go.
 
@@ -88,7 +88,7 @@ This sample application demonstrates two workflows which are required to access 
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5D.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5D.png" style="width:40%" />
 
 
  Here we go.
