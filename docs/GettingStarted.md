@@ -197,9 +197,9 @@ you will use the folders named **Dev**, **Test** and **Prod** to configure a dif
  >Now that you have created the **sampledata** container and updated the sample data files, you are ready for the last step which is 
  getting an Azure storage account key to provide access for the **FabricSolutionDeployment** application.
 
- Navigate the the **Security + networking > Access Keys** page of the **devcampteststorage** storage account. 
- Locate the **Key** value for he key named **key1**. Click on the **Show** button so you can copy the key value
- to the Windows clipboard allowimg you to paste it into **AppSettings.cs** in a later step.
+ Navigate the the **Security + networking > Access Keys** page. 
+ Locate the **Key** value for the key named **key1**. Click on the **Show** button so you can copy the key value
+ to the Windows clipboard allowimg you to paste it   into **AppSettings.cs** in a later step.
 
  <img src="./images/GettingStarted/media/image5-H.png" style="width:70%" />
 
