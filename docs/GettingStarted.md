@@ -53,11 +53,16 @@ into the **FabricCapcityId** constant value in **AppSettings.cs**.
 
 > If you do not see a Fabric-enabled capacity in the capacities list, that is a problem you must address 
 before continuing with these setup instructons. That's because the
-**FabricSolutionDeployment** sample application cannot work correctly to demonstrate running solution deployment workflows
-if it doesn't have the ability to create workspace items such as lakehouse and notebooks.
+**FabricSolutionDeployment** sample application cannot work correctly if it doesn't have the ability
+ to create Fabric workspace items such as lakehouses and notebooks.
 
 ## Configuring access to sample data files in an Azure storage container
-The **FabricSolutionDeployment** application provides sample workflows which require access data files from a container in an Azure storage account. More specifically, there is a sample workflows which creates OneLake shortcuts to access data files in an Azure sotrage container. There is also another sample workflow which createsand runs a data pipelinewhich copies data files from the Azure storage container to the **Files** section fo a lakehouse. In order to successfully run these sample workflows, you will neeed to work through these steps.
+The **FabricSolutionDeployment** application executes sample workflows which require accessto  data files
+inside an Azure storage account container. More specifically, there is a sample workflows which creates 
+OneLake shortcuts to access data files in Azure storage. There is a second sample workflow 
+which creates and then runs a data pipelinewhich to copy data files from Azure storage 
+to the **Files** section of a lakehouse. In order to successfully run these sample workflows, 
+you will neeed to work through the following setup instructions.
 
 - Download the sample data files from **ProductSales.zip**.
  - Create an Azure stroage account with support for ADLS Gen2 storage
