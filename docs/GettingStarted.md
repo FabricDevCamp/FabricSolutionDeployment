@@ -185,7 +185,9 @@ You should be able to verify the folder contains four files named **Customers.cs
 
  <img src="./images/GettingStarted/media/image5-F.png" style="width:80%" />
 
->Note that the **Dev** folder will be the default location for the datasources for sementic models as well as the connections used for shortcuts and data pipelines. In the lab which cover staged deployments, the configure datasources will move bewtween the **Dev** folder, the **Test** folder and the **Prod** folder.
+>Note that the **Dev** folder will be configured as the default location for the datasources used for 
+creating connection. shortcuts, data pipelines and semantic models. In the lab which covers staged deployments, 
+you will use trhe folders **Dev**, **Test** and **Prod** to configure a different datasource path for eacg environment.
 
  To test multitenancy, there are also several customer-specific folders inside the **Customers** folder. 
 
