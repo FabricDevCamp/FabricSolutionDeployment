@@ -177,7 +177,7 @@ You should be able to verify that this folder contains the four standard files n
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-J.png" style="width:60%" />
+ <img src="./images/GettingStarted/media/image5-J.png" style="width:70%" />
 
  Here we go.
 
@@ -185,7 +185,7 @@ You should be able to verify that this folder contains the four standard files n
 
 Here we go.
 
- <img src="./images/GettingStarted/media/image5-M.png" style="width:90%" />
+ <img src="./images/GettingStarted/media/image5-M.png" style="width:80%" />
 
 Blah
 
