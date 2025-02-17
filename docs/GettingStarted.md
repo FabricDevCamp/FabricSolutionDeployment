@@ -181,7 +181,7 @@ Drag and drop the local folder **ProductSales** onto the target **drag and drop 
 
  <img src="./images/GettingStarted/media/image5-E.png" style="width:60%" />
  
-You should be able to verify that this folder contains the four standard files named **Customers.csv**, **Invoicescsv**, **InvoiceDetails.csv**, and **Products.csv**.
+You should be able to verify the folder contains four files named **Customers.csv**, **Invoicescsv**, **InvoiceDetails.csv**, and **Products.csv**.
 
  <img src="./images/GettingStarted/media/image5-F.png" style="width:80%" />
 
