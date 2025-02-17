@@ -142,8 +142,9 @@ Here we go.
 
  <img src="./images/GettingStarted/media/image5-F.png" style="width:80%" />
 
+. Note that the **Dev** folder will be the default location for the datasources for sementic models as well as the connections used for shortcuts and data pipelines. In the lab which cover staged deployments, the configure datasources will move bewtween the **Dev** folder, the **Test** folder and the **Prod** folder.
 
- Here we go.
+ To test multitenancy, there are also several customer-specific folders inside the **Customers** folder. 
 
  <img src="./images/GettingStarted/media/image5-G.png" style="width:80%" />
 
