@@ -131,12 +131,11 @@ In the **New container** pane, enter a container name of **sampledata** and clic
 
  <img src="./images/GettingStarted/media/image5-8.png" style="width:30%" />
 
-
- Here we go.
+After creating the **sampledata** container, click on it to open it in the Azure portal.
 
  <img src="./images/GettingStarted/media/image5-9.png" style="width:80%" />
 
- Here we go.
+ Click the **Upload** buttton so you can start the process of uploading your data files.
 
  <img src="./images/GettingStarted/media/image5-A.png" style="width:80%" />
 
