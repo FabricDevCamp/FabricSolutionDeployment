@@ -136,8 +136,8 @@ where you can set the **Enable hierchical namepsace** option.
 
  <img src="./images/GettingStarted/media/image5-6.png" style="width:48%" />
 
- On the **Advanced** settings page, enable the **Enable hierchical namepsace** option and then click the **Review + create** 
- button to continue.
+ On the **Advanced** settings page, select the **Enable hierchical namepsace** option and click **Review + create** 
+ to continue.
 
  <img src="./images/GettingStarted/media/image5-6B.png" style="width:48%" />
 
