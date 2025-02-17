@@ -141,7 +141,7 @@ After creating the **sampledata** container, click on it to open it in the Azure
 
 > Now you need to return to Windws Explorer and navigate to the local copy of the **ProductSales** folder downloaded earlier.
 
-Drag and drop the local folder **ProductSales** onto the target **drag and drop files here** zone in the **Upload blob** pane as shown in the following screenshot.
+Drag and drop the local folder **ProductSales** onto the target **drag and drop files here** zone in the **Upload blob** pane.
 
  <img src="./images/GettingStarted/media/image5-B.png" style="width:95%" />
 
