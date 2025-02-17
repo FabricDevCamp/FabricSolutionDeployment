@@ -143,7 +143,7 @@ After creating the **sampledata** container, click on it to open it in the Azure
 
 Drag and drop the local folder **ProductSales** onto the target **drag and drop files here** zone in the **Upload blob** pane.
 
- <img src="./images/GettingStarted/media/image5-B.png" style="width:95%" />
+ <img src="./images/GettingStarted/media/image5-B.png" style="width:75%" />
 
  Click the **Upload** button to begin uploading all data files in the **ProductSales** folder.
 
