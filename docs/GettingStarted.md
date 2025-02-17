@@ -189,7 +189,8 @@ You should see the **Dev** frolder contains four standard data files named **Cus
 creating connections. shortcuts, data pipelines and semantic models. In the lab which covers staged deployments, 
 you will use the folders named **Dev**, **Test** and **Prod** to configure a different datasource path for each environment.
 
- To test multitenancy, there are also several customer-specific folders inside the **Customers** folder. 
+ To test multitenancy, there are also several customer-specific folders inside the **Customers** folder. The following screenshot shows 
+ the data files for the customer named **Contoso** in the **Customers/Contoso** folder
 
  <img src="./images/GettingStarted/media/image5-G.png" style="width:80%" />
 
