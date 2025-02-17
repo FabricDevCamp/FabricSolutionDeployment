@@ -131,7 +131,7 @@ Here we go.
  <img src="./images/GettingStarted/media/image5-B.png" style="width:80%" />
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-C.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-C.png" style="width:50%" />
  Here we go.
 
  <img src="./images/GettingStarted/media/image5-D.png" style="width:80%" />
