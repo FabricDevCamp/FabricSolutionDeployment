@@ -70,11 +70,11 @@ you will neeed to work through the following setup instructions.
  - Obtain an Azure storage account key or SAS key to access the target container 
  - Configure data paths and the Azure account key in the **AppSettings.cs** file 
 
-Start by downloading the **ProductSales.zip** file to the **Downloads** folder on your local machine using the following link, 
+Start by downloading the **ProductSales.zip** file to the **Downloads** folder on your local machine using the following link.
 
   - [https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip](https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip)
 
-Once you have downloaded **ProductSales.zip**, locate the file in the **Downloads** folder. 
+Once you have downloaded **ProductSales.zip**, locate the ZIP archove file in the **Downloads** folder. 
 
  <img src="./images/GettingStarted/media/image5-1.png" style="width:45%" />
 
