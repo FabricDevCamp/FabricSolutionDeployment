@@ -127,7 +127,7 @@ Locate the Microsoft **Storage account** and click **Create** to begin the proce
  <img src="./images/GettingStarted/media/image5-5.png" style="width:35%" />
 
 >To create an Azure storage account which supports ADLS Gen2 storage, you must enable the **Enable hierchical namespace** setting. 
-This is important when creating a storage account because the settings cannot be changed after the 
+This is important when creating a storage account because this setting cannot be changed after the 
 storage account has already been created.
 
 When creating the new account enter a name such as **devcampteststorage** as shown in the following screenshot. After entering a name,
