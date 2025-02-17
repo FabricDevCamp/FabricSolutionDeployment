@@ -99,25 +99,25 @@ Yeah
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5A.png" style="width:40%" />
+ <img src="./images/GettingStarted/media/image5-5.png" style="width:40%" />
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5B.png" style="width:50%" />
+ <img src="./images/GettingStarted/media/image5-6.png" style="width:50%" />
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5C.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-7.png" style="width:80%" />
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5D.png" style="width:30%" />
+ <img src="./images/GettingStarted/media/image5-8.png" style="width:30%" />
 
 
  Here we go.
 
 
- <img src="./images/GettingStarted/media/image5E.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-9.png" style="width:80%" />
 
 
 
