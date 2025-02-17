@@ -56,7 +56,7 @@ before continuing with these setup instructons. That's because the
 **FabricSolutionDeployment** sample application cannot work correctly if it doesn't have the ability
  to create Fabric workspace items such as lakehouses and notebooks.
 
-## Configuring access to sample data files in an Azure storage container
+## Configure access to sample data files in an Azure storage container
 The **FabricSolutionDeployment** application executes sample workflows which require accessto  data files
 inside an Azure storage account container. More specifically, there is a sample workflows which creates 
 OneLake shortcuts to access data files in Azure storage. There is a second sample workflow 
