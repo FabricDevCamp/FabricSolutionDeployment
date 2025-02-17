@@ -207,11 +207,11 @@ you will use the folders named **Dev**, **Test** and **Prod** to configure a dif
 
  <img src="./images/GettingStarted/media/image5-I.png" style="width:48%" />
 
- Here we go.
+ Return to Visual Studio and open the **AppSettings.cs** file and locate the constant named **AzureStorageAccountKey**.
 
  <img src="./images/GettingStarted/media/image5-J.png" style="width:70%" />
 
- Here we go.
+ Paste the key value in the Windows clipboard into the value for the **AzureStorageAccountKey** constant.
 
  <img src="./images/GettingStarted/media/image5-L.png" style="width:95%" />
 
