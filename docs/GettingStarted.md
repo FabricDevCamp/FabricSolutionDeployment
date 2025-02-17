@@ -82,7 +82,7 @@ Once you have downloaded **ProductSales.zip**, locate the ZIP archove file in th
 
 <img src="./images/GettingStarted/media/image5-1C.png" style="width:50%" />
 
- Copy the **ProductSales** folder from inside the ZIP archive and then paste the folder into a folder on your local
+ Copy the **ProductSales** folder from inside the ZIP archive. After that, paste the  **ProductSales** folder into a folder on your local
  drive such as **C:\DataFiles** as shown in the following screenshot.
 
 <img src="./images/GettingStarted/media/image5-1B.png" style="width:50%" />
