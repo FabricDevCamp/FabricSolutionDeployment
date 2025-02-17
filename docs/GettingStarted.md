@@ -222,7 +222,7 @@ by the **FabricSolutionDeployment**.
 
 After you have made your edits, save your changes to **ApSettings.cs**.
 
->At this point, you have completed all the setup steps you need to work through every lab with the exception of lab 8 in which you will experiment with Azure Dev Ops to test out Fabric GIT integration features. To complete lab 8, you need to first complete the setup steps in the next section titled **Configuring support for Azure Dev Ops**.
+>At this point, you have completed all the setup steps you need to work through every lab with the exception of lab 8. That's because lab 8 has you experimenting with Fabric GIT integration features using Azure Dev Ops. Before you can complete lab 8, you will first need to first complete the setup steps in the next section titled **Configuring support for Azure Dev Ops**.
 
 > If you want to run the **FabricSolutionDeployment** application so it executes Fabric REST API calls under the identity of a service principal.
  you should read through the **Understanding Authentication Modes** section. There are optional setup instructions with details on 
