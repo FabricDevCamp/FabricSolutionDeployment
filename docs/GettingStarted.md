@@ -94,12 +94,13 @@ There are seven seperate folders which contain their own unique set of data file
 
  <img src="./images/GettingStarted/media/image5-3.png" style="width:20%" />
 
-The three folders named **Dev**, **Test**, and **Prod** will provide data files used in a staged deployment. The key concpet is that a staged deployment must support different environments such as **Dev**, **Test**, and **Prod** that must be configired with their own unique datasource paths.
+The folders named **Dev**, **Test**, and **Prod** will provide different sets of data files used to simulate environments in a staged deployment. The key concpet is that a staged deployment requires configuring different environments such as **Dev**, **Test**, and **Prod** with their own unique datasource paths.
 
  <img src="./images/GettingStarted/media/image5-4.png" style="width:20%" />
 
->Now that you have the sample data files, your next step is to create a new Azure storage account that support ADLS Gen2 storage. For this, you will need an Azure subscription.
+>Now that you have a copy of the sample data files, your next step is to create a new Azure storage account that support ADLS Gen2 storage. For this step, you will need an Azure subscription.
 
+### Create an Azure storage acocunt that support ADLS Gen2 storage
 Navigate the the Azure portal and create a new Storage account. 
 
  <img src="./images/GettingStarted/media/image5-5.png" style="width:35%" />
