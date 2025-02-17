@@ -229,9 +229,8 @@ After you have made your edits, save your changes to **ApSettings.cs**.
 until you have run through the lab exercices by executing Fabric REST API calls under the indentity of your user account.
 
 ## Configuring support for Azure Dev Ops
-If you want to complete lab 8, you  need to configure additional support in **AppSettings.cs** for an Azure DevOps organization. For this, you will need access to an Azure DevOps organization in the same Entra Id tenant as the development environment where you are creating Fabric workspaces. 
-
-Once you determined which Azure DevOps organization to use, you can configure it in **AppSettings.cs** by updating the value for a constant named **AzureDevOpsOrganizationName** which is shown in the following screenshot.
+If you want to complete lab 8, you need to configure additional support in **AppSettings.cs** for an Azure DevOps organization. 
+To complete this configuration, you need access to an Azure DevOps organization in the same Entra Id tenant as the development environment where you are creating Fabric workspaces. Once you determined which Azure DevOps organization to use, you can configure it in **AppSettings.cs** by updating the value for a constant named **AzureDevOpsOrganizationName** which is shown in the following screenshot.
 
 <img src="./images/GettingStarted/media/image9.png" style="width:85%" />
 
