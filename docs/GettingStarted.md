@@ -220,7 +220,7 @@ by the **FabricSolutionDeployment**.
 
  <img src="./images/GettingStarted/media/image5-M.png" style="width:80%" />
 
-Save your changes to **ApSettings.cs**.
+After you have made your edits, save your changes to **ApSettings.cs**.
 
 >At this point, you have completed all the setup steps you need to work through every lab with the exception of lab 8 in which you will experiment with Azure Dev Ops to test out Fabric GIT integration features. To complete lab 8, you need to first complete the setup steps in the next section titled **Configuring support for Azure Dev Ops**.
 
