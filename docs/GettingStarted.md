@@ -190,11 +190,14 @@ creating connections. shortcuts, data pipelines and semantic models. In the lab 
 you will use the folders named **Dev**, **Test** and **Prod** to configure a different datasource path for each environment.
 
  To test multitenancy, there are also several customer-specific folders inside the **Customers** folder. The following screenshot shows 
- an example of the four standard data files for the customer named **Contoso** in the **Customers/Contoso** folder
+ an example of the four standard  data files for the customer named **Contoso** in the **Customers/Contoso** folder
 
  <img src="./images/GettingStarted/media/image5-G.png" style="width:80%" />
 
- Here we go.
+ >Now that you have created the **sampledata** container and updated the sample data files, you are ready for the last step which is 
+ getting an Azure storage account key to provide access for the **FabricSolutionDeployment** application.
+
+ Navigate the the **Security + networking > Access Keys** page of the **devcampteststorage** storage account.  
 
  <img src="./images/GettingStarted/media/image5-H.png" style="width:70%" />
 
