@@ -66,6 +66,18 @@ into the **FabricCapcityId** constant value in **AppSettings.cs**.
 under the identity of your user account. This will allow you to test out and experiment 
 with CI/CD workflows which have been designed to deploy and update Fabric solutions.
 
+## Configuring access to sample data in an Azure storage container
+This sample application demonstrates two workflows which are required to access data files from a secure Azure storage account. This includes a workflow which creates a OneLake shortcut to connnect a lakehouse to data files in an Azure storage container. It also includes a workflow which uses a data pipeline to copy files from the Azure storage container into the **Files** section fo a lakehouse. In order to successfully run these demo workflows, you will first need to follow these steps.
+
+ - Create or find an Azure stroage account
+ - Upload sample data files to a container in that storage account
+ - Obtain an Azure storage account key or SAS key to access the target container 
+ - Configure data paths and the Azure account key in the **AppSettings.cs** file 
+
+ Here we go.
+
+## Running through lab exercises
+
 Open the source file named **Program.cs** and locate the function named **Setup_ViewWorkspacesAndCapacities** .  
 
 <img src="./images/GettingStarted/media/image6.png" style="width:80%" />
