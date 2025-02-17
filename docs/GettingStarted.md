@@ -159,7 +159,7 @@ After creating the container, click on **sampledata** in the **Containers** page
 
  <img src="./images/GettingStarted/media/image5-9.png" style="width:65%" />
 
- Click the **Upload** buttton so you can start the process of uploading your data files.
+On the **sampledata** container page, click **Upload** to start the process of uploading the sample data files.
 
  <img src="./images/GettingStarted/media/image5-A.png" style="width:60%" />
 
