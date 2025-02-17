@@ -111,6 +111,9 @@ This sample application demonstrates two workflows which are required to access 
 
  <img src="./images/GettingStarted/media/image5H.png" style="width:80%" />
 
+Here we go.
+
+ <img src="./images/GettingStarted/media/image5I.png" style="width:80%" />
 
 Yeah
 
