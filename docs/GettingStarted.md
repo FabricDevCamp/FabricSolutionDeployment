@@ -41,7 +41,7 @@ following screenshot.
 > The **Capacities List** shows you what capacities that your
 user account has permissions to access in your development environment.
 
-For testing, you must have acces to a Fabric-enabled capacity. You can use any capacity created from an **F SKU** or a **P SKU**. Alternatively, you can also use a Fabric trial capacity with an **FT1 SKU** as shown in the screenshot above. 
+For testing, you must have acces to a Fabric-enabled capacity. You can use any capacity created from an **F** SKU or a **P** SKU. Alternatively, you can also use a Fabric trial capacity with an **FT1** SKU as shown in the screenshot above. 
 
 Here is where you need to determine which capacity to configure for use
 with the application. You need to select a Fabric-enabled capacity and
