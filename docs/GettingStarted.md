@@ -50,7 +50,9 @@ For testing you can use any Fabric capacity created from an **F SKU** or a **P
 SKU** or you can also use a Fabric trial capacity. The screenshot above
 shows a Fabric trial shown by the code **[FT1]**. If you
 do not see a Fabric-enabled capacity in the capacities list, you must
-acquire one before continuing with the setup of this application.
+acquire one before continuing with these setup instructons. That's because the
+**FabricSolutionDeployment** sample application cannot demonstrate running solution deployment workflows
+if it doesn't have the ability to create workspace items such as lakehouse and notebooks.
 
 > If you are using a Fabric trial account, this makes it more difficult (but not impossible) to test
 deployment workflows using a service principal. That's because you cannot grant trial capacity 
