@@ -82,8 +82,9 @@ Strt by downloading and inspecting the sample data files.
   Download sample data files from his link.
   - [https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip](https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip)
 
+Once **ProductSales.zip** has downloaded, find this file in the **Downloads** folder. 
 
- <img src="./images/GettingStarted/media/image5-1.png" style="width:60%" />
+ <img src="./images/GettingStarted/media/image5-1.png" style="width:40%" />
 
  Here we go.
 
