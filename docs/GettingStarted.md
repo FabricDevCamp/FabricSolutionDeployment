@@ -156,15 +156,15 @@ Here we go.
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-J.png" style="width:80%" />
-
- Here we go.
-
  <img src="./images/GettingStarted/media/image5-K.png" style="width:80%" />
 
  Here we go.
 
  <img src="./images/GettingStarted/media/image5-L.png" style="width:80%" />
+
+Here we go.
+
+ <img src="./images/GettingStarted/media/image5-M.png" style="width:80%" />
 
 Blah
 
