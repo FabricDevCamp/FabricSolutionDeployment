@@ -94,10 +94,12 @@ There are three additional child folders inside the top-level **ProductSales** f
 
  <img src="./images/GettingStarted/media/image5-2.png" style="width:20%" />
 
-There are seven seperate folders which contain their own unique set of data files. Each of these folders contains four data files files named  named **Customers.csv**, **Invoicescsv**, **InvoiceDetails.csv**, and **Products.csv**.
- These data files all shared the same table schema and are used to build lakehouse table schemas and sementic models in the **FabricSolutionDeployment** application. 
- 
- The following screenshot shows an example of the four standard files in the **Customers/Contoso** folder.
+In total, there are seven seperate folders which each contain their own unique set of data files 
+named **Customers.csv**, **Invoicescsv**, **InvoiceDetails.csv**, and **Products.csv**.
+All seven folders contain data files with a common table schema. These data files are used to build 
+lakehouse table schemas and sementic models in the workflows of the **FabricSolutionDeployment** application.
+The only difference between these folders are that the rows of data are different.
+The following screenshot shows an example of the four standard files in the **Customers/Contoso** folder.
 
  <img src="./images/GettingStarted/media/image5-3.png" style="width:20%" />
 
