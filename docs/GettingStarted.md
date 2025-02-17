@@ -72,11 +72,11 @@ Start by downloading and inspecting the sample data files. Download the **Produc
 
 Once you have downloaded **ProductSales.zip**, locate the file in the **Downloads** folder. 
 
- <img src="./images/GettingStarted/media/image5-1.png" style="width:50%" />
+ <img src="./images/GettingStarted/media/image5-1.png" style="width:35%" />
 
  Here we
 
-<img src="./images/GettingStarted/media/image5-1B.png" style="width:50%" />
+<img src="./images/GettingStarted/media/image5-1B.png" style="width:40%" />
 
 sss
 
