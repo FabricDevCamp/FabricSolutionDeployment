@@ -88,10 +88,13 @@ This sample application demonstrates two workflows which are required to access 
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5D.png" style="width:40%" />
+ <img src="./images/GettingStarted/media/image5D.png" style="width:30%" />
 
 
  Here we go.
+
+ Download sample data files from his link.
+  - [https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip](https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip)
 
  <img src="./images/GettingStarted/media/image5E.png" style="width:80%" />
 
