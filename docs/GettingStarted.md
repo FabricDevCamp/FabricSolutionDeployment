@@ -61,22 +61,20 @@ if it doesn't have the ability to create workspace items such as lakehouse and n
 The **FabricSolutionDeployment** application provides sample workflows which require access data files from a container in an Azure storage account. More specifically, there is a sample workflows which creates OneLake shortcuts to access data files in an Azure sotrage container. There is also another sample workflow which createsand runs a data pipelinewhich copies data files from the Azure storage container to the **Files** section fo a lakehouse. In order to successfully run these sample workflows, you will neeed to work through these steps.
 
 - Download the sample data files from **ProductSales.zip**.
- - Create or find an Azure stroage account
+ - Create an Azure stroage account with support for ADLS Gen2 storage
  - Upload sample data files to a container in that storage account
  - Obtain an Azure storage account key or SAS key to access the target container 
  - Configure data paths and the Azure account key in the **AppSettings.cs** file 
 
-Strt by downloading and inspecting the sample data files.
+Start by downloading and inspecting the sample data files. You should be able to download the file named **ProductSales.zip** to the **Downloads** folder on your local PB using the following link, 
 
- Here we go.
-  Download sample data files from his link.
   - [https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip](https://github.com/FabricDevCamp/SampleData/raw/refs/heads/main/Downloads/ProductSales.zip)
 
-Once **ProductSales.zip** has downloaded, find this file in the **Downloads** folder. 
+Once you have downloaded **ProductSales.zip**, locate the file in the **Downloads** folder. 
 
  <img src="./images/GettingStarted/media/image5-1.png" style="width:50%" />
 
- Here we go.
+ Here we
 
  <img src="./images/GettingStarted/media/image5-2.png" style="width:25%" />
 
