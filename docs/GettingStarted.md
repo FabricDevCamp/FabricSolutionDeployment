@@ -120,11 +120,11 @@ you will need to engage the assistnce of someone that does to complete this step
 ### Create an Azure storage account with support for ADLS Gen2 storage
 Navigate the the Azure portal and click **Create a resource**. 
 
- <img src="./images/GettingStarted/media/image5-4B.png" style="width:35%" />
+ <img src="./images/GettingStarted/media/image5-4B.png" style="width:50%" />
 
-create a new Storage account.
+Locate the Microsoft **Storage account** and click **CReate** to begin the process of creating a new Azure storage account.
 
- <img src="./images/GettingStarted/media/image5-5.png" style="width:35%" />
+ <img src="./images/GettingStarted/media/image5-5.png" style="width:40%" />
 
 >When you want to create an Azure storage account which supports ADLS Gen2 storage, you must enable the **Enable hierchical namepsace** option. 
 This is important to do when creating the new storage account because it is a setting that cannot be changed later after the storage account has been created.
