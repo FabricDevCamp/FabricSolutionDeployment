@@ -101,7 +101,7 @@ The following screenshot shows an example of the four standard CSV files in the 
  <img src="./images/GettingStarted/media/image5-3.png" style="width:20%" />
 
 >The data files in each of the seven folders share a common table schema. Workflows implemented by
-the **FabricSolutionDeployment** application use these files to build tables in lakehouses and semantic models.
+the **FabricSolutionDeployment** application use these files to build out table sschemas in lakehouses as wel as in imported semantic models.
 Keep in mind that the  only difference between the data files in each folder is that the rows of data are different.
 
 The folders named **Dev**, **Test**, and **Prod** provide different sets of sample data files used to simulate different environments 
