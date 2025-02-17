@@ -198,6 +198,7 @@ you will use the folders named **Dev**, **Test** and **Prod** to configure a dif
  getting an Azure storage account key to provide access for the **FabricSolutionDeployment** application.
 
  Navigate the the **Security + networking > Access Keys** page of the **devcampteststorage** storage account.
+ 
  Click on the **Show** button of the **Key** value for **key1**.  
 
  <img src="./images/GettingStarted/media/image5-H.png" style="width:70%" />
