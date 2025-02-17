@@ -54,7 +54,7 @@ into the **FabricCapcityId** constant value in **AppSettings.cs**.
 
 > If you do not see a Fabric-enabled capacity in the capacities list, that is a problem you must address 
 before continuing with these setup instructons. That's because the
-**FabricSolutionDeployment** sample application cannotwork correctly to demonstrate running solution deployment workflows
+**FabricSolutionDeployment** sample application cannot work correctly to demonstrate running solution deployment workflows
 if it doesn't have the ability to create workspace items such as lakehouse and notebooks.
 
 ## Configuring access to sample data files in an Azure storage container
