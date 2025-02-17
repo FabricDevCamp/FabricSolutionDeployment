@@ -32,7 +32,7 @@ account with access to your Fabric development environment.
 to grant the permission request and continue running the application.
 
 Once you login, the application will execute two Fabric REST API calls to retrieve 
-information about the workspaces and capacities in the current Entra Id tenant to which you have access.
+lists of the workspaces and capacities to which you have access in the current Entra Id tenant.
 The application then displays these workspaces and capacities in the console window as shown in the
 following screenshot. 
 
