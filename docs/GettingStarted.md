@@ -94,8 +94,7 @@ There are seven seperate folders which contain their own unique set of data file
 
  <img src="./images/GettingStarted/media/image5-3.png" style="width:20%" />
 
-The three folders named named **Dev**, **Test**, and **Prod** will provide data files used for different environments in a staged deployment. 
-each have their own set of data files as well. 
+The three folders named **Dev**, **Test**, and **Prod** will provide data files used in a staged deployment. The key concpet is that a staged deployment must support different environments such as **Dev**, **Test**, and **Prod** that must be configired with their own unique datasource paths.
 
  <img src="./images/GettingStarted/media/image5-4.png" style="width:20%" />
 
