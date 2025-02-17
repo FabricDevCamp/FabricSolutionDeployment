@@ -117,12 +117,13 @@ Now that you have a copy of the sample data files, the next step is to create a 
 >For the next step, you need an Azure subscription. If you don't have your own Azure subscription, 
 you will need to engage the assistnce of someone that does to complete this step.
 
-### Create an Azure storage acocunt that support ADLS Gen2 storage
+### Create an Azure storage account with support for ADLS Gen2 storage
 Navigate the the Azure portal and create a new Storage account. 
 
  <img src="./images/GettingStarted/media/image5-5.png" style="width:35%" />
 
->When creating a new Azure storage account which supports ADLS Gen2 storage, a key point is to enable the **Enable hierchical namepsace** option. This is important to do when creating the new storage account because it cannot be changed later.
+>When you want to create an Azure storage account which supports ADLS Gen2 storage, you must enable the **Enable hierchical namepsace** option. 
+This is important to do when creating the new storage account because it is a setting that cannot be changed later after the storage account has been created.
 
 When creating the new account enter a name such as **devcampteststorage** as shown in the following screenshot. Make sure to click the **Next** 
 button instead of the **Review + create** button so you can move to the **Advanced** settings page where you can set the **Enable hierchical namepsace** option.
