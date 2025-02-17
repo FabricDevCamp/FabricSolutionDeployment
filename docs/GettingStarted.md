@@ -125,7 +125,48 @@ Here we go.
 
  Here we go.
 
+ Here we go.
 
+ <img src="./images/GettingStarted/media/image5-B.png" style="width:80%" />
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-C.png" style="width:80%" />
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-D.png" style="width:80%" />
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-E.png" style="width:80%" />
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-F.png" style="width:80%" />
+
+
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-G.png" style="width:80%" />
+
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-H.png" style="width:80%" />
+
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-I.png" style="width:80%" />
+
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-J.png" style="width:80%" />
+
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-K.png" style="width:80%" />
+
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-L.png" style="width:80%" />
+
+Blah
 
 
 ## Running through lab exercises
