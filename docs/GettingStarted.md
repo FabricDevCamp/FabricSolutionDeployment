@@ -101,11 +101,11 @@ Here we go.
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-5.png" style="width:40%" />
+ <img src="./images/GettingStarted/media/image5-5.png" style="width:35%" />
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-6.png" style="width:50%" />
+ <img src="./images/GettingStarted/media/image5-6.png" style="width:60%" />
 
  Here we go.
 
