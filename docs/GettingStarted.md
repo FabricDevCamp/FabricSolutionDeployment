@@ -87,7 +87,10 @@ Once you have downloaded **ProductSales.zip**, locate the ZIP archove file in th
 
 <img src="./images/GettingStarted/media/image5-1B.png" style="width:50%" />
 
-Take a moment to become familiar with the structure of child folders inside the **ProductSales** folder. There is a child folder named **Customers** which contains its own child folders named **AdventureWorks**, **Contoso**, **Northwind** and **Wingtip**. There are three additional child folders inside the top-level the **ProductSales** folder named **Dev**, **Test**, and **Prod**.
+Take a moment to become familiar with the structure of child folders inside the **ProductSales** folder. 
+There is a child folder named **Customers** which contains child folders 
+named **AdventureWorks**, **Contoso**, **Northwind** and **Wingtip**. 
+There are three additional child folders inside the top-level **ProductSales** folder named **Dev**, **Test**, and **Prod**.
 
  <img src="./images/GettingStarted/media/image5-2.png" style="width:20%" />
 
