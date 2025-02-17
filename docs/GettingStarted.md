@@ -84,19 +84,19 @@ Strt by downloading and inspecting the sample data files.
 
 Once **ProductSales.zip** has downloaded, find this file in the **Downloads** folder. 
 
- <img src="./images/GettingStarted/media/image5-1.png" style="width:40%" />
+ <img src="./images/GettingStarted/media/image5-1.png" style="width:50%" />
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-2.png" style="width:35%" />
+ <img src="./images/GettingStarted/media/image5-2.png" style="width:25%" />
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-3.png" style="width:35%" />
+ <img src="./images/GettingStarted/media/image5-3.png" style="width:25%" />
 
 Here we go.
 
- <img src="./images/GettingStarted/media/image5-4.png" style="width:35%" />
+ <img src="./images/GettingStarted/media/image5-4.png" style="width:25%" />
 
 
  Here we go.
