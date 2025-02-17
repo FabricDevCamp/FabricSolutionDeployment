@@ -103,7 +103,10 @@ The following screenshot shows an example of the four standard files in the **Cu
 
  <img src="./images/GettingStarted/media/image5-3.png" style="width:20%" />
 
-The folders named **Dev**, **Test**, and **Prod** will provide different sets of data files used to simulate environments in a staged deployment. The key concpet is that a staged deployment requires configuring different environments such as **Dev**, **Test**, and **Prod** with their own unique datasource paths.
+The folders named **Dev**, **Test**, and **Prod** provide different sets of sample data files used to simulate different environments 
+in a staged deployment. This sample data will be used to simulate how a staged deployment requires configuring different 
+environments such as **Dev**, **Test**, and **Prod** with their own unique datasource paths. After all, you don't want all your developers 
+accessing the same data as business users work with in a production environment. 
 
  <img src="./images/GettingStarted/media/image5-4.png" style="width:20%" />
 
