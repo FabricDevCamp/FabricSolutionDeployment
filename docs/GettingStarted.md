@@ -224,17 +224,14 @@ After you have made your edits, save your changes to **ApSettings.cs**.
 
 >At this point, you have completed all the setup steps you need to work through every lab with the exception of lab 8. That's because lab 8 has you experimenting with Fabric GIT integration features using Azure Dev Ops. Before you can complete lab 8, you will first need to first complete the setup steps in the next section titled **Configuring support for Azure Dev Ops**.
 
-> If you want to run the **FabricSolutionDeployment** application so it executes Fabric REST API calls under the identity of a service principal.
- you should read through the **Understanding Authentication Modes** section. There are optional setup instructions with details on 
- how to create a custom Entra Id application and configure it to allow the the **FabricSolutionDeployment** application to acquire
- app-only access tokens and execute calls as a service principal. But you can also wait to complete this additonal configuration 
+> If you want to configure the optional step of running the **FabricSolutionDeployment** application under the identity of a service principal, 
+ you should read through the **Understanding Authentication Modes** section. There are additional setup instructions at the end of this document which provide details on creating a custom Entra Id application andconfiguring it to allow the the **FabricSolutionDeployment** application to acquire app-only access tokens and to execute calls as a service principal. But you can also wait to complete this additonal configuration 
 until you have run through the lab exercices by executing Fabric REST API calls under the indentity of your user account.
 
 ## Configuring support for Azure Dev Ops
+If you want to complete lab 8, you  need to configure additional support in **AppSettings.cs** for an Azure DevOps organization. For this, you will need access to an Azure DevOps organization in the same Entra Id tenant as the development environment where you are creating Fabric workspaces. 
 
-If you want to run **demo 5** through **demo 7**, you will need to configure additional support in 
-**AppSettings.cs** for an Azure DevOps organization. For this, you will need access
-to an Azure DevOps organization in the same Entra Id tenant as the development environment where you are creating Fabric workspaces. Once you determined which Azure DevOps organization to use, you can configure it in **AppSettings.cs** by updating the value for a constant named **AzureDevOpsOrganizationName** which is shown in the following screenshot.
+Once you determined which Azure DevOps organization to use, you can configure it in **AppSettings.cs** by updating the value for a constant named **AzureDevOpsOrganizationName** which is shown in the following screenshot.
 
 <img src="./images/GettingStarted/media/image9.png" style="width:85%" />
 
