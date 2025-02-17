@@ -121,13 +121,12 @@ On the **Review + create** page, verify **Storage account name** and **Enable hi
 
  <img src="./images/GettingStarted/media/image5-6C.png" style="width:60%" />
 
- 
- Here we go.
+ After creating the new storage account, the next step is to create a new container. Click the **Data storage > Container** link the left navigation to move to the **Containers** page. Click **+ Container** button to create a new container.
 
  <img src="./images/GettingStarted/media/image5-7.png" style="width:80%" />
 
- Here we go.
-
+ Provide a name of **sampledata"" and click create to create the new container.
+ 
  <img src="./images/GettingStarted/media/image5-8.png" style="width:30%" />
 
 
