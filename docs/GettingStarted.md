@@ -128,7 +128,7 @@ Here we go.
 
  Here we go.
 
- <img src="./images/GettingStarted/media/image5-B.png" style="width:80%" />
+ <img src="./images/GettingStarted/media/image5-B.png" style="width:95%" />
  Here we go.
 
  <img src="./images/GettingStarted/media/image5-C.png" style="width:40%" />
