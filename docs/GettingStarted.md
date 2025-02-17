@@ -69,6 +69,13 @@ with CI/CD workflows which have been designed to deploy and update Fabric soluti
 ## Configuring access to sample data files in an Azure storage container
 This sample application demonstrates two workflows which are required to access data files from a secure Azure storage account. This includes a workflow which creates a OneLake shortcut to connnect a lakehouse to data files in an Azure storage container. It also includes a workflow which uses a data pipeline to copy files from the Azure storage container into the **Files** section fo a lakehouse. In order to successfully run these demo workflows, you will first need to follow these steps.
 
+Yeah
+- Download the sample data files from **ProductSales.zip**.
+ - Create or find an Azure stroage account
+ - Upload sample data files to a container in that storage account
+ - Obtain an Azure storage account key or SAS key to access the target container 
+ - Configure data paths and the Azure account key in the **AppSettings.cs** file 
+
 Strt by downloading and inspecting the sample data files.
 
  Here we go.
@@ -90,12 +97,6 @@ Here we go.
 
  <img src="./images/GettingStarted/media/image5-4.png" style="width:35%" />
 
-Yeah
-
- - Create or find an Azure stroage account
- - Upload sample data files to a container in that storage account
- - Obtain an Azure storage account key or SAS key to access the target container 
- - Configure data paths and the Azure account key in the **AppSettings.cs** file 
 
  Here we go.
 
