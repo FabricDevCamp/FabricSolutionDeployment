@@ -36,7 +36,7 @@ lists of the workspaces and capacities to which you have access in the current E
 The application then displays these workspaces and capacities in the console window as shown in the
 following screenshot. 
 
-<img src="./images/GettingStarted/media/image4.png" style="width:70%" />
+<img src="./images/GettingStarted/media/image4.png" style="width:90%" />
 
 > The **Capacities List** shows you what capacities that your
 user account has permissions to access in your development environment.
