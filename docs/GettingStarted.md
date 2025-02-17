@@ -41,12 +41,13 @@ following screenshot.
 > The **Capacities List** shows you what capacities that your
 user account has permissions to access in your development environment.
 
+For testing, you must have acces to a Fabric-enabled capacity. You can use any capacity created from an **F SKU** or a **P SKU**. Alternatively, you can also use a Fabric trial capacity with an **FT1 SKU** as shown in the screenshot above. 
+
 Here is where you need to determine which capacity to configure for use
 with the application. You need to select a Fabric-enabled capacity and
 add its capacity ID to **AppSettings.cs**. This is required so the
 application can assign the workspaces it creates to this capacity.
-
-For testing, you must have acces to a Fabric-enabled capacity. You can use any capacity created from an **F SKU** or a **P SKU**. Alternatively, you can also use a Fabric trial capacity with an **FT1 SKU** as shown in the screenshot above. Once you determine which capacity you want to use, copy its capacity Id value
+Once you determine which capacity you want to use, copy its capacity Id value
 into the **FabricCapcityId** constant value in **AppSettings.cs**.
 
 <img src="./images/GettingStarted/media/image5.png" style="width:80%" />
