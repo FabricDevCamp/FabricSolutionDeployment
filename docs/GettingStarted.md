@@ -116,8 +116,14 @@ Yeah
 
  Here we go.
 
-
  <img src="./images/GettingStarted/media/image5-9.png" style="width:80%" />
+
+ Here we go.
+
+ <img src="./images/GettingStarted/media/image5-A.png" style="width:80%" />
+
+ Here we go.
+
 
 
 
