@@ -811,10 +811,7 @@ public class DeploymentManager {
     var model = FabricRestApi.CreateItem(workspace.Id, createModelRequest);
     AppLogger.LogSubstep($"Semantic model created with Id of [{model.Id.Value.ToString()}]");
 
-    AppLogger.LogSubstep($"Creating SQL connection for semantic model");
-    var sqlConnection = FabricRestApi.CreateSqlConnectionWithServicePrincipal(sqlEndpoint.ConnectionString, sqlEndpoint.Id, workspace, lakehouse);
-
-    PowerBiRestApi.BindSemanticModelToConnection(workspace.Id, model.Id.Value, sqlConnection.Id);
+    CreateAndBindSemanticModelConnecton(workspace, model.Id.Value, lakehouse);
 
     string reportDefinitionFolder = "Product Sales Report.Report";
     var createReportRequest = ItemDefinitionFactory.GetCreateItemRequestFromFolder(reportDefinitionFolder);
