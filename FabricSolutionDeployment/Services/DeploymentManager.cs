@@ -8,6 +8,7 @@ public enum StagedDeploymentType {
   UpdateFromTestToProd
 }
 
+
 public class DeploymentManager {
 
   #region Lab Utility Methods
@@ -1349,6 +1350,7 @@ public class DeploymentManager {
 
       // add redirect for lakehouse id
       notebookRedirects.Add(sourceLakehouse.Id.Value.ToString(), targetLakehouse.Id.Value.ToString());
+      dataPipelineRedirects.Add(sourceLakehouse.Id.Value.ToString(), targetLakehouse.Id.Value.ToString());
 
       // add redirect for sql endpoint database name 
       semanticModelRedirects.Add(sourceLakehouseSqlEndpoint.Id, targetLakehouseSqlEndpoint.Id);
@@ -1358,6 +1360,7 @@ public class DeploymentManager {
         // only add sql endpoint server location once because it has same value for all lakehouses in the same workspace
         semanticModelRedirects.Add(sourceLakehouseSqlEndpoint.ConnectionString, targetLakehouseSqlEndpoint.ConnectionString);
       }
+ 
 
     }
 
@@ -1394,6 +1397,8 @@ public class DeploymentManager {
         AppLogger.LogOperationComplete();
 
       }
+
+      dataPipelineRedirects.Add(sourceNotebook.Id.Value.ToString(), targetNotebook.Id.Value.ToString());
 
     }
 
@@ -2384,8 +2389,8 @@ public class DeploymentManager {
                                                              (item.DisplayName == model.DisplayName)).FirstOrDefault();
 
         // update expressions.tmdl with SQL endpoint info for lakehouse in feature workspace
-        var modelDefinition = ItemDefinitionFactory.UpdateItemDefinitionPart(model.Definition, 
-                                                                             "definition/expressions.tmdl", 
+        var modelDefinition = ItemDefinitionFactory.UpdateItemDefinitionPart(model.Definition,
+                                                                             "definition/expressions.tmdl",
                                                                              semanticModelRedirects);
 
         if (targetModel != null) {
@@ -2418,8 +2423,8 @@ public class DeploymentManager {
                                                                       item.DisplayName == report.DisplayName));
 
       // update expressions.tmdl with SQL endpoint info for lakehouse in feature workspace
-      var reportDefinition = ItemDefinitionFactory.UpdateReportDefinitionWithRedirection(report.Definition, 
-                                                                                         targetWorkspace.Id, 
+      var reportDefinition = ItemDefinitionFactory.UpdateReportDefinitionWithRedirection(report.Definition,
+                                                                                         targetWorkspace.Id,
                                                                                          reportRedirects);
 
       if (targetReport != null) {
@@ -2482,12 +2487,12 @@ public class DeploymentManager {
 
     var workspaces = FabricRestApi.GetWorkspaces();
 
-    foreach(var workspace in workspaces) {
+    foreach (var workspace in workspaces) {
       AppLogger.LogStep($"{workspace.DisplayName} [{workspace.Id.ToString()}]");
       var connections = FabricRestApi.GetWorkspaceConnections(workspace.Id);
-      foreach(var connection in connections) {
+      foreach (var connection in connections) {
         string connectionName = connection.DisplayName.Substring(48);
-        if (!connection.DisplayName.Contains("Lakehouse")){
+        if (!connection.DisplayName.Contains("Lakehouse")) {
           connectionName += $"-{connection.ConnectionDetails.Path}";
         }
         AppLogger.LogSubstep(connectionName);
