@@ -7,12 +7,10 @@ class SampleCustomerData {
       Deployment.CustomerName = "Adventure Works";
 
       // setup Web datasource path
-      string deploymentWebDatasourcePath = DeploymentPlan.webDatasourceRootDefault + "Customers/AdventureWorks/";
-
       Deployment.AddDeploymentParameter(
                           DeploymentPlan.webDatasourcePathParameter,
                           DeploymentPlan.webDatasourcePathDefault,
-                          deploymentWebDatasourcePath);
+                          DeploymentPlan.webDatasourceRootDefault + "Customers/AdventureWorks/");
 
       // setup ADLS datasource path
       Deployment.AddDeploymentParameter(
@@ -40,12 +38,10 @@ class SampleCustomerData {
       Deployment.CustomerName = "Contoso";
 
       // setup Web datasource path
-      string deploymentWebDatasourcePath = DeploymentPlan.webDatasourceRootDefault + "Customers/Contoso/";
-
       Deployment.AddDeploymentParameter(
                           DeploymentPlan.webDatasourcePathParameter,
                           DeploymentPlan.webDatasourcePathDefault,
-                          deploymentWebDatasourcePath);
+                          DeploymentPlan.webDatasourceRootDefault + "Customers/Contoso/");
 
       // setup ADLS datasource path
       Deployment.AddDeploymentParameter(
@@ -73,12 +69,10 @@ class SampleCustomerData {
       Deployment.CustomerName = "Northwind";
 
       // setup Web datasource path
-      string deploymentWebDatasourcePath = DeploymentPlan.webDatasourceRootDefault + "Customers/Northwind/";
-
       Deployment.AddDeploymentParameter(
                           DeploymentPlan.webDatasourcePathParameter,
                           DeploymentPlan.webDatasourcePathDefault,
-                          deploymentWebDatasourcePath);
+                          DeploymentPlan.webDatasourceRootDefault + "Customers/Northwind/");
 
       // setup ADLS datasource path
       Deployment.AddDeploymentParameter(
@@ -106,12 +100,10 @@ class SampleCustomerData {
       Deployment.CustomerName = "Wingtip";
 
       // setup Web datasource path
-      string deploymentWebDatasourcePath = DeploymentPlan.webDatasourceRootDefault + "Customers/Wingtip/";
-
       Deployment.AddDeploymentParameter(
                           DeploymentPlan.webDatasourcePathParameter,
                           DeploymentPlan.webDatasourcePathDefault,
-                          deploymentWebDatasourcePath);
+                          DeploymentPlan.webDatasourceRootDefault + "Customers/Wingtip/");
 
       // setup ADLS datasource path
       Deployment.AddDeploymentParameter(
