@@ -1,5 +1,4 @@
-﻿
-class SampleCustomerData {
+﻿class SampleCustomerData {
 
   public static DeploymentPlan AdventureWorks {
     get {
@@ -7,26 +6,22 @@ class SampleCustomerData {
       Deployment.CustomerName = "Adventure Works";
 
       // setup Web datasource path
-      Deployment.AddDeploymentParameter(
-                          DeploymentPlan.webDatasourcePathParameter,
-                          DeploymentPlan.webDatasourcePathDefault,
-                          DeploymentPlan.webDatasourceRootDefault + "Customers/AdventureWorks/");
+      Deployment.AddDeploymentParameter(DeploymentPlan.webDatasourcePathParameter,
+                                        DeploymentPlan.webDatasourcePathDefault,
+                                        DeploymentPlan.webDatasourceRootDefault + "Customers/AdventureWorks/");
 
       // setup ADLS datasource path
-      Deployment.AddDeploymentParameter(
-                    DeploymentPlan.adlsServerPathParameter,
-                    DeploymentPlan.adlsServerPathDefault,
-                    DeploymentPlan.adlsServerPathDefault);
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsServerPathParameter,
+                                        DeploymentPlan.adlsServerPathDefault,
+                                        DeploymentPlan.adlsServerPathDefault);
 
-      Deployment.AddDeploymentParameter(
-                   DeploymentPlan.adlsContainerNameParameter,
-                   DeploymentPlan.adlsContainerNameDefault,
-                   DeploymentPlan.adlsContainerNameDefault);
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsContainerNameParameter,
+                                        DeploymentPlan.adlsContainerNameDefault,
+                                        DeploymentPlan.adlsContainerNameDefault);
 
-      Deployment.AddDeploymentParameter(
-                   DeploymentPlan.adlsContainerPathParameter,
-                   DeploymentPlan.adlsContainerPathDefault,
-                    "/ProductSales/Customers/AdventureWorks/");
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsContainerPathParameter,
+                                        DeploymentPlan.adlsContainerPathDefault,
+                                        "/ProductSales/Customers/AdventureWorks/");
 
       return Deployment;
     }
@@ -38,26 +33,22 @@ class SampleCustomerData {
       Deployment.CustomerName = "Contoso";
 
       // setup Web datasource path
-      Deployment.AddDeploymentParameter(
-                          DeploymentPlan.webDatasourcePathParameter,
-                          DeploymentPlan.webDatasourcePathDefault,
-                          DeploymentPlan.webDatasourceRootDefault + "Customers/Contoso/");
+      Deployment.AddDeploymentParameter(DeploymentPlan.webDatasourcePathParameter,
+                                        DeploymentPlan.webDatasourcePathDefault,
+                                        DeploymentPlan.webDatasourceRootDefault + "Customers/Contoso/");
 
       // setup ADLS datasource path
-      Deployment.AddDeploymentParameter(
-                    DeploymentPlan.adlsServerPathParameter,
-                    DeploymentPlan.adlsServerPathDefault,
-                    DeploymentPlan.adlsServerPathDefault);
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsServerPathParameter,
+                                        DeploymentPlan.adlsServerPathDefault,
+                                        DeploymentPlan.adlsServerPathDefault);
 
-      Deployment.AddDeploymentParameter(
-                   DeploymentPlan.adlsContainerNameParameter,
-                   DeploymentPlan.adlsContainerNameDefault,
-                   DeploymentPlan.adlsContainerNameDefault);
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsContainerNameParameter,
+                                        DeploymentPlan.adlsContainerNameDefault,
+                                        DeploymentPlan.adlsContainerNameDefault);
 
-      Deployment.AddDeploymentParameter(
-                   DeploymentPlan.adlsContainerPathParameter,
-                   DeploymentPlan.adlsContainerPathDefault,
-                    "/ProductSales/Customers/Contoso/");
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsContainerPathParameter,
+                                        DeploymentPlan.adlsContainerPathDefault,
+                                        "/ProductSales/Customers/Contoso/");
 
       return Deployment;
     }
@@ -69,26 +60,22 @@ class SampleCustomerData {
       Deployment.CustomerName = "Northwind";
 
       // setup Web datasource path
-      Deployment.AddDeploymentParameter(
-                          DeploymentPlan.webDatasourcePathParameter,
-                          DeploymentPlan.webDatasourcePathDefault,
-                          DeploymentPlan.webDatasourceRootDefault + "Customers/Northwind/");
+      Deployment.AddDeploymentParameter(DeploymentPlan.webDatasourcePathParameter,
+                                        DeploymentPlan.webDatasourcePathDefault,
+                                        DeploymentPlan.webDatasourceRootDefault + "Customers/Northwind/");
 
       // setup ADLS datasource path
-      Deployment.AddDeploymentParameter(
-                    DeploymentPlan.adlsServerPathParameter,
-                    DeploymentPlan.adlsServerPathDefault,
-                    DeploymentPlan.adlsServerPathDefault);
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsServerPathParameter,
+                                        DeploymentPlan.adlsServerPathDefault,
+                                        DeploymentPlan.adlsServerPathDefault);
 
-      Deployment.AddDeploymentParameter(
-                   DeploymentPlan.adlsContainerNameParameter,
-                   DeploymentPlan.adlsContainerNameDefault,
-                   DeploymentPlan.adlsContainerNameDefault);
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsContainerNameParameter,
+                                        DeploymentPlan.adlsContainerNameDefault,
+                                        DeploymentPlan.adlsContainerNameDefault);
 
-      Deployment.AddDeploymentParameter(
-                   DeploymentPlan.adlsContainerPathParameter,
-                   DeploymentPlan.adlsContainerPathDefault,
-                    "/ProductSales/Customers/Northwind/");
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsContainerPathParameter,
+                                        DeploymentPlan.adlsContainerPathDefault,
+                                        "/ProductSales/Customers/Northwind/");
 
       return Deployment;
     }
@@ -100,26 +87,22 @@ class SampleCustomerData {
       Deployment.CustomerName = "Wingtip";
 
       // setup Web datasource path
-      Deployment.AddDeploymentParameter(
-                          DeploymentPlan.webDatasourcePathParameter,
-                          DeploymentPlan.webDatasourcePathDefault,
-                          DeploymentPlan.webDatasourceRootDefault + "Customers/Wingtip/");
+      Deployment.AddDeploymentParameter(DeploymentPlan.webDatasourcePathParameter,
+                                        DeploymentPlan.webDatasourcePathDefault,
+                                        DeploymentPlan.webDatasourceRootDefault + "Customers/Wingtip/");
 
       // setup ADLS datasource path
-      Deployment.AddDeploymentParameter(
-                    DeploymentPlan.adlsServerPathParameter,
-                    DeploymentPlan.adlsServerPathDefault,
-                    DeploymentPlan.adlsServerPathDefault);
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsServerPathParameter,
+                                        DeploymentPlan.adlsServerPathDefault,
+                                        DeploymentPlan.adlsServerPathDefault);
 
-      Deployment.AddDeploymentParameter(
-                   DeploymentPlan.adlsContainerNameParameter,
-                   DeploymentPlan.adlsContainerNameDefault,
-                   DeploymentPlan.adlsContainerNameDefault);
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsContainerNameParameter,
+                                        DeploymentPlan.adlsContainerNameDefault,
+                                        DeploymentPlan.adlsContainerNameDefault);
 
-      Deployment.AddDeploymentParameter(
-                   DeploymentPlan.adlsContainerPathParameter,
-                   DeploymentPlan.adlsContainerPathDefault,
-                    "/ProductSales/Customers/Wingtip/");
+      Deployment.AddDeploymentParameter(DeploymentPlan.adlsContainerPathParameter,
+                                        DeploymentPlan.adlsContainerPathDefault,
+                                        "/ProductSales/Customers/Wingtip/");
 
       return Deployment;
     }
