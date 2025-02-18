@@ -1712,7 +1712,7 @@ public class DeploymentManager {
 
     var devWorkspace = FabricRestApi.GetWorkspaceByName(devWorkspaceName);
 
-    if (true || devWorkspace == null) {
+    if (devWorkspace == null) {
       devWorkspace = DeployDataPipelineSolution(devWorkspaceName, StagingEnvironments.Dev);
     }
 
