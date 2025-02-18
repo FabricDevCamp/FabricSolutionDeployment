@@ -39,7 +39,7 @@ public class AppLogger {
     Console.WriteLine();
   }
 
-  private static int TableWidth = 116;
+  private static int TableWidth = 120;
 
   public static void LogTableHeader(string TableTitle) {
     Console.WriteLine();
