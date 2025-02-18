@@ -295,9 +295,9 @@ public class FabricRestApi {
 
       if (CreateConnectionRequest.PrivacyLevel == null) {
         CreateConnectionRequest.PrivacyLevel = PrivacyLevel.Organizational;
-      }
+      }    
 
-      var connection = fabricApiClient.Core.Connections.CreateConnection(CreateConnectionRequest).Value;
+        var connection = fabricApiClient.Core.Connections.CreateConnection(CreateConnectionRequest).Value;
 
       if ((AppSettings.AuthenticationMode == AppAuthenticationMode.ServicePrincipalAuth) &&
           (AppSettings.AdminUserId != "00000000-0000-0000-0000-000000000000")) {
@@ -732,6 +732,12 @@ public class FabricRestApi {
   }
 
   public static Connection CreateAzureStorageConnectionWithServicePrincipal(string Server, string Path, Workspace TargetWorkspace = null) {
+
+    if (AppSettings.ServicePrincipalObjectId == "00000000-0000-0000-0000-000000000000") {
+      // connection cannot be created if service principal is not configured in AppSettings.cs
+      AppLogger.LogSubstep("You must configure service principal to create a connection to lakehosue SQL endpoint");
+      return null;
+    }
 
     string displayName = string.Empty;
 

@@ -162,11 +162,7 @@ public class DeploymentManager {
 
     AppLogger.LogSubstep($"Semantic model created with Id of [{model.Id.Value.ToString()}]");
 
-    AppLogger.LogSubstep($"Creating connection to lakehouse SQL endpoint for semantic model");
-    var sqlConnection = FabricRestApi.CreateSqlConnectionWithServicePrincipal(sqlEndpoint.ConnectionString, sqlEndpoint.Id, workspace, lakehouse);
-
-    AppLogger.LogSubstep($"Binding SQL connection to semantic model");
-    PowerBiRestApi.BindSemanticModelToConnection(workspace.Id, model.Id.Value, sqlConnection.Id);
+    CreateAndBindSemanticModelConnecton(workspace, model.Id.Value, lakehouse);
 
     AppLogger.LogStep($"Creating [{semanticModelName}.Report]");
 
@@ -255,11 +251,7 @@ public class DeploymentManager {
     var model = FabricRestApi.CreateItem(workspace.Id, modelCreateRequest);
     AppLogger.LogSubstep($"Semantic model created with Id of [{model.Id.Value.ToString()}]");
 
-    AppLogger.LogSubstep($"Creating SQL connection for semantic model");
-    var sqlConnection = FabricRestApi.CreateSqlConnectionWithServicePrincipal(sqlEndpoint.ConnectionString, sqlEndpoint.Id, workspace, lakehouse);
-
-    AppLogger.LogSubstep($"Binding SQL connection to semantic model");
-    PowerBiRestApi.BindSemanticModelToConnection(workspace.Id, model.Id.Value, sqlConnection.Id);
+    CreateAndBindSemanticModelConnecton(workspace, model.Id.Value, lakehouse);
 
     AppLogger.LogStep($"Creating [{semanticModelName}.Report]");
     var createRequestReport =
@@ -354,11 +346,7 @@ public class DeploymentManager {
     var model = FabricRestApi.CreateItem(workspace.Id, modelCreateRequest);
     AppLogger.LogSubstep($"Semantic model created with Id of [{model.Id.Value.ToString()}]");
 
-    AppLogger.LogSubstep($"Creating SQL connection for semantic model");
-    var sqlConnection = FabricRestApi.CreateSqlConnectionWithServicePrincipal(sqlEndpoint.ConnectionString, sqlEndpoint.Id, workspace, lakehouse);
-
-    AppLogger.LogSubstep($"Binding SQL connection to semantic model");
-    PowerBiRestApi.BindSemanticModelToConnection(workspace.Id, model.Id.Value, sqlConnection.Id);
+    CreateAndBindSemanticModelConnecton(workspace, model.Id.Value, lakehouse);
 
     AppLogger.LogStep($"Creating [{semanticModelName}.Report]");
     var createRequestReport =
@@ -392,6 +380,10 @@ public class DeploymentManager {
           var sqlConnection = FabricRestApi.CreateSqlConnectionWithServicePrincipal(sqlEndPointServer, sqlEndPointDatabase, Workspace, Lakehouse);
           AppLogger.LogSubstep($"Binding connection to semantic model");
           PowerBiRestApi.BindSemanticModelToConnection(Workspace.Id, SemanticModelId, sqlConnection.Id);
+        }
+        else {
+          AppLogger.LogSubstep("Connection cannot be created since service principal is not configured in AppSettings.cs");
+          AppLogger.LogSubstep("Semantic model will use default authentication mode of SSO");
         }
 
       }
