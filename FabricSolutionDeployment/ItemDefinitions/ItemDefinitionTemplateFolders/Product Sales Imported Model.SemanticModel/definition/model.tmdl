@@ -3,13 +3,14 @@ model Model
 	defaultPowerBIDataSourceVersion: powerBI_V3
 	sourceQueryCulture: en-US
 	dataAccessOptions
+		fastCombine
 		legacyRedirects
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBIDesktopVersion = 2.122.746.0 (23.10)
+annotation PBIDesktopVersion = 2.139.2054.0 (24.12)+334ca1c95b576cc53924655643b0d36f21caac55
 
-annotation PBI_QueryOrder = ["Products","CSV_FILE_ROOT","Customers","Sales","Invoices"]
+annotation PBI_QueryOrder = ["CSV_FILE_ROOT","Products","Customers","Sales","Invoices"]
 
 annotation PBI_ProTooling = ["DevMode"]
 

@@ -10,25 +10,34 @@ table Sales
 		displayFolder: Sales Metrics
 
 	measure 'First Sale' = FIRSTDATE(Sales[Date])
-		formatString: m/d/yyyy
+		formatString: Short Date
 		displayFolder: Date Metrics
-
-		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
 	measure 'Last Sale' = LASTDATE(Sales[Date])
-		formatString: m/d/yyyy
+		formatString: Short Date
 		displayFolder: Date Metrics
-
-		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
 	measure 'Units Sold' = SUM(Sales[Quantity])
 		formatString: #,0
 		displayFolder: Sales Metrics
 
+	measure 'City Rank' = ```
+			
+			IF( 
+			  HASONEVALUE(Customers[City]), 
+			  RANKX( 
+			    ALLSELECTED(Customers[City]), 
+			    CALCULATE([Sales Revenue])
+			  )
+			)
+			```
+		formatString: 0
+		displayFolder: Rank Metrics
+
 	measure 'Customer Rank' = ```
 			
 			IF( 
-			  HASONEVALUE(Customers[CustomerId]), 
+			  HASONEVALUE(Customers[Customer]), 
 			  RANKX( 
 			    ALLSELECTED(Customers), 
 			    CALCULATE([Sales Revenue])
@@ -49,7 +58,7 @@ table Sales
 			)
 			```
 		formatString: 0
-		displayFolder: Sales Metrics
+		displayFolder: Rank Metrics
 
 	column Date
 		dataType: dateTime

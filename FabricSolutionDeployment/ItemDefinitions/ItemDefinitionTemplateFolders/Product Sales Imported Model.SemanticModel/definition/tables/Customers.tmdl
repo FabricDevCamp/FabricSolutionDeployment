@@ -3,9 +3,12 @@ table Customers
 
 	column CustomerId
 		dataType: string
+		isHidden
 		lineageTag: 8ef36727-cc0f-49d0-a603-b93728ffb4ef
 		summarizeBy: none
 		sourceColumn: CustomerId
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -14,6 +17,8 @@ table Customers
 		lineageTag: caef8177-cc5c-4616-b4b1-90b4dfe286c8
 		summarizeBy: none
 		sourceColumn: Customer
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -26,11 +31,11 @@ table Customers
 
 		annotation SummarizationSetBy = Automatic
 
-	column City
+	column 'City Name'
 		dataType: string
 		lineageTag: f5a7b58e-90bb-4863-bf2d-bc20c498bfe6
 		summarizeBy: none
-		sourceColumn: City
+		sourceColumn: City Name
 
 		annotation SummarizationSetBy = Automatic
 
@@ -49,10 +54,12 @@ table Customers
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'City Location' = [City] & ", " & [Country]
-		lineageTag: 5de77da1-c0a2-4d88-8edd-bc187f1ed893
+	column City
+		dataType: string
+		lineageTag: 2c6ec7c7-d0a2-486f-b1b5-e464da3a5a9c
 		dataCategory: Place
 		summarizeBy: none
+		sourceColumn: City
 
 		annotation SummarizationSetBy = Automatic
 
@@ -62,9 +69,13 @@ table Customers
 				let
 				    Source = Csv.Document(Web.Contents(CSV_FILE_ROOT, [RelativePath="Customers.csv"]),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Merged Columns" = Table.CombineColumns(PromotedHeaders,{"FirstName", "LastName"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Customer")
+				    #"Merged Columns" = Table.CombineColumns(PromotedHeaders,{"FirstName", "LastName"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Customer"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Merged Columns",{{"City", "City Name"}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Renamed Columns", "City Name", "City Name - Copy"),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "Country", "Country - Copy"),
+				    #"Merged Columns1" = Table.CombineColumns(#"Duplicated Column1",{"City Name - Copy", "Country - Copy"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"City")
 				in 
-				   #"Merged Columns"
+				   #"Merged Columns1"
 				```
 
 	annotation PBI_NavigationStepName = Navigation

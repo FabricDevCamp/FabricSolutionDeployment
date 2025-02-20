@@ -73,6 +73,21 @@ table Calendar
 
 		annotation SummarizationSetBy = Automatic
 
+	hierarchy 'Calendar Drilldown'
+		lineageTag: c365a744-b62d-4ba6-855b-e64c598e19bf
+
+		level Year
+			lineageTag: 6d0cdb90-a196-476e-9d15-d77be4f026db
+			column: Year
+
+		level Quarter
+			lineageTag: 2cc29616-b94e-4fb6-80da-9048feeae37b
+			column: Quarter
+
+		level Month
+			lineageTag: d80d8224-5902-4961-bc1c-75fa62795813
+			column: Month
+
 	partition Calendar = calculated
 		mode: import
 		source = ```

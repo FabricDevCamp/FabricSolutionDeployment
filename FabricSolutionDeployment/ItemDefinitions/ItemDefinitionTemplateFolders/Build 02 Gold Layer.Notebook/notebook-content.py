@@ -46,12 +46,14 @@ df_gold_products.show()
 from pyspark.sql.functions import concat_ws, floor, datediff, current_date, col
 
 # load DataFrame from silver layer table and perform transforms
+# load DataFrame from silver layer table and perform transforms
 df_gold_customers = (
     spark.read
          .format("delta")
          .load("Tables/silver_customers")
+         .withColumnRenamed("City", "CityName")
+         .withColumn("City", concat_ws(', ', col('CityName'), col('Country')) )
          .withColumn("Customer", concat_ws(' ', col('FirstName'), col('LastName')) )
-         .withColumn("Location", concat_ws(', ', col('City'), col('Country')) )
          .withColumn("Age",( floor( datediff( current_date(), col("DOB") )/365.25) ))   
          .drop('FirstName', 'LastName')
 )

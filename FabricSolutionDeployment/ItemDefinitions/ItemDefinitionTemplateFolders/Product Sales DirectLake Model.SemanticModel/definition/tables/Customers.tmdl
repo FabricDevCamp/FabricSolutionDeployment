@@ -25,8 +25,17 @@ table Customers
 	column City
 		dataType: string
 		sourceLineageTag: City
+		dataCategory: Place
 		summarizeBy: none
 		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'City Name'
+		dataType: string
+		sourceLineageTag: CityName
+		summarizeBy: none
+		sourceColumn: CityName
 
 		annotation SummarizationSetBy = Automatic
 
@@ -44,15 +53,6 @@ table Customers
 		sourceLineageTag: Customer
 		summarizeBy: none
 		sourceColumn: Customer
-
-		annotation SummarizationSetBy = Automatic
-
-	column Locaton
-		dataType: string
-		sourceLineageTag: Location
-		dataCategory: Place
-		summarizeBy: none
-		sourceColumn: Location
 
 		annotation SummarizationSetBy = Automatic
 

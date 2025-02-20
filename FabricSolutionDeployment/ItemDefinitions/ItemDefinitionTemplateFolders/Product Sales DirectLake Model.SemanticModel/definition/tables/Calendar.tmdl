@@ -3,7 +3,7 @@ table Calendar
 
 	column Date
 		dataType: dateTime
-		formatString: General Date
+		formatString: Short Date
 		sourceLineageTag: Date
 		summarizeBy: none
 		sourceColumn: Date
