@@ -205,9 +205,23 @@
                 "value": "Automatic"
               }
             ],
+            "dataCategory": "Place",
             "dataType": "string",
             "sourceColumn": "City",
             "sourceLineageTag": "City",
+            "summarizeBy": "none"
+          },
+          {
+          "name": "City Name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "sourceColumn": "CityName",
+            "sourceLineageTag": "CityName",
             "summarizeBy": "none"
           },
           {
@@ -236,21 +250,7 @@
             "sourceColumn": "Customer",
             "sourceLineageTag": "Customer",
             "summarizeBy": "none"
-          },
-          {
-            "name": "Locaton",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataCategory": "Place",
-            "dataType": "string",
-            "sourceColumn": "Location",
-            "sourceLineageTag": "Location",
-            "summarizeBy": "none"
-          },
+          },        
           {
             "name": "Age",
             "annotations": [
@@ -446,26 +446,14 @@
           {
             "name": "First Sale",
             "displayFolder": "Date Metrics",
-            "annotations": [
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isDateTimeCustom\":true}"
-              }
-            ],
             "expression": "FIRSTDATE(Sales[Date])",
-            "formatString": "m/d/yyyy"
+            "formatString": "Short Date"
           },
           {
             "name": "Last Sale",
             "displayFolder": "Date Metrics",
-            "annotations": [
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isDateTimeCustom\":true}"
-              }
-            ],
             "expression": "LASTDATE(Sales[Date])",
-            "formatString": "m/d/yyyy"
+            "formatString": "Short Date"
           },
           {
             "name": "Units Sold",
@@ -474,12 +462,27 @@
             "formatString": "#,0"
           },
           {
+            "name": "City Rank",
+            "displayFolder": "Rank Metrics",
+            "expression": [
+              "",
+              "IF( ",
+              "  HASONEVALUE(Customers[City]), ",
+              "  RANKX( ",
+              "    ALLSELECTED(Customers[City]), ",
+              "    CALCULATE([Sales Revenue])",
+              "  )",
+              ")"
+            ],
+            "formatString": "0"
+          },
+          {
             "name": "Customer Rank",
             "displayFolder": "Rank Metrics",
             "expression": [
               "",
               "IF( ",
-              "  HASONEVALUE(Customers[CustomerId]), ",
+              "  HASONEVALUE(Customers[Customer]), ",
               "  RANKX( ",
               "    ALLSELECTED(Customers), ",
               "    CALCULATE([Sales Revenue])",
@@ -490,7 +493,7 @@
           },
           {
             "name": "Product Rank",
-            "displayFolder": "Sales Metrics",
+            "displayFolder": "Rank Metrics",
             "expression": [
               "",
               "IF( ",
@@ -536,7 +539,7 @@
               }
             ],
             "dataType": "dateTime",
-            "formatString": "General Date",
+            "formatString": "Short Date",
             "sourceColumn": "Date",
             "sourceLineageTag": "Date",
             "summarizeBy": "none"

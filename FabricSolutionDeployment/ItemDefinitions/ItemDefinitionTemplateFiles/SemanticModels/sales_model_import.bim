@@ -8,15 +8,19 @@
       },
       {
         "name": "PBIDesktopVersion",
-        "value": "2.122.746.0 (23.10)"
+        "value": "2.139.2054.0 (24.12)+334ca1c95b576cc53924655643b0d36f21caac55"
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Products\",\"CSV_FILE_ROOT\",\"Customers\",\"Sales\",\"Invoices\"]"
+        "value": "[\"CSV_FILE_ROOT\",\"Products\",\"Customers\",\"Sales\",\"Invoices\"]"
       },
       {
         "name": "PBI_ProTooling",
         "value": "[\"DevMode\"]"
+      },
+      {
+        "name": "__LastRPTime",
+        "value": "133845294549247128"
       }
     ],
     "culture": "en-US",
@@ -25,7 +29,6 @@
         "name": "en-US",
         "linguisticMetadata": {
           "content": {
-            "DynamicImprovement": "HighConfidence",
             "Language": "en-US",
             "Version": "1.0.0"
           },
@@ -34,6 +37,7 @@
       }
     ],
     "dataAccessOptions": {
+      "fastCombine": true,
       "legacyRedirects": true
     },
     "defaultPowerBIDataSourceVersion": "powerBI_V3",
@@ -224,7 +228,13 @@
                 "value": "Automatic"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
             "dataType": "string",
+            "isHidden": true,
             "lineageTag": "8ef36727-cc0f-49d0-a603-b93728ffb4ef",
             "sourceColumn": "CustomerId",
             "summarizeBy": "none"
@@ -235,6 +245,11 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
               }
             ],
             "dataType": "string",
@@ -257,7 +272,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "City",
+            "name": "City Name",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -266,7 +281,7 @@
             ],
             "dataType": "string",
             "lineageTag": "f5a7b58e-90bb-4863-bf2d-bc20c498bfe6",
-            "sourceColumn": "City",
+            "sourceColumn": "City Name",
             "summarizeBy": "none"
           },
           {
@@ -299,20 +314,18 @@
             "type": "calculated"
           },
           {
-            "name": "City Location",
+            "name": "City",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
               }
             ],
-            "dataCategory": "Place",
             "dataType": "string",
-            "expression": "[City] & \", \" & [Country]",
-            "isDataTypeInferred": true,
-            "lineageTag": "5de77da1-c0a2-4d88-8edd-bc187f1ed893",
-            "summarizeBy": "none",
-            "type": "calculated"
+            "dataCategory": "Place",
+            "lineageTag": "2c6ec7c7-d0a2-486f-b1b5-e464da3a5a9c",
+            "sourceColumn": "City",
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "cc5aacb1-b6b4-4766-9850-699a4fca339d",
@@ -325,9 +338,13 @@
                 "let",
                 "    Source = Csv.Document(Web.Contents(CSV_FILE_ROOT, [RelativePath=\"Customers.csv\"]),[Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
                 "    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
-                "    #\"Merged Columns\" = Table.CombineColumns(PromotedHeaders,{\"FirstName\", \"LastName\"},Combiner.CombineTextByDelimiter(\" \", QuoteStyle.None),\"Customer\")",
+                "    #\"Merged Columns\" = Table.CombineColumns(PromotedHeaders,{\"FirstName\", \"LastName\"},Combiner.CombineTextByDelimiter(\" \", QuoteStyle.None),\"Customer\"),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Merged Columns\",{{\"City\", \"City Name\"}}),",
+                "    #\"Duplicated Column\" = Table.DuplicateColumn(#\"Renamed Columns\", \"City Name\", \"City Name - Copy\"),",
+                "    #\"Duplicated Column1\" = Table.DuplicateColumn(#\"Duplicated Column\", \"Country\", \"Country - Copy\"),",
+                "    #\"Merged Columns1\" = Table.CombineColumns(#\"Duplicated Column1\",{\"City Name - Copy\", \"Country - Copy\"},Combiner.CombineTextByDelimiter(\", \", QuoteStyle.None),\"City\")",
                 "in ",
-                "   #\"Merged Columns\""
+                "   #\"Merged Columns1\""
               ],
               "type": "m"
             }
@@ -479,12 +496,14 @@
         "measures": [
           {
             "name": "Sales Revenue",
+            "displayFolder": "Sales Metrics",
             "expression": "Sum(Sales[Sales])",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "lineageTag": "5ea1636a-303f-44db-b500-622529d0749d"
           },
           {
             "name": "Customer Count",
+            "displayFolder": "Sales Metrics",
             "expression": "DISTINCTCOUNT(Sales[CustomerId])",
             "formatString": "#,0",
             "lineageTag": "94141404-6d60-41fe-a767-7af9150d25b2"
@@ -497,6 +516,7 @@
                 "value": "{\"isDateTimeCustom\":true}"
               }
             ],
+            "displayFolder": "Date Metrics",
             "expression": "FIRSTDATE(Sales[Date])",
             "formatString": "m/d/yyyy",
             "lineageTag": "57b47456-57b9-4248-9600-2497e60f375c"
@@ -509,22 +529,25 @@
                 "value": "{\"isDateTimeCustom\":true}"
               }
             ],
+            "displayFolder": "Date Metrics",
             "expression": "LASTDATE(Sales[Date])",
             "formatString": "m/d/yyyy",
             "lineageTag": "d1101050-6e52-453f-87df-58bdcb744a13"
           },
           {
             "name": "Units Sold",
+            "displayFolder": "Sales Metrics",
             "expression": "SUM(Sales[Quantity])",
             "formatString": "#,0",
             "lineageTag": "5e914420-dc4c-4a47-b376-6fd6ade30050"
           },
           {
             "name": "Customer Rank",
+            "displayFolder": "Rank Metrics",
             "expression": [
               "",
               "IF( ",
-              "  HASONEVALUE(Customers[CustomerId]), ",
+              "  HASONEVALUE(Customers[Customer]), ",
               "  RANKX( ",
               "    ALLSELECTED(Customers), ",
               "    CALCULATE([Sales Revenue])",
@@ -536,6 +559,7 @@
           },
           {
             "name": "Product Rank",
+            "displayFolder": "Rank Metrics",
             "expression": [
               "",
               "IF( ",
@@ -548,6 +572,22 @@
             ],
             "formatString": "0",
             "lineageTag": "cc3f8a68-da6d-4f12-9b75-9d12af58fedf"
+          },
+          {
+            "name": "City Rank",
+            "displayFolder": "Rank Metrics",
+            "expression": [
+              "",
+              "IF( ",
+              "  HASONEVALUE(Customers[City]), ",
+              "  RANKX( ",
+              "    ALLSELECTED(Customers[City]), ",
+              "    CALCULATE([Sales Revenue])",
+              "  )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "ec44490e-46ee-472a-9223-b165f7702334"
           }
         ],
         "partitions": [
@@ -717,6 +757,32 @@
             "sourceColumn": "[DayOfWeekSort]",
             "summarizeBy": "none",
             "type": "calculatedTableColumn"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Calendar Drilldown",
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "6d0cdb90-a196-476e-9d15-d77be4f026db",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "2cc29616-b94e-4fb6-80da-9048feeae37b",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "d80d8224-5902-4961-bc1c-75fa62795813",
+                "ordinal": 2
+              }
+            ],
+            "lineageTag": "c365a744-b62d-4ba6-855b-e64c598e19bf"
           }
         ],
         "lineageTag": "d6febbe9-b14f-46b9-b0ec-00cd13e954e5",
