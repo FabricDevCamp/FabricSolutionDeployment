@@ -136,7 +136,7 @@ public class ItemDefinitionFactory {
 
   public static UpdateItemDefinitionRequest GetUpdateRequestFromReportJson(Guid SemanticModelId, string DisplayName, string ReportJson) {
 
-    string part1FileContent = GetTemplateFile(@"Reports\definition.pbir").Replace("{ SEMANTIC_MODEL_ID}", SemanticModelId.ToString());
+    string part1FileContent = GetTemplateFile(@"Reports\definition.pbir").Replace("{SEMANTIC_MODEL_ID}", SemanticModelId.ToString());
     string part2FileContent = GetTemplateFile($@"Reports\{ReportJson}");
     string part3FileContent = GetTemplateFile(@"Reports\StaticResources\SharedResources\BaseThemes\CY24SU02.json");
     string part4FileContent = GetTemplateFile(@"Reports\StaticResources\SharedResources\BuiltInThemes\NewExecutive.json");
