@@ -1,5 +1,4 @@
 ﻿
-
 public enum DeploymentPlanType {
   StagedDeployment,
   CustomerTenantDeployment
