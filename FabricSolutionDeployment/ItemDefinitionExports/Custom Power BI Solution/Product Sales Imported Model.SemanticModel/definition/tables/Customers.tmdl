@@ -1,0 +1,84 @@
+table Customers
+	lineageTag: cc5aacb1-b6b4-4766-9850-699a4fca339d
+
+	column CustomerId
+		dataType: string
+		isHidden
+		lineageTag: 8ef36727-cc0f-49d0-a603-b93728ffb4ef
+		summarizeBy: none
+		sourceColumn: CustomerId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer
+		dataType: string
+		lineageTag: caef8177-cc5c-4616-b4b1-90b4dfe286c8
+		summarizeBy: none
+		sourceColumn: Customer
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 9971672c-9036-49f6-bff2-3b1c7013d2d8
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'City Name'
+		dataType: string
+		lineageTag: f5a7b58e-90bb-4863-bf2d-bc20c498bfe6
+		summarizeBy: none
+		sourceColumn: City Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOB
+		dataType: string
+		lineageTag: 1c190208-2d25-42aa-b79f-4366383697c7
+		summarizeBy: none
+		sourceColumn: DOB
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age = Floor( (TODAY()-Customers[DOB])/365, 1)
+		formatString: 0
+		lineageTag: 710ea202-a41a-4dd3-9cb0-316d0a9ee7a8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 2c6ec7c7-d0a2-486f-b1b5-e464da3a5a9c
+		dataCategory: Place
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customers = m
+		mode: import
+		source = ```
+				let
+				    Source = Csv.Document(Web.Contents(CSV_FILE_ROOT, [RelativePath="Customers.csv"]),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Merged Columns" = Table.CombineColumns(PromotedHeaders,{"FirstName", "LastName"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Customer"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Merged Columns",{{"City", "City Name"}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Renamed Columns", "City Name", "City Name - Copy"),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "Country", "Country - Copy"),
+				    #"Merged Columns1" = Table.CombineColumns(#"Duplicated Column1",{"City Name - Copy", "Country - Copy"},Combiner.CombineTextByDelimiter(", ", QuoteStyle.None),"City")
+				in 
+				   #"Merged Columns1"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

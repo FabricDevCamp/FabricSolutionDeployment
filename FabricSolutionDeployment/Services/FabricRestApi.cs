@@ -126,6 +126,11 @@ public class FabricRestApi {
     return fabricApiClient.Core.Workspaces.UpdateWorkspace(WorkspaceId, updateRequest).Value;
   }
 
+  public static Workspace UpdateWorkspaceDescription(string TargetWorkspace, string Description) {
+    var workspace = GetWorkspaceByName(TargetWorkspace);
+    return UpdateWorkspaceDescription(workspace.Id, Description);
+  }
+
   public static Workspace UpdateWorkspaceDescription(Guid WorkspaceId, string Description) {
 
     var updateRequest = new UpdateWorkspaceRequest {
@@ -375,6 +380,10 @@ public class FabricRestApi {
 
   public static List<Item> GetWorkspaceItems(Guid WorkspaceId, string ItemType = null) {
     return fabricApiClient.Core.Items.ListItems(WorkspaceId, ItemType).ToList();
+  }
+
+  public static List<Item> GetWorkspaceItems(Guid WorkspaceId, ItemType TargetItemType) {
+    return fabricApiClient.Core.Items.ListItems(WorkspaceId, TargetItemType.ToString()).ToList();
   }
 
   public static ItemDefinition GetItemDefinition(Guid WorkspaceId, Guid ItemId, string Format = null) {

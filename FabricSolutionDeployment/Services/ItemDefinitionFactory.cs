@@ -322,20 +322,27 @@ public class ItemDefinitionFactory {
       ItemType.DataPipeline, ItemType.Environment
     };
 
+    List<string> lakehouseNames = items.Where(item => item.Type == ItemType.Lakehouse)
+                                       .Select(item => item.DisplayName).ToList();
+
     foreach (var item in items) {
       if (itemTypesForExport.Contains(item.Type)) {
 
-        // fetch item definition from workspace
-        var definition = FabricRestApi.GetItemDefinition(workspace.Id, item.Id.Value);
+        // filter out lakehouse default semantic models
+        if(!lakehouseNames.Contains(item.DisplayName) || item.Type != ItemType.SemanticModel) {
 
+          // fetch item definition from workspace
+          var definition = FabricRestApi.GetItemDefinition(workspace.Id, item.Id.Value);
 
-        // write item definition files to local folder
-        string targetFolder = item.DisplayName + "." + item.Type;
+          // write item definition files to local folder
+          string targetFolder = item.DisplayName + "." + item.Type;
 
-        AppLogger.LogSubstep($"Exporting item definition for [{targetFolder}]");
+          AppLogger.LogSubstep($"Exporting item definition for [{targetFolder}]");
 
-        foreach (var part in definition.Parts) {
-          WriteFileToExportsFolder(WorkspaceName, targetFolder, part.Path, part.Payload);
+          foreach (var part in definition.Parts) {
+            WriteFileToExportsFolder(WorkspaceName, targetFolder, part.Path, part.Payload);
+          }
+
         }
 
       }
@@ -377,7 +384,7 @@ public class ItemDefinitionFactory {
 
   public static void ExportWorkspaceToPackagedSolutionFolder(string WorkspaceName, string SolutionFolderName) {
 
-    AppLogger.LogSolution($"Exporting workspace [{WorkspaceName}] to solution package folder [{SolutionFolderName}]");
+    AppLogger.LogSolution($"Exporting workspace [{WorkspaceName}] to packaged solution folder [{SolutionFolderName}]");
 
     DeleteSolutionFolderContents(SolutionFolderName);
 
@@ -388,14 +395,17 @@ public class ItemDefinitionFactory {
 
     // list of items types that should be exported
     List<ItemType> itemTypesForExport = new List<ItemType>() {
-      ItemType.Notebook, ItemType.SemanticModel, ItemType.Report, ItemType.DataPipeline
+      ItemType.Notebook, ItemType.DataPipeline, ItemType.SemanticModel, ItemType.Report
     };
 
     AppLogger.LogStep("Exporting item definitions");
 
     foreach (var item in items) {
+
+      // only include supported item types
       if (itemTypesForExport.Contains(item.Type)) {
-        // don't include lakehouse default semntic models
+
+        // filter out lakehouse default semntic models
         if ((item.Type != ItemType.SemanticModel) ||
             (!lakehouseNames.Contains(item.DisplayName))) {
 
@@ -412,7 +422,6 @@ public class ItemDefinitionFactory {
           }
 
         }
-
 
       }
 
@@ -450,7 +459,7 @@ public class ItemDefinitionFactory {
 
     WriteFileToSolutionFolder(SolutionFolderName, "", "deploy.config.json", config, false);
 
-    AppLogger.LogStep("Workspace item definition exporting process completed");
+    AppLogger.LogStep("Packaged solution folder export process complete");
 
   }
 

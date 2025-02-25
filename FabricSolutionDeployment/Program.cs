@@ -1,10 +1,10 @@
 ﻿
 class Program {
 
-  const string FabricPowerBiSolution = "Fabric Power BI Solution";
-  const string FabricNotebookSolution = "Fabric Notebook Solution";
-  const string FabricShortcutSolution = "Fabric Shortcut Solution";
-  const string FabricDataPipelineSolution = "Fabric Data Pipeline Solution";
+  const string CustomPowerBiSolution = "Custom Power BI Solution";
+  const string CustomNotebookSolution = "Custom Notebook Solution";
+  const string CustomShortcutSolution = "Custom Shortcut Solution";
+  const string CustomDataPipelineSolution = "Custom Data Pipeline Solution";
 
   public static void Main() {
 
@@ -17,9 +17,9 @@ class Program {
     // Lab05_UpdateSolutionFromSourceWorkspace();
     // Lab06_SetupStagedDeployment();
     // Lab07_PushSolutionUpdatesToProduction();
-    // Lab08_ConnectDevWorkspaceToGitRepository();
-    // Lab09_ExportWorkspaceToPackagedSolutionFolder();
-    // Lab10_DeployAndUpdateFromSolutionPackageFolder();
+    // Lab08_ExportWorkspaceToPackagedSolutionFolder();
+    // Lab09_DeployAndUpdateFromSolutionPackageFolder();
+    // Lab10_ConnectDevWorkspaceToGitRepository();
   }
 
   public static void Setup_ViewWorkspacesAndCapacities() {
@@ -28,128 +28,134 @@ class Program {
   }
 
   public static void Lab01_DeploySolutionsUsingFromItemDefinitions() {
-    DeploymentManager.DeployPowerBiSolution(FabricPowerBiSolution);
-    //DeploymentManager.DeployNotebookSolution(FabricNotebookSolution);
-    //DeploymentManager.DeployShortcutSolution(FabricShortcutSolution);
-    //DeploymentManager.DeployDataPipelineSolution(FabricDataPipelineSolution);
+    DeploymentManager.DeployPowerBiSolution(CustomPowerBiSolution);
+    DeploymentManager.DeployNotebookSolution(CustomNotebookSolution);
+    DeploymentManager.DeployShortcutSolution(CustomShortcutSolution);
+    DeploymentManager.DeployDataPipelineSolution(CustomDataPipelineSolution);
   }
 
   public static void Lab02_ExportItemDefinitionsFromWorkspace() {
-    DeploymentManager.ExportItemDefinitionsFromWorkspace(FabricPowerBiSolution);
-    DeploymentManager.ExportItemDefinitionsFromWorkspace(FabricNotebookSolution);
-    DeploymentManager.ExportItemDefinitionsFromWorkspace(FabricShortcutSolution);
-    DeploymentManager.ExportItemDefinitionsFromWorkspace(FabricDataPipelineSolution);
+    DeploymentManager.ExportItemDefinitionsFromWorkspace(CustomPowerBiSolution);
+    DeploymentManager.ExportItemDefinitionsFromWorkspace(CustomNotebookSolution);
+    DeploymentManager.ExportItemDefinitionsFromWorkspace(CustomShortcutSolution);
+    DeploymentManager.ExportItemDefinitionsFromWorkspace(CustomDataPipelineSolution);
   }
 
   public static void Lab03_DeployWithParameterizeDatasourcePaths() {
-    DeploymentManager.DeployPowerBiSolution(SampleCustomerData.Contoso);
+    DeploymentManager.DeployPowerBiSolution(SampleCustomerData.AdventureWorks);
     DeploymentManager.DeployNotebookSolution(SampleCustomerData.Contoso);
-    DeploymentManager.DeployShortcutSolution(SampleCustomerData.Contoso);
-    DeploymentManager.DeployDataPipelineSolution(SampleCustomerData.Contoso);
+    DeploymentManager.DeployShortcutSolution(SampleCustomerData.Fabricam);
+    DeploymentManager.DeployDataPipelineSolution(SampleCustomerData.Northwind);
   }
 
-  const string TenantPrefix = "Tenant - ";
-  const string ContosoPowerBiSolution = TenantPrefix + "Contoso Power BI Solution";
-  const string ContosoNotebookSolution = TenantPrefix + "Contoso Notebook Solution";
-  const string ContosoShortcutSolution = TenantPrefix + "Contoso Shortcut Solution";
-  const string ContosoDataPipelineSolution = TenantPrefix + "Contoso Data Pipeline Solution";
-
-
   public static void Lab04_DeploySolutionFromSourceWorkspace() {
-    DeploymentManager.DeploySolutionFromSourceWorkspace(FabricPowerBiSolution, ContosoPowerBiSolution, SampleCustomerData.Contoso);
-    DeploymentManager.DeploySolutionFromSourceWorkspace(FabricNotebookSolution, ContosoNotebookSolution, SampleCustomerData.Contoso);
-    DeploymentManager.DeploySolutionFromSourceWorkspace(FabricShortcutSolution, ContosoShortcutSolution, SampleCustomerData.Contoso);
-    DeploymentManager.DeploySolutionFromSourceWorkspace(FabricDataPipelineSolution, ContosoDataPipelineSolution, SampleCustomerData.Contoso);
+    DeploymentManager.DeploySolutionFromSourceWorkspace(CustomPowerBiSolution, SampleCustomerData.AdventureWorks);
+    DeploymentManager.DeploySolutionFromSourceWorkspace(CustomNotebookSolution, SampleCustomerData.Contoso);
+    DeploymentManager.DeploySolutionFromSourceWorkspace(CustomShortcutSolution, SampleCustomerData.Fabricam);
+    DeploymentManager.DeploySolutionFromSourceWorkspace(CustomDataPipelineSolution, SampleCustomerData.Northwind);
   }
 
   public static void Lab05_UpdateSolutionFromSourceWorkspace() {
-    DeploymentManager.UpdateSolutionFromSourceWorkspace(FabricPowerBiSolution, ContosoPowerBiSolution, SampleCustomerData.Contoso);
-    DeploymentManager.UpdateSolutionFromSourceWorkspace(FabricNotebookSolution, ContosoNotebookSolution, SampleCustomerData.Contoso);
-    DeploymentManager.UpdateSolutionFromSourceWorkspace(FabricShortcutSolution, ContosoShortcutSolution, SampleCustomerData.Contoso);
-    DeploymentManager.UpdateSolutionFromSourceWorkspace(FabricDataPipelineSolution, ContosoDataPipelineSolution, SampleCustomerData.Contoso);
+
+    string reportFolder1 = "Product Sales Time Intelligence.Report";
+    DeploymentManager.AddSalesReportToCustomerWorkspace(CustomPowerBiSolution, reportFolder1);
+
+    string reportFolder2 = "Product Sales Top 10 Cities.Report";
+    DeploymentManager.AddSalesReportToCustomerWorkspace(CustomPowerBiSolution, reportFolder2);
+
+    DeploymentManager.UpdateSolutionFromSourceWorkspace(CustomPowerBiSolution, SampleCustomerData.AdventureWorks);
+
   }
 
-  const string StagedDeploymentName = "Product Sales";
-  const string StagedDeploymentDevStage = StagedDeploymentName + " Dev";
-  const string StagedDeploymentTestStage = StagedDeploymentName + " Test";
-  const string StagedDeploymentProdStage = StagedDeploymentName + " Prod";
-  const string ContosoWorkspaceCreatedFromProd = "Contoso Product Sales";
+  // Staged deployment for Enterprise scenario with one target workspace
+  const string StagedDeployment1 = "Product Sales Project";
+  const string StagedDeployment1Dev = StagedDeployment1 + " Dev";
+  const string StagedDeployment1Prod = StagedDeployment1 + " Prod";
+
+  // Staged deployment for multi-tenant scenario with many target workspaces
+  const string StagedDeployment2 = "Product Sales Premium";
+  const string StagedDeployment2Dev = StagedDeployment2 + " Dev";
+  const string StagedDeployment2Prod = StagedDeployment2 + " Prod";
+
 
   public static void Lab06_SetupStagedDeployment() {
 
-    // set up tjree stagesto create CI/CD workflow from Dev > Test > Prod
-    DeploymentManager.SetupDeploymentStages(StagedDeploymentName);
+    // set up staged deployment from Dev > Test > Prod
+    DeploymentManager.SetupStagedDeploymentWithNotebookSolution(StagedDeployment1);
 
-    // create test customer tenant workspace from [Product Sales Prod] workspace
-    DeploymentManager.DeploySolutionFromSourceWorkspace(StagedDeploymentProdStage, ContosoWorkspaceCreatedFromProd, SampleCustomerData.Contoso);
+    // set up staged deployment from Dev > Test > Prod
+    DeploymentManager.SetupStagedDeploymentWithDataPipelineSolution(StagedDeployment2);
+
+    // create tenant workspaces for customers
+    DeploymentManager.DeploySolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.AdventureWorks);
+  
+    //DeploymentManager.DeploySolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Contoso);
+    //DeploymentManager.DeploySolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Fabricam);
+    //DeploymentManager.DeploySolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Northwind);
+    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.SeamarkFarms);
+    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Wingtip);
+
 
   }
 
   public static void Lab07_PushSolutionUpdatesToProduction() {
 
-    // push updates from [Product Sales Dev] > [Product Sales Test]
-    DeploymentManager.UpdateDeloymentStage(StagedDeploymentName, StagedDeploymentType.UpdateFromDevToTest);
+    // push updates from [Product Sales Project Dev] > [Product Sales Project Test]
+    DeploymentManager.UpdateDeloymentStage(StagedDeployment1, StagedDeploymentType.UpdateFromDevToTest);
 
-    // push updates from [Product Sales Test] > [Product Sales Prod]
-    DeploymentManager.UpdateDeloymentStage(StagedDeploymentName, StagedDeploymentType.UpdateFromTestToProd);
+    // push updates from [Product Sales Project Test] > [Product Sales Project Prod]
+    DeploymentManager.UpdateDeloymentStage(StagedDeployment1, StagedDeploymentType.UpdateFromTestToProd);
+
+    // push updates from [Product Sales Premium Dev] > [Product Sales Premium Test]
+    DeploymentManager.UpdateDeloymentStage(StagedDeployment2, StagedDeploymentType.UpdateFromDevToTest);
+
+    // push updates from [Product Sales Premium Test] > [Product Sales Premium Prod]
+    DeploymentManager.UpdateDeloymentStage(StagedDeployment2, StagedDeploymentType.UpdateFromTestToProd);
+
+    // push updates from [Product Sales Premium Prod] > [Customer Tenants]
+    DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.AdventureWorks);
+
+    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Contoso);
+    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Fabricam);
+    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Northwind);
+    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.SeamarkFarms);
+    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Wingtip);
+
+  }
+
+  public const string ProductSalesSolutionV1 = "Product Sales Premium v1.0";
+
+  public static void Lab08_ExportWorkspaceToPackagedSolutionFolder() {
+
+    // export [Product Sales Premium Prod] workspace to packaged solution folder [Product Sales Premium v1.0]
+    DeploymentManager.ExportWorkspaceToPackagedSolutionFolder(StagedDeployment2Prod, ProductSalesSolutionV1);
 
   }
 
-  public static void Lab08_ConnectDevWorkspaceToGitRepository() {
 
-    // Use Fabric GIT integration to connect [Product Sales Dev] to Azure Dev Ops repository
-    DeploymentManager.ConnectWorkspaceToGit(StagedDeploymentDevStage);
+  public static void Lab09_DeployAndUpdateFromSolutionPackageFolder() {
+
+    // deploy from packaged solution folder [Product Sales v1.0] to [Customer Tenants]
+    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.AdventureWorks);
+
+    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Contoso);
+    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Fabricam);
+    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Northwind);
+    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.SeamarkFarms);
+    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Wingtip);                                                          SampleCustomerData.Contoso);
+
+  }
+
+  public static void Lab10_ConnectDevWorkspaceToGitRepository() {
+
+    // Use Fabric GIT integration to connect [Product Sales Project Dev] to Azure Dev Ops repository
+    DeploymentManager.ConnectWorkspaceToGit(StagedDeployment1Dev);
+
+    // Use Fabric GIT integration to connect [Product Sales Premium Dev] to Azure Dev Ops repository
+    DeploymentManager.ConnectWorkspaceToGit(StagedDeployment2Dev);
 
   }
 
-  public const string ProductSalesSolutionV1 = "Product Sales v1.0";
 
-  public static void Lab09_ExportWorkspaceToPackagedSolutionFolder() {
-
-    // export [Product Sales Prod] workspace to packaged solution folder [Product Sales v1.0]
-    DeploymentManager.ExportWorkspaceToPackagedSolutionFolder(StagedDeploymentProdStage, ProductSalesSolutionV1);
-  }
-
-  class SolutionGallery {
-    // define gallery of packaged solution folder [ItemDefinitions\PackagedSolutionFolders]
-    public const string FabricPowerBiPackagedSolution_v1 = "Fabric Power BI Solution v1.0";
-    public const string FabricNotebookPackagedSolution_v1 = "Fabric Notebook Solution v1.0";
-    public const string FabricShortcutPackagedSolution_v1 = "Fabric Shortcut Solution v1.0";
-    public const string FabricDataPipelinePackagedSolution_v1 = "Fabric Data Pipeline Solution v1.0";
-  }
-
-  public static void Lab10_DeployAndUpdateFromSolutionPackageFolder() {
-
-    string ContosoProductSales = "Tenant - Contoso Product Sales";
-
-    // deploy from [Product Sales v1.0] packaged solution folder to [Tenant - Contoso Product Sales]
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1,
-                                                               ContosoProductSales,
-                                                               SampleCustomerData.Contoso);
-
-    // update from [Product Sales v1.0] packaged solution folder to [Tenant - Contoso Product Sales]
-    DeploymentManager.UpdateSolutionFromPackagedSolutionFolder(ProductSalesSolutionV1,
-                                                               ContosoProductSales,
-                                                               SampleCustomerData.Contoso);
-
-    // deploy from packaged solution folders in solutions gallery
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(SolutionGallery.FabricPowerBiPackagedSolution_v1,
-                                                              ContosoPowerBiSolution,
-                                                              SampleCustomerData.Contoso);
-
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(SolutionGallery.FabricNotebookPackagedSolution_v1,
-                                                              ContosoNotebookSolution,
-                                                              SampleCustomerData.Contoso);
-
-
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(SolutionGallery.FabricShortcutPackagedSolution_v1,
-                                                               ContosoShortcutSolution,
-                                                               SampleCustomerData.Contoso);
-
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(SolutionGallery.FabricDataPipelinePackagedSolution_v1,
-                                                               ContosoDataPipelineSolution,
-                                                               SampleCustomerData.Contoso);
-
-  }
 
 }

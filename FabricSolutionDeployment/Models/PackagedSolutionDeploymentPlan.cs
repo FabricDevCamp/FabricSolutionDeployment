@@ -6,9 +6,9 @@ public class PackagedSolutionDeploymentPlan : DeploymentPlan {
   public List<DeploymentItem> DeploymentItems { get; set; }
   public DeploymentConfiguration DeployConfig { get; set; }
 
-  public PackagedSolutionDeploymentPlan(DeploymentPlan BasePlan) {
+  public PackagedSolutionDeploymentPlan(DeploymentPlan BasePlan) : base(BasePlan.DeploymentType) {
     Parameters = BasePlan.Parameters;
-    CustomerName = BasePlan.CustomerName;
+    Name = BasePlan.Name;
     DeploymentItems = new List<DeploymentItem>();
   }
 

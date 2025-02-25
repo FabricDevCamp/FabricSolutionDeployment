@@ -1,0 +1,144 @@
+table Sales
+	sourceLineageTag: [dbo].[sales]
+
+	measure 'Sales Revenue' = Sum(Sales[Sales])
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Sales Metrics
+
+	measure 'Customer Count' = DISTINCTCOUNT(Sales[CustomerId])
+		formatString: #,0
+		displayFolder: Sales Metrics
+
+	measure 'First Sale' = FIRSTDATE(Sales[Date])
+		formatString: Short Date
+		displayFolder: Date Metrics
+
+	measure 'Last Sale' = LASTDATE(Sales[Date])
+		formatString: Short Date
+		displayFolder: Date Metrics
+
+	measure 'Units Sold' = SUM(Sales[Quantity])
+		formatString: #,0
+		displayFolder: Sales Metrics
+
+	measure 'City Rank' = ```
+			
+			IF( 
+			  HASONEVALUE(Customers[City]), 
+			  RANKX( 
+			    ALLSELECTED(Customers[City]), 
+			    CALCULATE([Sales Revenue])
+			  )
+			)
+			```
+		formatString: 0
+		displayFolder: Rank Metrics
+
+	measure 'Customer Rank' = ```
+			
+			IF( 
+			  HASONEVALUE(Customers[Customer]), 
+			  RANKX( 
+			    ALLSELECTED(Customers), 
+			    CALCULATE([Sales Revenue])
+			  )
+			)
+			```
+		formatString: 0
+		displayFolder: Rank Metrics
+
+	measure 'Product Rank' = ```
+			
+			IF( 
+			  HASONEVALUE(Products[Product]), 
+			  RANKX( 
+			    ALLSELECTED(Products), 
+			    CALCULATE([Sales Revenue])
+			  )
+			)
+			```
+		formatString: 0
+		displayFolder: Rank Metrics
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerId
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceLineageTag: CustomerId
+		summarizeBy: none
+		sourceColumn: CustomerId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductId
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceLineageTag: ProductId
+		summarizeBy: none
+		sourceColumn: ProductId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: double
+		isHidden
+		sourceLineageTag: Sales
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quantity
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sales = entity
+		mode: directLake
+		source
+			entityName: sales
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation IsTableInBiModel = True
+
