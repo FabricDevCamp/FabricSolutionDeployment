@@ -77,7 +77,6 @@ class Program {
   const string StagedDeployment2Dev = StagedDeployment2 + " Dev";
   const string StagedDeployment2Prod = StagedDeployment2 + " Prod";
 
-
   public static void Lab06_SetupStagedDeployment() {
 
     // set up staged deployment from Dev > Test > Prod
@@ -94,8 +93,6 @@ class Program {
     //DeploymentManager.DeploySolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Northwind);
     //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.SeamarkFarms);
     //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Wingtip);
-
-
   }
 
   public static void Lab07_PushSolutionUpdatesToProduction() {
@@ -115,12 +112,11 @@ class Program {
     // push updates from [Product Sales Premium Prod] > [Customer Tenants]
     DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.AdventureWorks);
 
-    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Contoso);
-    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Fabricam);
-    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Northwind);
-    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.SeamarkFarms);
-    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Wingtip);
-
+    // DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Contoso);
+    // DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Fabricam);
+    // DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Northwind);
+    // DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.SeamarkFarms);
+    // DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Wingtip);
   }
 
   public const string ProductSalesSolutionV1 = "Product Sales Premium v1.0";
@@ -132,18 +128,16 @@ class Program {
 
   }
 
-
   public static void Lab09_DeployAndUpdateFromSolutionPackageFolder() {
 
     // deploy from packaged solution folder [Product Sales v1.0] to [Customer Tenants]
     DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.AdventureWorks);
 
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Contoso);
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Fabricam);
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Northwind);
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.SeamarkFarms);
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Wingtip);                                                          SampleCustomerData.Contoso);
-
+    // DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Contoso);
+    // DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Fabricam);
+    // DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Northwind);
+    // DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.SeamarkFarms);
+    // DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Wingtip);
   }
 
   public static void Lab10_ConnectDevWorkspaceToGitRepository() {
@@ -155,7 +149,5 @@ class Program {
     DeploymentManager.ConnectWorkspaceToGit(StagedDeployment2Dev);
 
   }
-
-
 
 }
