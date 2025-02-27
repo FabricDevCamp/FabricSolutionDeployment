@@ -5,7 +5,7 @@
       "connectionString": "Data Source=\"powerbi://api.powerbi.com/v1.0/myorg/Custom Data Pipeline Solution\";Initial Catalog=\"Product Sales DirectLake Model\";Integrated Security=ClaimsToken",
       "pbiServiceModelId": null,
       "pbiModelVirtualServerName": "sobe_wowvirtualserver",
-      "pbiModelDatabaseName": "a7f9af18-bac4-4367-806b-35e6ef87bd5d",
+      "pbiModelDatabaseName": "e679b68c-5055-4297-9f20-6a08c8188792",
       "name": "EntityDataSource",
       "connectionType": "pbiServiceXmlaStyleLive"
     }
