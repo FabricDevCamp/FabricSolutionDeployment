@@ -1,0 +1,81 @@
+{
+  "sourceWorkspaceId": "ab43dc6a-cdb4-4610-8698-4572c44a6856",
+  "sourceWorkspaceDescription": "Product Sales 4 v1.0",
+  "sourceItems": [
+    {
+      "id": "7aa406b0-d5b5-4bb9-84e8-36fbed6587a3",
+      "displayName": "Product Sales Summary",
+      "type": "Report"
+    },
+    {
+      "id": "184a796f-37b2-44ab-9c59-add5e1926fa8",
+      "displayName": "Product Sales Time Intelligence",
+      "type": "Report"
+    },
+    {
+      "id": "521b00f2-01b2-469f-b249-eae34dbb1031",
+      "displayName": "Product Sales Top 10 Cities",
+      "type": "Report"
+    },
+    {
+      "id": "daf0403b-66fa-445f-bd6e-9b025eb53c7e",
+      "displayName": "sales",
+      "type": "SemanticModel"
+    },
+    {
+      "id": "80475df9-23c4-4c3b-aa11-675bbabc64a2",
+      "displayName": "Product Sales DirectLake Model",
+      "type": "SemanticModel"
+    },
+    {
+      "id": "2a7cb027-66bf-4cb7-b012-2278b1798c09",
+      "displayName": "sales",
+      "type": "SQLEndpoint"
+    },
+    {
+      "id": "da42c17c-42e0-408a-befc-5009f4c5d677",
+      "displayName": "sales",
+      "type": "Lakehouse"
+    },
+    {
+      "id": "b2a6df94-1c49-4a79-8005-4404ef1501bc",
+      "displayName": "Build 01 Silver Layer",
+      "type": "Notebook"
+    },
+    {
+      "id": "1c20edf8-c91b-47b7-a5da-eb8359d5c438",
+      "displayName": "Build 02 Gold Layer",
+      "type": "Notebook"
+    },
+    {
+      "id": "c91a6863-7132-4e45-a261-3b338cbff52d",
+      "displayName": "Create Lakehouse Tables",
+      "type": "DataPipeline"
+    }
+  ],
+  "sourceLakehouses": [
+    {
+      "id": "da42c17c-42e0-408a-befc-5009f4c5d677",
+      "displayName": "sales",
+      "server": "4zzdkw4hunvuhp4ttpl5hvkkzm-nloehk5uzuienbuyivzmistiky.datawarehouse.fabric.microsoft.com",
+      "database": "2a7cb027-66bf-4cb7-b012-2278b1798c09",
+      "shortcuts": null
+    }
+  ],
+  "sourceConnections": [
+    {
+      "id": "0b789be1-32cf-4839-a5e9-2d52272947dc",
+      "displayName": "ADLS",
+      "type": "AzureDataLakeStorage",
+      "path": "https://fabricdevcamp.dfs.core.windows.net/sampledata/ProductSales/Prod",
+      "credentialType": "Key"
+    },
+    {
+      "id": "16bc8d9c-f579-4703-8e01-5d6a85716f27",
+      "displayName": "Lakehouse[sales]",
+      "type": "SQL",
+      "path": "4zzdkw4hunvuhp4ttpl5hvkkzm-nloehk5uzuienbuyivzmistiky.datawarehouse.fabric.microsoft.com;2a7cb027-66bf-4cb7-b012-2278b1798c09",
+      "credentialType": "ServicePrincipal"
+    }
+  ]
+}
