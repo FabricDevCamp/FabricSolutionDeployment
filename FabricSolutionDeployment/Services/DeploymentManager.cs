@@ -4,7 +4,6 @@ using System.Text.Json;
 using Microsoft.Fabric.Api.Core.Models;
 
 
-
 public class DeploymentManager {
 
   #region Lab Utility Methods
@@ -159,6 +158,10 @@ public class DeploymentManager {
 
     FabricRestApi.UpdateWorkspaceDescription(workspace.Id, TargetWorkspaceName + " v1.0");
 
+    // create connection to track Web Url for redirects
+    string defaultWebUrl = "https://fabricdevcamp.blob.core.windows.net/sampledata/ProductSales/Dev";
+    var connection = FabricRestApi.CreateAnonymousWebConnection(defaultWebUrl, workspace);
+
     AppLogger.LogStep($"Creating [{lakehouseName}.Lakehouse]");
     var lakehouse = FabricRestApi.CreateLakehouse(workspace.Id, lakehouseName);
     AppLogger.LogSubstep($"Lakehouse created with Id of [{lakehouse.Id.Value.ToString()}]");
@@ -225,7 +228,9 @@ public class DeploymentManager {
     var lakehouse = FabricRestApi.CreateLakehouse(workspace.Id, lakehouseName);
     AppLogger.LogSubstep($"Lakehouse created with Id of [{lakehouse.Id.Value.ToString()}]");
 
-    AppLogger.LogStep($"Creating ADLS connection [{AppSettings.AzureStorageServer}/{AppSettings.AzureStoragePath}]");
+    AppLogger.LogStep("Creating ADLS connection for shortcut");
+    AppLogger.LogSubstep($"Location: {AppSettings.AzureStorageServer}/{AppSettings.AzureStoragePath}");
+
     var connection = FabricRestApi.CreateAzureStorageConnectionWithAccountKey(AppSettings.AzureStorageServer,
                                                                               AppSettings.AzureStoragePath,
                                                                               workspace);
@@ -237,9 +242,9 @@ public class DeploymentManager {
     Uri location = new Uri(AppSettings.AzureStorageServer);
     string shortcutSubpath = AppSettings.AzureStoragePath;
 
-    AppLogger.LogStep("Creating OneLake Shortcut to ADLS target to provide access to bonze layer data files");
+    AppLogger.LogStep($"Creating [{lakehouseName}.Lakehouse] with path [{path}/{name}]");
     var shortcut = FabricRestApi.CreateAdlsGen2Shortcut(workspace.Id, lakehouse.Id.Value, name, path, location, shortcutSubpath, connection.Id);
-    AppLogger.LogSubstep($"Shortcut successfully created");
+    AppLogger.LogSubstep($"Shortcut created");
 
     // create and run notebook to build silver layer
     string notebook1Name = "Create 01 Silver Layer";
@@ -336,15 +341,15 @@ public class DeploymentManager {
     var notebook2 = FabricRestApi.CreateItem(workspace.Id, notebook2CreateRequest);
     AppLogger.LogSubstep($"Notebook created with Id of [{notebook2.Id.Value.ToString()}]");
 
-    AppLogger.LogStep($"Creating ADLS connection [{AppSettings.AzureStorageServer}{AppSettings.AzureStoragePath}]");
+    AppLogger.LogStep("Creating ADLS connection for data pipeline");
+    AppLogger.LogSubstep($"Location: {AppSettings.AzureStorageServer}/{AppSettings.AzureStoragePath}");
+
     var connection = FabricRestApi.CreateAzureStorageConnectionWithAccountKey(AppSettings.AzureStorageServer,
                                                                               AppSettings.AzureStoragePath,
                                                                               workspace);
     AppLogger.LogSubstep($"Connection created with Id of {connection.Id}");
 
-
-
-    string pipelineName = "Create Lakheouse Tables";
+    string pipelineName = "Create Lakehouse Tables";
     AppLogger.LogStep($"Creating [{pipelineName}.DataPipline]");
 
     string pipelineDefinitionTemplate = ItemDefinitionFactory.GetTemplateFile(@"DataPipelines\CreateLakehouseTables.json");
@@ -356,7 +361,7 @@ public class DeploymentManager {
                                                           .Replace("{NOTEBOOK_ID_BUILD_SILVER}", notebook1.Id.Value.ToString())
                                                           .Replace("{NOTEBOOK_ID_BUILD_GOLD}", notebook2.Id.Value.ToString());
 
-    var pipelineCreateRequest = ItemDefinitionFactory.GetDataPipelineCreateRequest("Create Lakehouse Tables", pipelineDefinition);
+    var pipelineCreateRequest = ItemDefinitionFactory.GetDataPipelineCreateRequest(pipelineName, pipelineDefinition);
     var pipeline = FabricRestApi.CreateItem(workspace.Id, pipelineCreateRequest);
 
     AppLogger.LogSubstep($"DataPipline created with Id [{pipeline.Id.Value.ToString()}]");
@@ -558,6 +563,10 @@ public class DeploymentManager {
     AppLogger.LogSubstep($"New workspace created with Id of [{workspace.Id}]");
 
     FabricRestApi.UpdateWorkspaceDescription(workspace.Id, Deployment.Description);
+
+    // create connection to track Web Url for redirects
+    string defaultWebUrl = "https://fabricdevcamp.blob.core.windows.net/sampledata/ProductSales/Dev";
+    var connection = FabricRestApi.CreateAnonymousWebConnection(defaultWebUrl, workspace);
 
     AppLogger.LogStep($"Creating [{lakehouseName}.Lakehouse]");
     var lakehouse = FabricRestApi.CreateLakehouse(workspace.Id, lakehouseName);
@@ -1090,9 +1099,12 @@ public class DeploymentManager {
 
     // add connection redirect for deployment pipelines
     connectionRedirects = RecreateWorkspaceConnections(sourceWorkspace, targetWorkspace, Deployment);
-    shortcutRedirects = connectionRedirects;
-    semanticModelRedirects = connectionRedirects;
-    dataPipelineRedirects = connectionRedirects;
+
+    // make deep copy of connectionRedirects for starting point for other redirects
+    shortcutRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    notebookRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    semanticModelRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    dataPipelineRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
 
     // add redirects for workspace id
     notebookRedirects.Add(sourceWorkspace.Id.ToString(), targetWorkspace.Id.ToString());
@@ -1418,10 +1430,13 @@ public class DeploymentManager {
     FabricRestApi.UpdateWorkspaceDescription(targetWorkspace.Id, sourceWorkspaceInfo.Description);
 
     // add connection redirect
-    connectionRedirects = GetWorkspaceConnectionRedirects(sourceWorkspace, targetWorkspace, Deployment); 
-    shortcutRedirects = connectionRedirects;
-    semanticModelRedirects = connectionRedirects;
-    dataPipelineRedirects = connectionRedirects;
+    connectionRedirects = GetWorkspaceConnectionRedirects(sourceWorkspace, targetWorkspace, Deployment);
+
+    // make deep copy of connectionRedirects for starting point for other redirects
+    shortcutRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    notebookRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    semanticModelRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    dataPipelineRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
 
     // add redirects for workspace id
     notebookRedirects.Add(sourceWorkspace.Id.ToString(), targetWorkspace.Id.ToString());
@@ -2133,9 +2148,12 @@ public class DeploymentManager {
     var sourceWorkspaceConnections = solutionDeployment.DeployConfig.SourceConnections;
 
     connectionRedirects = RecreateWorkspaceConnections(sourceWorkspaceConnections, targetWorkspace, solutionDeployment);
-    shortcutRedirects = connectionRedirects;
-    semanticModelRedirects = connectionRedirects;
-    dataPipelineRedirects = connectionRedirects;
+
+    // make deep copy of connectionRedirects for starting point for other redirects
+    shortcutRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    notebookRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    semanticModelRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    dataPipelineRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
 
     notebookRedirects.Add(solutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());
     dataPipelineRedirects.Add(solutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());
@@ -2336,7 +2354,6 @@ public class DeploymentManager {
           string targetConnectionName = targetConnection.DisplayName.Substring(workspaceNameOffset);
           if (sourceConnectionName == targetConnectionName) {
 
-            //  connectionRedirects.Add(sourceConnection.Id.ToString(), targetConnection.Id.ToString());
             switch (sourceConnection.Type) {
 
               case "Web":
@@ -2433,11 +2450,13 @@ public class DeploymentManager {
     FabricRestApi.UpdateWorkspaceDescription(targetWorkspace.Id, targetWorkspaceDesciption);
 
     connectionRedirects = GetWorkspaceConnectionRedirects(solutionDeployment.DeployConfig.SourceConnections, targetWorkspace.Id, solutionDeployment);
-    
+
     // copy connections dictionary for shortcuts, notebooks and data pipelines
-    shortcutRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value);
-    notebookRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value);
-    dataPipelineRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value);
+    // make deep copy of connectionRedirects for starting point for other redirects
+    shortcutRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    notebookRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    semanticModelRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
+    dataPipelineRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
 
     notebookRedirects.Add(solutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());
     dataPipelineRedirects.Add(solutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());    
