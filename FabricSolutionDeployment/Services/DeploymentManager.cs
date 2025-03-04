@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.Json;
 using Microsoft.Fabric.Api.Core.Models;
+using Microsoft.TeamFoundation.SourceControl.WebApi;
 
 
 public class DeploymentManager {
@@ -1072,7 +1073,7 @@ public class DeploymentManager {
 
   }
 
-  public static void DeploySolutionFromSourceWorkspace(string SourceWorkspaceName, string TargetWorkspaceName, DeploymentPlan Deployment) {
+  public static void DeployFromSourceWorkspace(string SourceWorkspaceName, string TargetWorkspaceName, DeploymentPlan Deployment) {
 
     AppLogger.LogSolution($"Deploying solution from source workspace [{SourceWorkspaceName}] to [{TargetWorkspaceName}]");
 
@@ -1305,8 +1306,8 @@ public class DeploymentManager {
 
   // overloads added for convenience
 
-  public static void DeploySolutionFromSourceWorkspace(string SourceWorkspaceName, DeploymentPlan Deployment) {
-    DeploySolutionFromSourceWorkspace(SourceWorkspaceName, Deployment.TargetWorkspaceName, Deployment);
+  public static void DeployFromSourceWorkspace(string SourceWorkspaceName, DeploymentPlan Deployment) {
+    DeployFromSourceWorkspace(SourceWorkspaceName, Deployment.TargetWorkspaceName, Deployment);
   }
 
   #endregion
@@ -1403,7 +1404,7 @@ public class DeploymentManager {
   }
 
   // FULL UPDATE - all workspace items
-  public static void UpdateSolutionFromSourceWorkspace(string SourceWorkspaceName, string TargetWorkspaceName, DeploymentPlan Deployment, bool DeleteOrphanedItems = false) {
+  public static void UpdateFromSourceWorkspace(string SourceWorkspaceName, string TargetWorkspaceName, DeploymentPlan Deployment, bool DeleteOrphanedItems = false) {
 
     AppLogger.LogSolution($"Updating solution from source workspace [{SourceWorkspaceName}] to [{TargetWorkspaceName}]");
 
@@ -1835,8 +1836,8 @@ public class DeploymentManager {
 
   // overloads added for convenience
 
-  public static void UpdateSolutionFromSourceWorkspace(string SourceWorkspaceName, DeploymentPlan Deployment) {
-    UpdateSolutionFromSourceWorkspace(SourceWorkspaceName, Deployment.TargetWorkspaceName, Deployment);
+  public static void UpdateFromSourceWorkspace(string SourceWorkspaceName, DeploymentPlan Deployment) {
+    UpdateFromSourceWorkspace(SourceWorkspaceName, Deployment.TargetWorkspaceName, Deployment);
   }
 
   public static void UpdateReportsFromFromSourceWorkspace(string SourceWorkspaceName, DeploymentPlan Deployment) {
@@ -1850,186 +1851,18 @@ public class DeploymentManager {
 
   #endregion
 
-  #region Lab 06 - Set Up Staged Deployment
+  #region Lab 06 - Export Workspace To Local Solution Folder
 
-  public static void SetupStagedDeploymentWithPowerBiSolution(string ProjectName) {
-
-    string devWorkspaceName = ProjectName + " Dev";
-    string testWorkspaceName = ProjectName + " Test";
-    string prodWorkspaceName = ProjectName + " Prod";
-
-    var devWorkspace = FabricRestApi.GetWorkspaceByName(devWorkspaceName);
-
-    if (devWorkspace == null) {
-      devWorkspace = DeployPowerBiSolution(devWorkspaceName, StagingEnvironments.Dev);
-    }
-
-    DeploymentManager.DeploySolutionFromSourceWorkspace(devWorkspaceName, testWorkspaceName, StagingEnvironments.Test);
-    DeploymentManager.DeploySolutionFromSourceWorkspace(testWorkspaceName, prodWorkspaceName, StagingEnvironments.Prod);
-
-    var prodWorkspace = FabricRestApi.UpdateWorkspaceDescription(prodWorkspaceName, ProjectName + " v1.0");
-
-  }
-
-  public static void SetupStagedDeploymentWithNotebookSolution(string ProjectName) {
-
-    string devWorkspaceName = ProjectName + " Dev";
-    string testWorkspaceName = ProjectName + " Test";
-    string prodWorkspaceName = ProjectName + " Prod";
-
-    var devWorkspace = FabricRestApi.GetWorkspaceByName(devWorkspaceName);
-
-    if (devWorkspace == null) {
-      devWorkspace = DeployNotebookSolution(devWorkspaceName, StagingEnvironments.Dev);
-    }
-
-    DeploymentManager.DeploySolutionFromSourceWorkspace(devWorkspaceName, testWorkspaceName, StagingEnvironments.Test);
-    DeploymentManager.DeploySolutionFromSourceWorkspace(testWorkspaceName, prodWorkspaceName, StagingEnvironments.Prod);
-
-    var prodWorkspace = FabricRestApi.UpdateWorkspaceDescription(prodWorkspaceName, ProjectName + " v1.0");
-
-  }
-
-  public static void SetupStagedDeploymentWithShortcutSolution(string ProjectName) {
-
-    string devWorkspaceName = ProjectName + " Dev";
-    string testWorkspaceName = ProjectName + " Test";
-    string prodWorkspaceName = ProjectName + " Prod";
-
-    var devWorkspace = FabricRestApi.GetWorkspaceByName(devWorkspaceName);
-
-    if (devWorkspace == null) {
-      devWorkspace = DeployShortcutSolution(devWorkspaceName, StagingEnvironments.Dev);
-    }
-
-    DeploymentManager.DeploySolutionFromSourceWorkspace(devWorkspaceName, testWorkspaceName, StagingEnvironments.Test);
-    DeploymentManager.DeploySolutionFromSourceWorkspace(testWorkspaceName, prodWorkspaceName, StagingEnvironments.Prod);
-
-    var prodWorkspace = FabricRestApi.UpdateWorkspaceDescription(prodWorkspaceName, ProjectName + " v1.0");
-
-  }
- 
-  public static void SetupStagedDeploymentWithDataPipelineSolution(string ProjectName) {
-
-    string devWorkspaceName = ProjectName + " Dev";
-    string testWorkspaceName = ProjectName + " Test";
-    string prodWorkspaceName = ProjectName + " Prod";
-
-    var devWorkspace = FabricRestApi.GetWorkspaceByName(devWorkspaceName);
-
-    if (devWorkspace == null) {
-      devWorkspace = DeployDataPipelineSolution(devWorkspaceName, StagingEnvironments.Dev);
-    }
-
-    DeploymentManager.DeploySolutionFromSourceWorkspace(devWorkspaceName, testWorkspaceName, StagingEnvironments.Test);
-    DeploymentManager.DeploySolutionFromSourceWorkspace(testWorkspaceName, prodWorkspaceName, StagingEnvironments.Prod);
-
-    var prodWorkspace = FabricRestApi.UpdateWorkspaceDescription(prodWorkspaceName, ProjectName + " v1.0");
-
+  public static void ExportWorkspaceToLocalSolutionFolder(string SourceWorkspace, string SolutionFolderName) {
+    ItemDefinitionFactory.ExportWorkspaceToLocalSolutionFolder(SourceWorkspace, SolutionFolderName);
   }
 
   #endregion
 
-  #region Lab 07 - Push Item Updates from DEV > TEST > PROD
+  #region Lab 07 - Deploy and Update From Local Solution Folder
 
-  public static void UpdateDeloymentStage(string ProjectName, StagedDeploymentType DeploymentType) {
-
-    string sourceWorkspaceName;
-    string targetWorkspaceName;
-    DeploymentPlan deployment;
-
-    if (DeploymentType == StagedDeploymentType.UpdateFromDevToTest) {
-      sourceWorkspaceName = ProjectName + " Dev";
-      targetWorkspaceName = ProjectName + " Test";
-      deployment = StagingEnvironments.Test;
-    }
-    else {
-      sourceWorkspaceName = ProjectName + " Test";
-      targetWorkspaceName = ProjectName + " Prod";
-      deployment = StagingEnvironments.Prod;
-
-    }
-
-    DeploymentManager.UpdateSolutionFromSourceWorkspace(sourceWorkspaceName, targetWorkspaceName, deployment);
-
-  }
-
-
-  #endregion
-
-  #region Lab 08 Export Workspace to Packaged Solution Folder
-
-  public static void ExportWorkspaceToPackagedSolutionFolder(string SourceWorkspace, string SolutionFolderName) {
-    ItemDefinitionFactory.ExportWorkspaceToPackagedSolutionFolder(SourceWorkspace, SolutionFolderName);
-  }
-
-  #endregion
-
-  #region Lab 09 Deploy and Update using Packaged Solution Folders
-
-  // Get Packaged Solution Deployment used for DEPLOY and UPDATE
-  public static PackagedSolutionDeploymentPlan GetPackagedSolutionDeploymentPlan(string SolutionFolder, DeploymentPlan Deployment) {
-
-    var solutionDeploymentPlan = new PackagedSolutionDeploymentPlan(Deployment);
-
-    AppLogger.LogStep($"Loading item definition files from local solutions folder");
-
-    var itemDefinitionFiles = new List<ItemDefinitonFile>();
-
-    string folderPath = AppSettings.LocalPackagedSolutionFolder + SolutionFolder + @"\";
-    List<string> filesInFolder = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories).ToList<string>();
-
-    foreach (string file in filesInFolder) {
-      string relativeFilePathFromFolder = file.Replace(folderPath, "")
-                                              .Replace(@"\", "/");
-      if (relativeFilePathFromFolder.Substring(1).Contains("/")) {
-        itemDefinitionFiles.Add(new ItemDefinitonFile {
-          FullPath = relativeFilePathFromFolder,
-          Content = File.ReadAllText(file)
-        });
-      }
-    }
-
-    var items = itemDefinitionFiles.OrderBy(item => item.FullPath);
-
-    DeploymentItem currentItem = null;
-
-    foreach (var item in items) {
-      if (item.FileName == ".platform") {
-        AppLogger.LogSubstep($"Loading [{item.ItemName}]");
-        FabricPlatformFile platformFile = JsonSerializer.Deserialize<FabricPlatformFile>(item.Content);
-        PlatformFileMetadata itemMetadata = platformFile.metadata;
-        PlatformFileConfig config = platformFile.config;
-
-        currentItem = new DeploymentItem {
-          DisplayName = itemMetadata.displayName,
-          LogicalId = config.logicalId,
-          Type = itemMetadata.type,
-          Definition = new ItemDefinition(new List<ItemDefinitionPart>())
-        };
-
-        solutionDeploymentPlan.DeploymentItems.Add(currentItem);
-      }
-      else {
-        string encodedContent = Convert.ToBase64String(Encoding.UTF8.GetBytes(item.Content));
-        currentItem.Definition.Parts.Add(
-          new ItemDefinitionPart(item.Path, encodedContent, PayloadType.InlineBase64)
-        );
-      }
-    }
-
-    AppLogger.LogSubstep($"Loading [deploy.config.json]");
-    string deployConfigPath = AppSettings.LocalPackagedSolutionFolder + SolutionFolder + @"\deploy.config.json";
-    string deployConfigContent = File.ReadAllText(deployConfigPath);
-    DeploymentConfiguration deployConfig = JsonSerializer.Deserialize<DeploymentConfiguration>(deployConfigContent, jsonSerializerOptions);
-
-    solutionDeploymentPlan.DeployConfig = deployConfig;
-
-    return solutionDeploymentPlan;
-  }
-
-  // RecreateWorkspaceConnections used for DEPLOY
-  public static Dictionary<string, string> RecreateWorkspaceConnections(List<DeploymentSourceConnection> WorkspaceConnections, Workspace TargetWorkspace, PackagedSolutionDeploymentPlan SolutionDeployment) {
+  // Recreate Workspace Connections used for DEPLOY
+  public static Dictionary<string, string> RecreateWorkspaceConnections(List<DeploymentSourceConnection> WorkspaceConnections, Workspace TargetWorkspace, SolutionDeploymentPlan SolutionDeployment) {
 
     var workspaceConnections = SolutionDeployment.DeployConfig.SourceConnections;
 
@@ -2119,14 +1952,7 @@ public class DeploymentManager {
 
   }
 
-  // DEPLOY workflow
-  public static void DeploySolutionFromPackagedSolutionFolder(string SolutionFolder, string TargetWorkspaceName, DeploymentPlan Deployment) {
-
-    AppLogger.LogSolution($"Deploying solution package folder [{SolutionFolder}] to workspace [{TargetWorkspaceName}]");
-
-    DisplayDeploymentParameters(Deployment);
-
-    var solutionDeployment = GetPackagedSolutionDeploymentPlan(SolutionFolder, Deployment);
+  public static void DeployFromSolutionFolder(string SolutionFolder, string TargetWorkspaceName, SolutionDeploymentPlan SolutionDeployment) {
 
     // create data collections to track substitution data
     var connectionRedirects = new Dictionary<string, string>();
@@ -2142,12 +1968,12 @@ public class DeploymentManager {
     var targetWorkspace = FabricRestApi.CreateWorkspace(TargetWorkspaceName);
     AppLogger.LogSubstep($"New workspace created with id of {targetWorkspace.Id.ToString()}");
 
-    var targetWorkspaceDescription = solutionDeployment.DeployConfig.SourceWorkspaceDescription;
-    FabricRestApi.UpdateWorkspaceDescription(targetWorkspace.Id, targetWorkspaceDescription);
+    //var targetWorkspaceDescription = SolutionDeployment.DeployConfig.SourceWorkspaceDescription;
+    //FabricRestApi.UpdateWorkspaceDescription(targetWorkspace.Id, targetWorkspaceDescription);
 
-    var sourceWorkspaceConnections = solutionDeployment.DeployConfig.SourceConnections;
+    var sourceWorkspaceConnections = SolutionDeployment.DeployConfig.SourceConnections;
 
-    connectionRedirects = RecreateWorkspaceConnections(sourceWorkspaceConnections, targetWorkspace, solutionDeployment);
+    connectionRedirects = RecreateWorkspaceConnections(sourceWorkspaceConnections, targetWorkspace, SolutionDeployment);
 
     // make deep copy of connectionRedirects for starting point for other redirects
     shortcutRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
@@ -2155,14 +1981,14 @@ public class DeploymentManager {
     semanticModelRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
     dataPipelineRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
 
-    notebookRedirects.Add(solutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());
-    dataPipelineRedirects.Add(solutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());
+    notebookRedirects.Add(SolutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());
+    dataPipelineRedirects.Add(SolutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());
 
     AppLogger.LogStep($"Deploying Workspace Items");
 
-    foreach (var lakehouse in solutionDeployment.GetLakehouses()) {
+    foreach (var lakehouse in SolutionDeployment.GetLakehouses()) {
 
-      var sourceLakehouse = solutionDeployment.GetSourceLakehouse(lakehouse.DisplayName);
+      var sourceLakehouse = SolutionDeployment.GetSourceLakehouse(lakehouse.DisplayName);
       Guid sourceLakehouseId = new Guid(sourceLakehouse.Id);
 
       AppLogger.LogSubstep($"Creating [{lakehouse.ItemName}]");
@@ -2193,7 +2019,7 @@ public class DeploymentManager {
         foreach (var shortcut in shortcuts) {
 
           if (shortcut.Type.ToLower() == "adlsgen2") {
-      
+
             string sourceShortcutName = shortcut.Name;
             string sourceShortcutPath = shortcut.Path;
             string sourceShortcutLocation = shortcut.Location;
@@ -2204,14 +2030,14 @@ public class DeploymentManager {
             string targetShortcutLocation = sourceShortcutLocation;
             string targetShortcutSubpath = sourceShortcutSubpath;
 
-            if ((solutionDeployment.Parameters.ContainsKey(DeploymentPlan.adlsServerPathParameter)) &&
-                (solutionDeployment.Parameters.ContainsKey(DeploymentPlan.adlsContainerNameParameter)) &&
-                (solutionDeployment.Parameters.ContainsKey(DeploymentPlan.adlsContainerPathParameter))) {
+            if ((SolutionDeployment.Parameters.ContainsKey(DeploymentPlan.adlsServerPathParameter)) &&
+                (SolutionDeployment.Parameters.ContainsKey(DeploymentPlan.adlsContainerNameParameter)) &&
+                (SolutionDeployment.Parameters.ContainsKey(DeploymentPlan.adlsContainerPathParameter))) {
 
-              targetShortcutLocation = Deployment.Parameters[DeploymentPlan.adlsServerPathParameter];
+              targetShortcutLocation = SolutionDeployment.Parameters[DeploymentPlan.adlsServerPathParameter];
 
-              targetShortcutSubpath = "/" + Deployment.Parameters[DeploymentPlan.adlsContainerNameParameter] +
-                                            Deployment.Parameters[DeploymentPlan.adlsContainerPathParameter];
+              targetShortcutSubpath = "/" + SolutionDeployment.Parameters[DeploymentPlan.adlsContainerNameParameter] +
+                                            SolutionDeployment.Parameters[DeploymentPlan.adlsContainerPathParameter];
 
             }
 
@@ -2219,12 +2045,12 @@ public class DeploymentManager {
 
             AppLogger.LogSubstep($"Creating [{lakehouse.ItemName}.Shortcut] with path of [{targetShortcutPath.Substring(1)}/{targetShortcutName}]");
 
-            FabricRestApi.CreateAdlsGen2Shortcut(targetWorkspace.Id, 
-                                                 targetLakehouse.Id.Value, 
-                                                 targetShortcutName, 
-                                                 targetShortcutPath, 
-                                                 new Uri(targetShortcutLocation), 
-                                                 targetShortcutSubpath, 
+            FabricRestApi.CreateAdlsGen2Shortcut(targetWorkspace.Id,
+                                                 targetLakehouse.Id.Value,
+                                                 targetShortcutName,
+                                                 targetShortcutPath,
+                                                 new Uri(targetShortcutLocation),
+                                                 targetShortcutSubpath,
                                                  targetConnectionId);
 
           }
@@ -2233,9 +2059,9 @@ public class DeploymentManager {
       }
     }
 
-    foreach (var notebook in solutionDeployment.GetNotebooks()) {
+    foreach (var notebook in SolutionDeployment.GetNotebooks()) {
 
-      var sourceNotebook = solutionDeployment.GetSourceNotebook(notebook.DisplayName);
+      var sourceNotebook = SolutionDeployment.GetSourceNotebook(notebook.DisplayName);
 
       AppLogger.LogSubstep($"Creating [{notebook.ItemName}]");
       var createRequest = new CreateItemRequest(notebook.DisplayName, notebook.Type);
@@ -2252,7 +2078,7 @@ public class DeploymentManager {
 
     }
 
-    foreach (var pipeline in solutionDeployment.GetDataPipelines()) {
+    foreach (var pipeline in SolutionDeployment.GetDataPipelines()) {
 
       AppLogger.LogSubstep($"Creating [{pipeline.ItemName}]");
       var createRequest = new CreateItemRequest(pipeline.DisplayName, pipeline.Type);
@@ -2274,12 +2100,12 @@ public class DeploymentManager {
       FabricRestApi.RefreshLakehouseTableSchema(sqlEndPointId);
     }
 
-    foreach (var model in solutionDeployment.GetSemanticModels()) {
+    foreach (var model in SolutionDeployment.GetSemanticModels()) {
 
       // ignore default semantic model for lakehouse
       if (!lakehouseNames.Contains(model.DisplayName)) {
 
-        var sourceModel = solutionDeployment.GetSourceSemanticModel(model.DisplayName);
+        var sourceModel = SolutionDeployment.GetSourceSemanticModel(model.DisplayName);
 
         // update expressions.tmdl with SQL endpoint info for lakehouse in feature workspace
         var modelDefinition = ItemDefinitionFactory.UpdateItemDefinitionPart(model.Definition, "definition/expressions.tmdl", semanticModelRedirects);
@@ -2300,21 +2126,21 @@ public class DeploymentManager {
           lakehouse = sqlEndPointIds[semanticModelDatasource.ConnectionDetails.Database];
         }
 
-        CreateAndBindSemanticModelConnecton(targetWorkspace, targetModel.Id.Value);
+        CreateAndBindSemanticModelConnecton(targetWorkspace, targetModel.Id.Value, lakehouse);
 
       }
 
     }
 
-    foreach (var report in solutionDeployment.GetReports()) {
+    foreach (var report in SolutionDeployment.GetReports()) {
 
-      var sourceReport = solutionDeployment.GetSourceReport(report.DisplayName);
+      var sourceReport = SolutionDeployment.GetSourceReport(report.DisplayName);
 
       // update expressions.tmdl with SQL endpoint info for lakehouse in feature workspace
       var reportDefinition = ItemDefinitionFactory.UpdateReportDefinitionWithRedirection(report.Definition, targetWorkspace.Id, reportRedirects);
 
       // update report.json with report title customization
-      reportDefinition = CustomizeReportTitle(reportDefinition, report.DisplayName, Deployment);
+      reportDefinition = CustomizeReportTitle(reportDefinition, report.DisplayName, SolutionDeployment);
 
       // use item definition to create clone in target workspace
       AppLogger.LogSubstep($"Creating [{report.ItemName}]");
@@ -2326,14 +2152,10 @@ public class DeploymentManager {
 
     AppLogger.LogStep("Solution deployment complete");
 
-    AppLogger.PromptUserToContinue();
-
-    OpenWorkspaceInBrowser(targetWorkspace.Id);
-
   }
 
   // Get Workspace Connection Redirects used for UPDATE
-  public static Dictionary<string, string> GetWorkspaceConnectionRedirects(List<DeploymentSourceConnection> WorkspaceConnections, Guid TargetWorkspaceId, PackagedSolutionDeploymentPlan SolutionDeployment) {
+  public static Dictionary<string, string> GetWorkspaceConnectionRedirects(List<DeploymentSourceConnection> WorkspaceConnections, Guid TargetWorkspaceId, SolutionDeploymentPlan SolutionDeployment) {
 
     var sourceWorkspaceConnections = WorkspaceConnections;
     var targetWorkspaceConnections = FabricRestApi.GetWorkspaceConnections(TargetWorkspaceId);
@@ -2424,13 +2246,7 @@ public class DeploymentManager {
   }
 
   // UPDATE workflow
-  public static void UpdateSolutionFromPackagedSolutionFolder(string SolutionFolder, string TargetWorkspaceName, DeploymentPlan Deployment, bool DeleteOrphanedItems = false) {
-
-    AppLogger.LogSolution($"Updating from solution package folder [{SolutionFolder}] to workspace [{TargetWorkspaceName}]");
-
-    DisplayDeploymentParameters(Deployment);
-
-    var solutionDeployment = GetPackagedSolutionDeploymentPlan(SolutionFolder, Deployment);
+  public static void UpdateFromSolutionFolder(string SolutionFolder, string TargetWorkspaceName, SolutionDeploymentPlan SolutionDeployment, bool DeleteOrphanedItems = false) {
 
     var connectionRedirects = new Dictionary<string, string>();
     var sqlEndPointIds = new Dictionary<string, Item>();
@@ -2441,15 +2257,15 @@ public class DeploymentManager {
     var semanticModelRedirects = new Dictionary<string, string>();
     var reportRedirects = new Dictionary<string, string>();
 
-    var sourceWorkspaceItems = solutionDeployment.DeployConfig.SourceItems;
+    var sourceWorkspaceItems = SolutionDeployment.DeployConfig.SourceItems;
 
     var targetWorkspace = FabricRestApi.GetWorkspaceByName(TargetWorkspaceName);
     var targetWorkspaceItems = FabricRestApi.GetWorkspaceItems(targetWorkspace.Id);
 
-    var targetWorkspaceDesciption = solutionDeployment.DeployConfig.SourceWorkspaceDescription;
+    var targetWorkspaceDesciption = SolutionDeployment.DeployConfig.SourceWorkspaceDescription;
     FabricRestApi.UpdateWorkspaceDescription(targetWorkspace.Id, targetWorkspaceDesciption);
 
-    connectionRedirects = GetWorkspaceConnectionRedirects(solutionDeployment.DeployConfig.SourceConnections, targetWorkspace.Id, solutionDeployment);
+    connectionRedirects = GetWorkspaceConnectionRedirects(SolutionDeployment.DeployConfig.SourceConnections, targetWorkspace.Id, SolutionDeployment);
 
     // copy connections dictionary for shortcuts, notebooks and data pipelines
     // make deep copy of connectionRedirects for starting point for other redirects
@@ -2458,14 +2274,14 @@ public class DeploymentManager {
     semanticModelRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
     dataPipelineRedirects = connectionRedirects.ToDictionary(entry => entry.Key, entry => entry.Value); ;
 
-    notebookRedirects.Add(solutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());
-    dataPipelineRedirects.Add(solutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());    
+    notebookRedirects.Add(SolutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());
+    dataPipelineRedirects.Add(SolutionDeployment.GetSourceWorkspaceId(), targetWorkspace.Id.ToString());
 
     AppLogger.LogStep($"Processing workspace item updates");
 
-    var lakehouses = solutionDeployment.GetLakehouses();
+    var lakehouses = SolutionDeployment.GetLakehouses();
     foreach (var lakehouse in lakehouses) {
-      var sourceLakehouse = solutionDeployment.GetSourceLakehouse(lakehouse.DisplayName);
+      var sourceLakehouse = SolutionDeployment.GetSourceLakehouse(lakehouse.DisplayName);
       var targetLakehouse = targetWorkspaceItems.Where(item => (item.DisplayName.Equals(lakehouse.DisplayName) &&
                                                                (item.Type == lakehouse.Type))).FirstOrDefault();
 
@@ -2509,9 +2325,9 @@ public class DeploymentManager {
       }
     }
 
-    var notebooks = solutionDeployment.GetNotebooks();
+    var notebooks = SolutionDeployment.GetNotebooks();
     foreach (var notebook in notebooks) {
-      var sourceNotebook = solutionDeployment.GetSourceNotebook(notebook.DisplayName);
+      var sourceNotebook = SolutionDeployment.GetSourceNotebook(notebook.DisplayName);
       var targetNotebook = targetWorkspaceItems.Where(item => (item.DisplayName.Equals(sourceNotebook.DisplayName) &&
                                                               (item.Type == sourceNotebook.Type))).FirstOrDefault();
 
@@ -2542,7 +2358,7 @@ public class DeploymentManager {
 
     }
 
-    var pipelines = solutionDeployment.GetDataPipelines();
+    var pipelines = SolutionDeployment.GetDataPipelines();
     foreach (var pipeline in pipelines) {
       var sourcePipeline = sourceWorkspaceItems.FirstOrDefault(item => (item.Type == "DataPipeline" &&
                                                                          item.DisplayName.Equals(pipeline.DisplayName)));
@@ -2577,7 +2393,7 @@ public class DeploymentManager {
       }
     }
 
-    var models = solutionDeployment.GetSemanticModels();
+    var models = SolutionDeployment.GetSemanticModels();
     foreach (var model in models) {
 
       // ignore default semantic model for lakehouse
@@ -2617,7 +2433,7 @@ public class DeploymentManager {
     }
 
     // reports
-    var reports = solutionDeployment.GetReports();
+    var reports = SolutionDeployment.GetReports();
     foreach (var report in reports) {
 
       var targetReport = targetWorkspaceItems.FirstOrDefault(item => (item.Type == "Report" &&
@@ -2627,6 +2443,9 @@ public class DeploymentManager {
       var reportDefinition = ItemDefinitionFactory.UpdateReportDefinitionWithRedirection(report.Definition,
                                                                                          targetWorkspace.Id,
                                                                                          reportRedirects);
+
+      // update report.json with report title customization
+      reportDefinition = CustomizeReportTitle(reportDefinition, report.DisplayName, SolutionDeployment);
 
       if (targetReport != null) {
         // update existing report
@@ -2671,33 +2490,129 @@ public class DeploymentManager {
 
       AppLogger.LogStep("Solution update complete");
 
-      AppLogger.PromptUserToContinue();
-
-      OpenWorkspaceInBrowser(targetWorkspace.Id);
-
     }
+  }
+
+  // Get Packaged Solution Deployment used for DEPLOY and UPDATE
+  public static SolutionDeploymentPlan GetSolutionDeploymentFromLocalFolder(string SolutionFolder, DeploymentPlan Deployment) {
+
+    var solutionDeploymentPlan = new SolutionDeploymentPlan(Deployment);
+
+    AppLogger.LogStep($"Loading item definition files from local solutions folder");
+
+    var itemDefinitionFiles = new List<ItemDefinitonFile>();
+
+    string folderPath = AppSettings.LocalPackagedSolutionFolder + SolutionFolder + @"\";
+    List<string> filesInFolder = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories).ToList<string>();
+
+    foreach (string file in filesInFolder) {
+      string relativeFilePathFromFolder = file.Replace(folderPath, "")
+                                              .Replace(@"\", "/");
+      if (relativeFilePathFromFolder.Substring(1).Contains("/")) {
+        itemDefinitionFiles.Add(new ItemDefinitonFile {
+          FullPath = relativeFilePathFromFolder,
+          Content = File.ReadAllText(file)
+        });
+      }
+    }
+
+    var items = itemDefinitionFiles.OrderBy(item => item.FullPath);
+
+    DeploymentItem currentItem = null;
+
+    foreach (var item in items) {
+      if (item.FileName == ".platform") {
+        AppLogger.LogSubstep($"Loading [{item.ItemName}]");
+        FabricPlatformFile platformFile = JsonSerializer.Deserialize<FabricPlatformFile>(item.Content);
+        PlatformFileMetadata itemMetadata = platformFile.metadata;
+        PlatformFileConfig config = platformFile.config;
+
+        currentItem = new DeploymentItem {
+          DisplayName = itemMetadata.displayName,
+          LogicalId = config.logicalId,
+          Type = itemMetadata.type,
+          Definition = new ItemDefinition(new List<ItemDefinitionPart>())
+        };
+
+        solutionDeploymentPlan.DeploymentItems.Add(currentItem);
+      }
+      else {
+        string encodedContent = Convert.ToBase64String(Encoding.UTF8.GetBytes(item.Content));
+        currentItem.Definition.Parts.Add(
+          new ItemDefinitionPart(item.Path, encodedContent, PayloadType.InlineBase64)
+        );
+      }
+    }
+
+    AppLogger.LogSubstep($"Loading [deploy.config.json]");
+    string deployConfigPath = AppSettings.LocalPackagedSolutionFolder + SolutionFolder + @"\deploy.config.json";
+    string deployConfigContent = File.ReadAllText(deployConfigPath);
+    DeploymentConfiguration deployConfig = JsonSerializer.Deserialize<DeploymentConfiguration>(deployConfigContent, jsonSerializerOptions);
+
+    solutionDeploymentPlan.DeployConfig = deployConfig;
+
+    return solutionDeploymentPlan;
+  }
+
+  // DEPLOY workflow
+  public static void DeployFromLocalSolutionFolder(string SolutionFolder, string TargetWorkspaceName, DeploymentPlan Deployment) {
+
+    AppLogger.LogSolution($"Deploying solution package folder [{SolutionFolder}] to workspace [{TargetWorkspaceName}]");
+
+    var solutionDeployment = GetSolutionDeploymentFromLocalFolder(SolutionFolder, Deployment);
+
+    DeployFromSolutionFolder(SolutionFolder, TargetWorkspaceName, solutionDeployment);
+
+    var targetWorkspace = FabricRestApi.GetWorkspaceByName(TargetWorkspaceName);
+
+    AppLogger.PromptUserToContinue();
+
+    OpenWorkspaceInBrowser(targetWorkspace.Id);
+
+  }
+
+
+  // UPDATE workflow
+  public static void UpdateFromLocalSolutionFolder(string SolutionFolder, string TargetWorkspaceName, DeploymentPlan Deployment, bool DeleteOrphanedItems = false) {
+
+    AppLogger.LogSolution($"Updating from localsolution folder [{SolutionFolder}] to workspace [{TargetWorkspaceName}]");
+
+    DisplayDeploymentParameters(Deployment);
+
+    var solutionDeployment = GetSolutionDeploymentFromLocalFolder(SolutionFolder, Deployment);
+
+    UpdateFromSolutionFolder(SolutionFolder, TargetWorkspaceName, solutionDeployment);
+
+    var targetWorkspace = FabricRestApi.GetWorkspaceByName(TargetWorkspaceName);
+
+    AppLogger.PromptUserToContinue();
+
+    OpenWorkspaceInBrowser(targetWorkspace.Id);
+
   }
 
   // overloads added for convenience
 
-  public static void DeploySolutionFromPackagedSolutionFolder(string SolutionFolder, DeploymentPlan Deployment) {
-    DeploySolutionFromPackagedSolutionFolder(SolutionFolder, Deployment.TargetWorkspaceName, Deployment);
+  public static void DeployFromLocalSolutionFolder(string SolutionFolder, DeploymentPlan Deployment) {
+    DeployFromLocalSolutionFolder(SolutionFolder, Deployment.TargetWorkspaceName, Deployment);
   }
 
-  public static void UpdateSolutionFromPackagedSolutionFolder(string SolutionFolder, DeploymentPlan Deployment) {
-    UpdateSolutionFromPackagedSolutionFolder(SolutionFolder, Deployment.TargetWorkspaceName, Deployment);
+  public static void UpdateFromLocalSolutionFolder(string SolutionFolder, DeploymentPlan Deployment) {
+    UpdateFromLocalSolutionFolder(SolutionFolder, Deployment.TargetWorkspaceName, Deployment);
   }
+
+
 
   #endregion
 
-  #region Lab 10 - Use GIT Integrtion to connect workspace to Azure Dev Ops repo
+  #region Lab 08 - Connect Dev Workspace To Azure Dev Ops Repository
 
   public static void ConnectWorkspaceToGit(string WorkspaceName, string BranchName = "main") {
     AppLogger.LogSolution($"Creating GIT connection to sync [{WorkspaceName}] workspace with Azure Dev Ops repository");
     var workspace = FabricRestApi.GetWorkspaceByName(WorkspaceName);
 
     // create new project in Azure Dev Ops
-    AdoProjectManager.CreateProject(WorkspaceName, workspace);
+    AdoProjectManager.EnsureProjectExists(WorkspaceName, workspace);
     var gitConnectRequest = new GitConnectRequest(
       new AzureDevOpsDetails(WorkspaceName, BranchName,
                                             "/",
@@ -2708,8 +2623,320 @@ public class DeploymentManager {
     AppLogger.LogSubstep("Workspace connection to GIT created and synchronized successfully");
   }
 
+  public static void ConnectFeatureWorkspaceToGit(string MainWorkspace, string FeatureWorkspace, string FeatureName) {
+
+    var mainWorkspace = FabricRestApi.GetWorkspaceByName(MainWorkspace);
+    var featureWorkspace = FabricRestApi.GetWorkspaceByName(FeatureWorkspace);
+
+    // create new ADO project if it doesn't exist
+    AdoProjectManager.EnsureProjectExists(MainWorkspace, mainWorkspace);
+    AdoProjectManager.CreateBranch(MainWorkspace, FeatureName);
+
+    var gitConnectRequest = new GitConnectRequest(
+      new AzureDevOpsDetails(MainWorkspace,
+                             FeatureName,
+                             "/",
+                             AppSettings.AzureDevOpsOrganizationName,
+                             MainWorkspace));
+
+    FabricRestApi.ConnectWorkspaceToGitRepository(featureWorkspace.Id, gitConnectRequest);
+    AppLogger.LogSubstep("Workspace connection to GIT created and synchronized successfully");
+  }
+
+  public static void BranchOutToFeatureWorkspace(string WorkspaceName, string FeatureName) {
+
+    string featureWorkspaceName = WorkspaceName + " - " + FeatureName;
+
+    AppLogger.LogSolution($"Branching out [{WorkspaceName}] to feature workspace [{featureWorkspaceName}]");
+
+    var sourceWorkspace = FabricRestApi.GetWorkspaceByName(WorkspaceName);
+
+    AppLogger.LogStep($"Creating feature workspace [{featureWorkspaceName}]");
+    var featureWorkspace = FabricRestApi.CreateWorkspace(featureWorkspaceName);
+    AppLogger.LogSubstep($"Workspace created with Id of [{featureWorkspace.Id.ToString()}]");
+
+    ConnectFeatureWorkspaceToGit(WorkspaceName, featureWorkspaceName, FeatureName);
+
+    AppLogger.LogStep($"Performing Post-GIT-Sync Tasks");
+
+    var sourceWorkspaceItems = FabricRestApi.GetWorkspaceItems(sourceWorkspace.Id);
+    var featureWorkspaceItems = FabricRestApi.GetWorkspaceItems(featureWorkspace.Id);
+
+    var lakehouseNames = new List<string>();
+    var sqlEndPointIds = new Dictionary<string, Item>();
+    var notebookRedirects = new Dictionary<string, string>();
+    var dataPipelineRedirects = new Dictionary<string, string>();
+    var semanticModelRedirects = new Dictionary<string, string>();
+    var reportRedirects = new Dictionary<string, string>();
+
+
+    var lakehouses = featureWorkspaceItems.Where(item => item.Type == ItemType.Lakehouse).ToList();
+    var sourceLakehouses = sourceWorkspaceItems.Where(item => item.Type == ItemType.Lakehouse).ToList();
+
+    notebookRedirects.Add(sourceWorkspace.Id.ToString(), featureWorkspace.Id.ToString());
+    dataPipelineRedirects.Add(sourceWorkspace.Id.ToString(), featureWorkspace.Id.ToString());
+
+    AppLogger.LogSubstep("Processing lakehouses");
+    foreach (var lakehouse in lakehouses) {
+      var sourceLakehouse = sourceLakehouses.Where(item => item.DisplayName == lakehouse.DisplayName).First();
+
+      lakehouseNames.Add(lakehouse.DisplayName);
+      notebookRedirects.Add(sourceLakehouse.Id.Value.ToString(), lakehouse.Id.Value.ToString());
+
+      AppLogger.LogSubstep($"Getting Sql Endpoint Info for [{lakehouse.DisplayName}.Lakehouse]");
+
+      var targetSqlEndpoint = FabricRestApi.GetSqlEndpointForLakehouse(featureWorkspace.Id, lakehouse.Id.Value);
+
+      sqlEndPointIds.Add(targetSqlEndpoint.Id, lakehouse);
+
+      var sourceSqlEndpoint = FabricRestApi.GetSqlEndpointForLakehouse(sourceWorkspace.Id, sourceLakehouse.Id.Value);
+
+      semanticModelRedirects.Add(sourceSqlEndpoint.Id, targetSqlEndpoint.Id);
+
+      // add redirect for sql endpoint server location
+      if (!semanticModelRedirects.Keys.Contains(sourceSqlEndpoint.ConnectionString)) {
+        // only add sql endpoint server location once because it has same value for all lakehouses in the same workspace
+        semanticModelRedirects.Add(sourceSqlEndpoint.ConnectionString, targetSqlEndpoint.ConnectionString);
+      }
+
+      var shortcuts = FabricRestApi.GetLakehouseShortcuts(sourceWorkspace.Id, sourceLakehouse.Id.Value);
+      foreach (var shortcut in shortcuts) {
+
+        if (shortcut.Target.Type == Microsoft.Fabric.Api.Core.Models.Type.AdlsGen2) {
+
+          string targetShortcutName = shortcut.Name;
+          string targetShortcutPath = shortcut.Path;
+          string targetShortcutLocation = shortcut.Target.AdlsGen2.Location.ToString();
+          string targetShortcutSubpath = shortcut.Target.AdlsGen2.Subpath;
+          Guid targetConnectionId = shortcut.Target.AdlsGen2.ConnectionId;
+
+          AppLogger.LogSubstep($"Creating [{lakehouse.DisplayName}.{lakehouse.Type}.Shortcut] with path of [{targetShortcutPath.Substring(1)}/{targetShortcutName}]");
+          FabricRestApi.CreateAdlsGen2Shortcut(featureWorkspace.Id,
+                                               lakehouse.Id.Value,
+                                               targetShortcutName,
+                                               targetShortcutPath,
+                                               new Uri(targetShortcutLocation),
+                                               targetShortcutSubpath,
+                                               targetConnectionId);
+
+        }
+
+      }
+
+    }
+
+    AppLogger.LogSubstep("Processing notebooks");
+    var notebooks = featureWorkspaceItems.Where(item => item.Type == ItemType.Notebook).ToList();
+    var sourceNotebooks = sourceWorkspaceItems.Where(item => item.Type == ItemType.Notebook).ToList();
+    foreach (var notebook in notebooks) {
+      var sourceNotebook = sourceNotebooks.Where(item => item.DisplayName == notebook.DisplayName).First();
+
+      dataPipelineRedirects.Add(sourceNotebook.Id.Value.ToString(), notebook.Id.Value.ToString());
+
+      var notebookDefinition = FabricRestApi.GetItemDefinition(featureWorkspace.Id, notebook.Id.Value);
+
+      notebookDefinition = ItemDefinitionFactory.UpdateItemDefinitionPart(notebookDefinition,
+                                                                        "notebook-content.py",
+                                                                        notebookRedirects);
+
+      var updaterequest = new UpdateItemDefinitionRequest(notebookDefinition);
+
+      FabricRestApi.UpdateItemDefinition(featureWorkspace.Id, notebook.Id.Value, updaterequest);
+
+
+      if (notebook.DisplayName.Contains("Create")) {
+        AppLogger.LogSubOperationStart($"Running  [{notebook.DisplayName}.Notebook]");
+        FabricRestApi.RunNotebook(featureWorkspace.Id, notebook);
+        AppLogger.LogOperationComplete();
+      }
+
+    }
+
+
+    var dataPipelines = featureWorkspaceItems.Where(item => item.Type == ItemType.DataPipeline).ToList();
+    var sourceDataPipelines = sourceWorkspaceItems.Where(item => item.Type == ItemType.DataPipeline).ToList();
+    foreach (var dataPipeline in dataPipelines) {
+
+
+      var pipelineDefinition = FabricRestApi.GetItemDefinition(featureWorkspace.Id, dataPipeline.Id.Value);
+
+      pipelineDefinition = ItemDefinitionFactory.UpdateItemDefinitionPart(pipelineDefinition,
+                                                                       "pipeline-content.json",
+                                                                        dataPipelineRedirects);
+
+      var updateRequest = new UpdateItemDefinitionRequest(pipelineDefinition);
+
+      FabricRestApi.UpdateItemDefinition(featureWorkspace.Id, dataPipeline.Id.Value, updateRequest);
+
+      if (dataPipeline.DisplayName.Contains("Create")) {
+        AppLogger.LogSubOperationStart($"Running  [{dataPipeline.DisplayName}.DataPipeline]");
+        FabricRestApi.RunDataPipeline(featureWorkspace.Id, dataPipeline);
+        AppLogger.LogOperationComplete();
+      }
+
+    }
+
+    foreach (var sqlEndPointId in sqlEndPointIds.Keys) {
+      FabricRestApi.RefreshLakehouseTableSchema(sqlEndPointId);
+    }
+
+    AppLogger.LogSubstep("Processing semantic models");
+    var semanticModels = featureWorkspaceItems.Where(item => item.Type == ItemType.SemanticModel).ToList();
+    foreach (var model in semanticModels) {
+
+      if (!lakehouseNames.Contains(model.DisplayName)) {
+
+
+        var modelDefinition = FabricRestApi.GetItemDefinition(featureWorkspace.Id, model.Id.Value);
+
+        modelDefinition = ItemDefinitionFactory.UpdateItemDefinitionPart(modelDefinition,
+                                                                         "definition/expressions.tmdl",
+                                                                         semanticModelRedirects);
+
+        var updaterequest = new UpdateItemDefinitionRequest(modelDefinition);
+
+        AppLogger.LogSubstep("Update semantic model definition");
+        FabricRestApi.UpdateItemDefinition(featureWorkspace.Id, model.Id.Value, updaterequest);
+
+        var semanticModelDatasource = PowerBiRestApi.GetDatasourcesForSemanticModel(featureWorkspace.Id, model.Id.Value).FirstOrDefault();
+
+        Item lakehouse = null;
+        if (semanticModelDatasource.DatasourceType.ToLower() == "sql") {
+          lakehouse = sqlEndPointIds[semanticModelDatasource.ConnectionDetails.Database];
+        }
+
+
+        AppLogger.LogSubstep("Create connection and bind semantic model");
+        CreateAndBindSemanticModelConnecton(featureWorkspace, model.Id.Value, lakehouse);
+
+      }
+    }
+
+    Console.WriteLine();
+    Console.WriteLine("Customer tenant provisioning complete");
+    Console.WriteLine();
+
+    Console.Write("Press ENTER to open workspace in the browser");
+    Console.ReadLine();
+
+    OpenWorkspaceInBrowser(featureWorkspace.Id);
+
+
+  }
+
   #endregion
 
+  #region Lab 09 Setup Staged Deployment for Enterprise Scenario
+
+  public static void ExportWorkspaceToAdoSolutionFolder(string SourceWorkspace, string ProjectName, string BranchName = "") {
+    ItemDefinitionFactory.ExportWorkspaceToAzureDevOps(SourceWorkspace, ProjectName, BranchName);
+  }
+
+  public static SolutionDeploymentPlan GetSolutionDeploymentFromAdoFolder(string ProjectName, DeploymentPlan Deployment, string BranchName = "") {
+
+    var solutionDeploymentPlan = new SolutionDeploymentPlan(Deployment);
+
+    AppLogger.LogStep($"Loading item definition files from solution folder in Azure Dev Ops");
+
+    if (BranchName == "") {
+      BranchName = AdoProjectManager.GetMostRecentDailyBuildBranch(ProjectName);
+    }
+
+    AppLogger.LogSubstep($"Loading from most recent build branch [{BranchName}]");
+
+    var itemDefinitionFiles = AdoProjectManager.GetItemDefinitionFilesFromGitRepo(ProjectName, BranchName);
+
+    var items = itemDefinitionFiles.OrderBy(item => item.FullPath);
+
+    DeploymentItem currentItem = null;
+
+    foreach (var item in items) {
+      if (item.FileName == ".platform") {
+        AppLogger.LogSubstep($"Loading [{item.ItemName}]");
+        FabricPlatformFile platformFile = JsonSerializer.Deserialize<FabricPlatformFile>(item.Content);
+        PlatformFileMetadata itemMetadata = platformFile.metadata;
+        PlatformFileConfig config = platformFile.config;
+
+        currentItem = new DeploymentItem {
+          DisplayName = itemMetadata.displayName,
+          LogicalId = config.logicalId,
+          Type = itemMetadata.type,
+          Definition = new ItemDefinition(new List<ItemDefinitionPart>())
+        };
+
+        solutionDeploymentPlan.DeploymentItems.Add(currentItem);
+      }
+      else {
+        string encodedContent = Convert.ToBase64String(Encoding.UTF8.GetBytes(item.Content));
+        currentItem.Definition.Parts.Add(
+          new ItemDefinitionPart(item.Path, encodedContent, PayloadType.InlineBase64)
+        );
+      }
+    }
+
+    AppLogger.LogSubstep($"Loading [deploy.config.json]");
+    DeploymentConfiguration deployConfig = AdoProjectManager.GetDeployConfigFromGitRepo(ProjectName, BranchName);
+
+    solutionDeploymentPlan.DeployConfig = deployConfig;
+
+    return solutionDeploymentPlan;
+  }
+
+  public static void DeployFromAdoSolutionFolder(string ProjectName, string TargetWorkspaceName, DeploymentPlan Deployment) {
+
+    AppLogger.LogSolution($"Deploying solution from ADO project [{ProjectName}] to workspace [{TargetWorkspaceName}]");
+
+    DisplayDeploymentParameters(Deployment);
+
+    var solutionDeployment = GetSolutionDeploymentFromAdoFolder(ProjectName, Deployment);
+
+    DeployFromSolutionFolder(ProjectName, TargetWorkspaceName, solutionDeployment);
+
+    var targetWorkspace = FabricRestApi.GetWorkspaceByName(TargetWorkspaceName);
+
+    AppLogger.PromptUserToContinue();
+
+    OpenWorkspaceInBrowser(targetWorkspace.Id);
+
+  }
+
+  public static void UpdateFromAdoSolutionFolder(string ProjectName, string TargetWorkspaceName, DeploymentPlan Deployment, string BuildName = "", bool DeleteOrphanedItems = false) {
+
+    AppLogger.LogSolution($"Updating from ADO solution folder [{ProjectName}] to workspace [{TargetWorkspaceName}]");
+
+    DisplayDeploymentParameters(Deployment);
+
+    var solutionDeployment = GetSolutionDeploymentFromAdoFolder(ProjectName, Deployment, BuildName);
+
+    UpdateFromSolutionFolder(ProjectName, TargetWorkspaceName, solutionDeployment, DeleteOrphanedItems);
+
+    var targetWorkspace = FabricRestApi.GetWorkspaceByName(TargetWorkspaceName);
+
+    AppLogger.PromptUserToContinue();
+
+    OpenWorkspaceInBrowser(targetWorkspace.Id);
+
+  }
+
+  #endregion
+
+  #region Lab 10 Setup Staged Deployment for Multitenant Scenario
+
+  public static void DeployFromAdoSolutionFolder(string ProjectName, DeploymentPlan Deployment) {
+    DeployFromAdoSolutionFolder(ProjectName, Deployment.TargetWorkspaceName, Deployment);
+  }
+
+  public static void UpdateFromAdoSolutionFolder(string ProjectName, DeploymentPlan Deployment, string BuildName = "", bool DeleteOrphanedItems = false) {
+    UpdateFromAdoSolutionFolder(ProjectName, Deployment.TargetWorkspaceName, Deployment, BuildName, DeleteOrphanedItems);
+  }
+
+
+
+  // LOCAL
+
+
+
+  #endregion
 
   #region Other interesting deployment workflow examples
 
@@ -2733,7 +2960,7 @@ public class DeploymentManager {
 
   }
 
-  public static void DeploySolutionFromSourceWorkspaceWithShallowCopy(string SourceWorkspaceName, string TargetWorkspaceName) {
+  public static void DeployFromSourceWorkspaceWithShallowCopy(string SourceWorkspaceName, string TargetWorkspaceName) {
 
     // NOTE: This function shows an example of what you ARE NOT supposed to do
     AppLogger.LogSolution($"Creating Shallow Copy of source workspace [{SourceWorkspaceName}] to [{TargetWorkspaceName}]");
@@ -2824,6 +3051,7 @@ public class DeploymentManager {
     PowerBiRestApi.BindSemanticModelToConnection(workspace.Id, semanticModel.Id.Value, sqlConnection.Id);
 
   }
+
 
   #endregion
 

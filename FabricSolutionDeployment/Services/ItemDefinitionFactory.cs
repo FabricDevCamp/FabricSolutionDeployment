@@ -303,7 +303,8 @@ public class ItemDefinitionFactory {
     return ItemDefinition;
   }
 
-  // export item definitions
+  // export workspace item definitions for workspace
+
   public static void ExportItemDefinitionsFromWorkspace(string WorkspaceName) {
 
     AppLogger.LogSolution($"Exporting workspace item definitions from workspace [{WorkspaceName}]");
@@ -329,7 +330,7 @@ public class ItemDefinitionFactory {
       if (itemTypesForExport.Contains(item.Type)) {
 
         // filter out lakehouse default semantic models
-        if(!lakehouseNames.Contains(item.DisplayName) || item.Type != ItemType.SemanticModel) {
+        if (!lakehouseNames.Contains(item.DisplayName) || item.Type != ItemType.SemanticModel) {
 
           // fetch item definition from workspace
           var definition = FabricRestApi.GetItemDefinition(workspace.Id, item.Id.Value);
@@ -382,7 +383,9 @@ public class ItemDefinitionFactory {
 
   }
 
-  public static void ExportWorkspaceToPackagedSolutionFolder(string WorkspaceName, string SolutionFolderName) {
+  // export workspace item definitions to local solution package folder
+
+  public static void ExportWorkspaceToLocalSolutionFolder(string WorkspaceName, string SolutionFolderName) {
 
     AppLogger.LogSolution($"Exporting workspace [{WorkspaceName}] to packaged solution folder [{SolutionFolderName}]");
 
@@ -571,5 +574,127 @@ public class ItemDefinitionFactory {
     WriteIndented = true,
     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
   };
+
+  // export to packaged solution folder to Azure Dev Ops
+
+  public static void  ExportWorkspaceToAzureDevOps(string WorkspaceName, string ProjectName, string BranchName = "") {
+
+    var project = AdoProjectManager.EnsureProjectExists(ProjectName);
+
+    if (BranchName == "") {
+      BranchName = $"daily-build-{DateTime.Now.ToString("yyyy-MM-dd")}";
+      if (AdoProjectManager.BranchAlreadyExist(ProjectName, BranchName)) {
+        BranchName = $"daily-build-{DateTime.Now.ToString("yyyy-MM-dd-HH-mm")}";
+      }
+    }
+
+    AppLogger.LogSolution($"Exporting [{WorkspaceName}] to ADO project [{ProjectName}] in branch [{BranchName}]");
+
+    AppLogger.LogStep($"Getting item definition files from source workspace [{WorkspaceName}]");
+
+    var changes = new List<GitChange>();
+
+    var workspace = FabricRestApi.GetWorkspaceByName(WorkspaceName);
+    var items = FabricRestApi.GetWorkspaceItems(workspace.Id);
+
+    var lakehouses = FabricRestApi.GetWorkspaceItems(workspace.Id, "Lakehouse");
+    foreach (var lakehouse in lakehouses) {
+
+      // fetch item definition from workspace
+      var platformFile = new FabricPlatformFile {
+        schema = "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+        config = new PlatformFileConfig {
+          logicalId = Guid.Empty.ToString(),
+          version = "2.0"
+        },
+        metadata = new PlatformFileMetadata {
+          displayName = lakehouse.DisplayName,
+          type = "Lakehouse"
+        }
+      };
+
+      string platformFileContent = JsonSerializer.Serialize(platformFile, jsonSerializerOptions);
+      string platformFileName = ".platform";
+      // write item definition files to local folder
+      string targetFolder = lakehouse.DisplayName + "." + lakehouse.Type;
+      AppLogger.LogSubstep($"Getting item definition files for [{targetFolder}]");
+
+      changes.Add(new GitChange {
+        ChangeType = VersionControlChangeType.Add,
+        Item = new GitItem {
+          Path = $"{lakehouse.DisplayName}.Lakehouse/{platformFileName}"
+        },
+        NewContent = new ItemContent {
+          Content = Convert.ToBase64String(Encoding.ASCII.GetBytes(platformFileContent)),
+          ContentType = ItemContentType.Base64Encoded
+        }
+      });
+
+    }
+
+    var lakehouseNames = lakehouses.Select(lakehouse => lakehouse.DisplayName).ToList();
+
+    // list of items types that should be exported
+    List<ItemType> itemTypesForExport = new List<ItemType>() {
+      ItemType.Notebook, ItemType.DataPipeline, ItemType.SemanticModel, ItemType.Report
+    };
+
+    foreach (var item in items) {
+
+      // only include supported item types
+      if (itemTypesForExport.Contains(item.Type)) {
+
+        // filter out lakehouse default semntic models
+        if ((item.Type != ItemType.SemanticModel) ||
+            (!lakehouseNames.Contains(item.DisplayName))) {
+
+          // fetch item definition from workspace
+          var definition = FabricRestApi.GetItemDefinition(workspace.Id, item.Id.Value);
+
+          // write item definition files to local folder
+          string targetFolder = item.DisplayName + "." + item.Type;
+
+          AppLogger.LogSubstep($"Getting item definition files for [{targetFolder}]");
+
+          foreach (var part in definition.Parts) {
+            changes.Add(new GitChange {
+              ChangeType = VersionControlChangeType.Add,
+              Item = new GitItem {
+                Path = targetFolder + "/" + part.Path
+              },
+              NewContent = new ItemContent {
+                Content = part.Payload,
+                ContentType = ItemContentType.Base64Encoded
+              }
+            });
+          }
+
+        }
+
+      }
+
+    }
+
+    AppLogger.LogStep($"Generating [deploy.config.json]");
+
+    var config = GenerateDeployConfigFile(workspace, items);
+ 
+    changes.Add(new GitChange {
+      ChangeType = VersionControlChangeType.Add,
+      Item = new GitItem {
+        Path = "/deploy.config.json"
+      },
+      NewContent = new ItemContent {
+        Content = Convert.ToBase64String(Encoding.ASCII.GetBytes(config)),
+        ContentType = ItemContentType.Base64Encoded
+      }
+    });
+
+    AppLogger.LogStep($"Saving exported solution folder to ADO project [{ProjectName}] in branch [{BranchName}]");
+    AdoProjectManager.PushChangesToGitRepo(ProjectName, changes, BranchName);
+
+    AppLogger.LogStep("Solution folder export process complete");
+
+  }
 
 }
