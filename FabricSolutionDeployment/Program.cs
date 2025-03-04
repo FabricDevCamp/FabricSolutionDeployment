@@ -58,13 +58,13 @@ class Program {
 
   public static void Lab05_UpdateFromSourceWorkspace() {
 
-    // push out new reports
+    // add new reports to source workspace
     string reportFolder1 = "Product Sales Time Intelligence.Report";
     DeploymentManager.AddSalesReportToCustomerWorkspace(CustomPowerBiSolution, reportFolder1);
     string reportFolder2 = "Product Sales Top 10 Cities.Report";
     DeploymentManager.AddSalesReportToCustomerWorkspace(CustomPowerBiSolution, reportFolder2);
     
-    // push new reports by updating customer tenant
+    // deploy new reports to customer tenant using Update operation
     DeploymentManager.UpdateFromSourceWorkspace(CustomPowerBiSolution, SampleCustomerData.AdventureWorks);
   }
 
