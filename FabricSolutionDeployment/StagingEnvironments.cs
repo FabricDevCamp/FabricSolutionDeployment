@@ -2,7 +2,7 @@
 
   public static DeploymentPlan Dev {
     get {
-      var Deployment = new DeploymentPlan(DeploymentPlanType.StagedDeployment, "Dev");
+      var Deployment = new DeploymentPlan("Dev", DeploymentPlanType.StagedDeployment);
 
       // setup Web datasource path
       Deployment.AddDeploymentParameter(DeploymentPlan.webDatasourcePathParameter, 
@@ -24,7 +24,7 @@
 
   public static DeploymentPlan Test {
     get {
-      var Deployment = new DeploymentPlan(DeploymentPlanType.StagedDeployment, "Test");
+      var Deployment = new DeploymentPlan("Test", DeploymentPlanType.StagedDeployment);
 
       // setup Web datasource path
       Deployment.AddDeploymentParameter(DeploymentPlan.webDatasourcePathParameter,
@@ -46,7 +46,8 @@
 
   public static DeploymentPlan Prod {
     get {
-      var Deployment = new DeploymentPlan(DeploymentPlanType.StagedDeployment, "Prod");
+      var Deployment = new DeploymentPlan("Prod", DeploymentPlanType.StagedDeployment);
+
 
       // setup Web datasource path
       Deployment.AddDeploymentParameter(DeploymentPlan.webDatasourcePathParameter,

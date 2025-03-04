@@ -2,7 +2,7 @@
 
   public static DeploymentPlan AdventureWorks {
     get {
-      var Deployment = new DeploymentPlan("Adventure Works");
+      var Deployment = new DeploymentPlan("Adventure Works", DeploymentPlanType.CustomerTenantDeployment);
       Deployment.Description = "The ultimate provider for the avid bicycle rider";
 
       // setup Web datasource path
@@ -25,7 +25,7 @@
 
   public static DeploymentPlan Contoso {
     get {
-      var Deployment = new DeploymentPlan("Contoso");
+      var Deployment = new DeploymentPlan("Contoso", DeploymentPlanType.CustomerTenantDeployment);
       Deployment.Description = "Your trusted source for world-famous pharmaceuticals";
 
       // setup Web datasource path
@@ -48,9 +48,8 @@
   
   public static DeploymentPlan Fabricam {
     get {
-      var Deployment = new DeploymentPlan("Fabrikam");
+      var Deployment = new DeploymentPlan("Fabrikam", DeploymentPlanType.CustomerTenantDeployment);
       Deployment.Description = "The Absolute WHY and WHERE for Enterprise Hardware";
-
 
       // setup Web datasource path
       Deployment.AddDeploymentParameter(DeploymentPlan.webDatasourcePathParameter,
@@ -72,7 +71,7 @@
 
   public static DeploymentPlan Northwind {
     get {
-      var Deployment = new DeploymentPlan("Northwind Traders");
+      var Deployment = new DeploymentPlan("Northwind Traders", DeploymentPlanType.CustomerTenantDeployment);
       Deployment.Description = "Microsoft's favorate fictional company";
 
       // setup Web datasource path
@@ -95,7 +94,7 @@
 
   public static DeploymentPlan SeamarkFarms {
     get {
-      var Deployment = new DeploymentPlan("Seamark Farms");
+      var Deployment = new DeploymentPlan("Seamark Farms", DeploymentPlanType.CustomerTenantDeployment);
       Deployment.Description = "Sweet Sheep for Cheap";
 
       // setup Web datasource path
@@ -118,9 +117,8 @@
 
   public static DeploymentPlan Wingtip {
     get {
-      var Deployment = new DeploymentPlan("Wingtip Toys");
+      var Deployment = new DeploymentPlan("Wingtip Toys", DeploymentPlanType.CustomerTenantDeployment);
       Deployment.Description = "Retro toys for nostalgic girls and boys";
-
 
       // setup Web datasource path
       Deployment.AddDeploymentParameter(DeploymentPlan.webDatasourcePathParameter,
