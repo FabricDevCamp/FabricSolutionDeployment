@@ -57,7 +57,6 @@ class Program {
   }
 
   public static void Lab05_UpdateFromSourceWorkspace() {
-
     // add new reports to source workspace
     string reportFolder1 = "Product Sales Time Intelligence.Report";
     DeploymentManager.AddSalesReportToCustomerWorkspace(CustomPowerBiSolution, reportFolder1);
