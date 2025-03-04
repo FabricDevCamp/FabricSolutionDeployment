@@ -1,12 +1,12 @@
 ﻿using System.Text.Json.Serialization;
 using Microsoft.Fabric.Api.Core.Models;
 
-public class PackagedSolutionDeploymentPlan : DeploymentPlan {
+public class SolutionDeploymentPlan : DeploymentPlan {
 
   public List<DeploymentItem> DeploymentItems { get; set; }
   public DeploymentConfiguration DeployConfig { get; set; }
 
-  public PackagedSolutionDeploymentPlan(DeploymentPlan BasePlan) : base(BasePlan.DeploymentType) {
+  public SolutionDeploymentPlan(DeploymentPlan BasePlan) : base(BasePlan.DeploymentType) {
     Parameters = BasePlan.Parameters;
     Name = BasePlan.Name;
     DeploymentItems = new List<DeploymentItem>();

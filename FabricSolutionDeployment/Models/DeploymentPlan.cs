@@ -4,23 +4,21 @@ public enum DeploymentPlanType {
   CustomerTenantDeployment
 }
 
-public enum StagedDeploymentType {
-  UpdateFromDevToTest,
-  UpdateFromTestToProd
-}
-
 public class DeploymentPlan {
 
   public string Name { get; set; }
-
-  public string TargetWorkspaceName {
-    get { return $"Tenant - {Name}"; }
-  }
-
   public string Description { get; set; }
   public DeploymentPlanType DeploymentType { get; set; }
 
   public Dictionary<string, string> Parameters { get; set; }
+  
+  public void AddDeploymentParameter(string ParameterName, string DeploymentValue) {
+    Parameters.Add(ParameterName, DeploymentValue);
+  }
+
+  public string TargetWorkspaceName {
+    get { return $"Tenant - {Name}"; }
+  }
 
   public const string webDatasourcePathParameter = "webDatasourcePath";
   public const string adlsServerPathParameter = "adlsServer";
@@ -40,20 +38,10 @@ public class DeploymentPlan {
     Parameters = new Dictionary<string, string>();
   }
 
-  public DeploymentPlan(DeploymentPlanType DeploymentType, string DeploymentName) {
+  public DeploymentPlan(string DeploymentName, DeploymentPlanType DeploymentType) {
     this.DeploymentType = DeploymentType;
     this.Name = DeploymentName;
     Parameters = new Dictionary<string, string>();
   }
-
-  public DeploymentPlan(string DeploymentName) {
-    this.DeploymentType = DeploymentPlanType.CustomerTenantDeployment;
-    this.Name = DeploymentName;
-    Parameters = new Dictionary<string, string>();
-  }
-
-  public void AddDeploymentParameter(string ParameterName, string DeploymentValue) {
-    Parameters.Add(ParameterName, DeploymentValue);
-  }
-
+ 
 }
