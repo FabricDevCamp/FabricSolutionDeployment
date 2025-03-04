@@ -1,6 +1,7 @@
 ﻿
 class Program {
 
+  // workspace names
   const string CustomPowerBiSolution = "Custom Power BI Solution";
   const string CustomNotebookSolution = "Custom Notebook Solution";
   const string CustomShortcutSolution = "Custom Shortcut Solution";
@@ -10,16 +11,16 @@ class Program {
 
     Setup_ViewWorkspacesAndCapacities();
 
-    // Lab01_DeploySolutionsUsingFromItemDefinitions();
+    // Lab01_DeploySolutionWithItemDefinitions();
     // Lab02_ExportItemDefinitionsFromWorkspace();
     // Lab03_DeployWithParameterizeDatasourcePaths();
-    // Lab04_DeploySolutionFromSourceWorkspace();
-    // Lab05_UpdateSolutionFromSourceWorkspace();
-    // Lab06_SetupStagedDeployment();
-    // Lab07_PushSolutionUpdatesToProduction();
-    // Lab08_ExportWorkspaceToPackagedSolutionFolder();
-    // Lab09_DeployAndUpdateFromSolutionPackageFolder();
-    // Lab10_ConnectDevWorkspaceToGitRepository();
+    // Lab04_DeployFromSourceWorkspace();
+    // Lab05_UpdateFromSourceWorkspace();
+    // Lab06_ExportWorkspceToLocalSolutionFolder();
+    // Lab07_DeployFromLocalSolutionFolder();
+    // Lab08_ConnectDevWorkspaceToAzureDevOps();
+    // Lab09_SetupStagedDeploymentForEnterprise();
+    // Lab10_SetupStagedDeploymentForMultitenancy();
   }
 
   public static void Setup_ViewWorkspacesAndCapacities() {
@@ -27,11 +28,11 @@ class Program {
     DeploymentManager.ViewCapacities();
   }
 
-  public static void Lab01_DeploySolutionsUsingFromItemDefinitions() {
+  public static void Lab01_DeploySolutionWithItemDefinitions() {
     DeploymentManager.DeployPowerBiSolution(CustomPowerBiSolution);
-    DeploymentManager.DeployNotebookSolution(CustomNotebookSolution);
-    DeploymentManager.DeployShortcutSolution(CustomShortcutSolution);
-    DeploymentManager.DeployDataPipelineSolution(CustomDataPipelineSolution);
+    // DeploymentManager.DeployNotebookSolution(CustomNotebookSolution);
+    // DeploymentManager.DeployShortcutSolution(CustomShortcutSolution);
+    // DeploymentManager.DeployDataPipelineSolution(CustomDataPipelineSolution);
   }
 
   public static void Lab02_ExportItemDefinitionsFromWorkspace() {
@@ -48,14 +49,14 @@ class Program {
     DeploymentManager.DeployDataPipelineSolution(SampleCustomerData.Northwind);
   }
 
-  public static void Lab04_DeploySolutionFromSourceWorkspace() {
-    DeploymentManager.DeploySolutionFromSourceWorkspace(CustomPowerBiSolution, SampleCustomerData.AdventureWorks);
-    DeploymentManager.DeploySolutionFromSourceWorkspace(CustomNotebookSolution, SampleCustomerData.Contoso);
-    DeploymentManager.DeploySolutionFromSourceWorkspace(CustomShortcutSolution, SampleCustomerData.Fabricam);
-    DeploymentManager.DeploySolutionFromSourceWorkspace(CustomDataPipelineSolution, SampleCustomerData.Northwind);
+  public static void Lab04_DeployFromSourceWorkspace() {
+    DeploymentManager.DeployFromSourceWorkspace(CustomPowerBiSolution, SampleCustomerData.AdventureWorks);
+    DeploymentManager.DeployFromSourceWorkspace(CustomNotebookSolution, SampleCustomerData.Contoso);
+    DeploymentManager.DeployFromSourceWorkspace(CustomShortcutSolution, SampleCustomerData.Fabricam);
+    DeploymentManager.DeployFromSourceWorkspace(CustomDataPipelineSolution, SampleCustomerData.Northwind);
   }
 
-  public static void Lab05_UpdateSolutionFromSourceWorkspace() {
+  public static void Lab05_UpdateFromSourceWorkspace() {
 
     string reportFolder1 = "Product Sales Time Intelligence.Report";
     DeploymentManager.AddSalesReportToCustomerWorkspace(CustomPowerBiSolution, reportFolder1);
@@ -63,90 +64,59 @@ class Program {
     string reportFolder2 = "Product Sales Top 10 Cities.Report";
     DeploymentManager.AddSalesReportToCustomerWorkspace(CustomPowerBiSolution, reportFolder2);
 
-    DeploymentManager.UpdateSolutionFromSourceWorkspace(CustomPowerBiSolution, SampleCustomerData.AdventureWorks);
+    DeploymentManager.UpdateFromSourceWorkspace(CustomPowerBiSolution, SampleCustomerData.AdventureWorks);
 
   }
 
-  // Staged deployment for Enterprise scenario with one target workspace
-  const string StagedDeployment1 = "Product Sales Project";
-  const string StagedDeployment1Dev = StagedDeployment1 + " Dev";
-  const string StagedDeployment1Prod = StagedDeployment1 + " Prod";
+  public const string ProductSalesSolution = "Product Sales Premium";
 
-  // Staged deployment for multi-tenant scenario with many target workspaces
-  const string StagedDeployment2 = "Product Sales Premium";
-  const string StagedDeployment2Dev = StagedDeployment2 + " Dev";
-  const string StagedDeployment2Prod = StagedDeployment2 + " Prod";
-
-  public static void Lab06_SetupStagedDeployment() {
-
-    // set up staged deployment from Dev > Test > Prod
-    DeploymentManager.SetupStagedDeploymentWithNotebookSolution(StagedDeployment1);
-
-    // set up staged deployment from Dev > Test > Prod
-    DeploymentManager.SetupStagedDeploymentWithDataPipelineSolution(StagedDeployment2);
-
-    // create tenant workspaces for customers
-    DeploymentManager.DeploySolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.AdventureWorks);
-  
-    //DeploymentManager.DeploySolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Contoso);
-    //DeploymentManager.DeploySolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Fabricam);
-    //DeploymentManager.DeploySolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Northwind);
-    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.SeamarkFarms);
-    //DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Wingtip);
+  public static void Lab06_ExportWorkspceToLocalSolutionFolder() {
+    DeploymentManager.ExportWorkspaceToLocalSolutionFolder(CustomDataPipelineSolution, ProductSalesSolution);
   }
 
-  public static void Lab07_PushSolutionUpdatesToProduction() {
-
-    // push updates from [Product Sales Project Dev] > [Product Sales Project Test]
-    DeploymentManager.UpdateDeloymentStage(StagedDeployment1, StagedDeploymentType.UpdateFromDevToTest);
-
-    // push updates from [Product Sales Project Test] > [Product Sales Project Prod]
-    DeploymentManager.UpdateDeloymentStage(StagedDeployment1, StagedDeploymentType.UpdateFromTestToProd);
-
-    // push updates from [Product Sales Premium Dev] > [Product Sales Premium Test]
-    DeploymentManager.UpdateDeloymentStage(StagedDeployment2, StagedDeploymentType.UpdateFromDevToTest);
-
-    // push updates from [Product Sales Premium Test] > [Product Sales Premium Prod]
-    DeploymentManager.UpdateDeloymentStage(StagedDeployment2, StagedDeploymentType.UpdateFromTestToProd);
-
-    // push updates from [Product Sales Premium Prod] > [Customer Tenants]
-    DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.AdventureWorks);
-
-    // DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Contoso);
-    // DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Fabricam);
-    // DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Northwind);
-    // DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.SeamarkFarms);
-    // DeploymentManager.UpdateSolutionFromSourceWorkspace(StagedDeployment2Prod, SampleCustomerData.Wingtip);
+  public static void Lab07_DeployFromLocalSolutionFolder() {
+    DeploymentManager.DeployFromLocalSolutionFolder(ProductSalesSolution, SampleCustomerData.AdventureWorks);
+    DeploymentManager.DeployFromLocalSolutionFolder(ProductSalesSolution, SampleCustomerData.Contoso);
+    DeploymentManager.DeployFromLocalSolutionFolder(ProductSalesSolution, SampleCustomerData.Fabricam);
+    DeploymentManager.DeployFromLocalSolutionFolder(ProductSalesSolution, SampleCustomerData.Northwind);
   }
 
-  public const string ProductSalesSolutionV1 = "Product Sales Premium v1.0";
+  // staged deployment workspace names
+  const string DevWorkspace = "Product Sales Dev";
+  const string TestWorkspace = "Product Sales Test";
+  const string ProdWorkspace = "Product Sales Prod";
 
-  public static void Lab08_ExportWorkspaceToPackagedSolutionFolder() {
+  public static void Lab08_ConnectDevWorkspaceToAzureDevOps() {
 
-    // export [Product Sales Premium Prod] workspace to packaged solution folder [Product Sales Premium v1.0]
-    DeploymentManager.ExportWorkspaceToPackagedSolutionFolder(StagedDeployment2Prod, ProductSalesSolutionV1);
+    // create dev workspae and connect to GIT
+    DeploymentManager.DeployDataPipelineSolution(DevWorkspace, StagingEnvironments.Dev);
+    DeploymentManager.ConnectWorkspaceToGit(DevWorkspace);
+
+    // Test branching out to feature workspaces
+    // DeploymentManager.BranchOutToFeatureWorkspace(DevWorkspace, "Feature 1");
+    // DeploymentManager.BranchOutToFeatureWorkspace(DevWorkspace, "Feature 2");
 
   }
 
-  public static void Lab09_DeployAndUpdateFromSolutionPackageFolder() {
-
-    // deploy from packaged solution folder [Product Sales v1.0] to [Customer Tenants]
-    DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.AdventureWorks);
-
-    // DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Contoso);
-    // DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Fabricam);
-    // DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Northwind);
-    // DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.SeamarkFarms);
-    // DeploymentManager.DeploySolutionFromPackagedSolutionFolder(ProductSalesSolutionV1, SampleCustomerData.Wingtip);
+  public static void Lab09_SetupStagedDeploymentForEnterprise() {
+    // set up staged deployment
+    DeploymentManager.ExportWorkspaceToAdoSolutionFolder(DevWorkspace, TestWorkspace);
+    DeploymentManager.DeployFromAdoSolutionFolder(TestWorkspace, TestWorkspace, StagingEnvironments.Test);
+    DeploymentManager.ExportWorkspaceToAdoSolutionFolder(TestWorkspace, ProdWorkspace);
+    DeploymentManager.DeployFromAdoSolutionFolder(ProdWorkspace, ProdWorkspace, StagingEnvironments.Prod);
   }
 
-  public static void Lab10_ConnectDevWorkspaceToGitRepository() {
+  public static void Lab10_SetupStagedDeploymentForMultitenancy() {
+    // use staged deloyment to deploy customer tenant workspaces
+    DeploymentManager.DeployFromAdoSolutionFolder(ProdWorkspace, SampleCustomerData.AdventureWorks);
+    DeploymentManager.DeployFromAdoSolutionFolder(ProdWorkspace, SampleCustomerData.Contoso);
+    DeploymentManager.DeployFromAdoSolutionFolder(ProdWorkspace, SampleCustomerData.Fabricam);
+    DeploymentManager.DeployFromAdoSolutionFolder(ProdWorkspace, SampleCustomerData.Northwind);
+    DeploymentManager.DeployFromAdoSolutionFolder(ProdWorkspace, SampleCustomerData.Wingtip);
+    DeploymentManager.DeployFromAdoSolutionFolder(ProdWorkspace, SampleCustomerData.SeamarkFarms);
 
-    // Use Fabric GIT integration to connect [Product Sales Project Dev] to Azure Dev Ops repository
-    DeploymentManager.ConnectWorkspaceToGit(StagedDeployment1Dev);
-
-    // Use Fabric GIT integration to connect [Product Sales Premium Dev] to Azure Dev Ops repository
-    DeploymentManager.ConnectWorkspaceToGit(StagedDeployment2Dev);
+    // string first_build = AdoProjectManager.GetFirstDailyBuildBranch(ProdWorkspace);
+    // DeploymentManager.UpdateFromAdoSolutionFolder(ProdWorkspace, SampleCustomerData.Northwind, first_build, true);
 
   }
 
