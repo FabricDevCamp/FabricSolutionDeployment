@@ -1,4 +1,6 @@
 ﻿
+namespace FabricSolutionDeployment;
+
 class Program {
 
   // workspace names
@@ -62,7 +64,7 @@ class Program {
     DeploymentManager.AddSalesReportToCustomerWorkspace(CustomPowerBiSolution, reportFolder1);
     string reportFolder2 = "Product Sales Top 10 Cities.Report";
     DeploymentManager.AddSalesReportToCustomerWorkspace(CustomPowerBiSolution, reportFolder2);
-    
+
     // deploy new reports to customer tenant using Update operation
     DeploymentManager.UpdateFromSourceWorkspace(CustomPowerBiSolution, SampleCustomerData.AdventureWorks);
   }

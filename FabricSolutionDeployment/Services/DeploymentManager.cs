@@ -1,8 +1,9 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Fabric.Api.Core.Models;
+using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
-using Microsoft.Fabric.Api.Core.Models;
-using Microsoft.TeamFoundation.SourceControl.WebApi;
+
+namespace FabricSolutionDeployment;
 
 
 public class DeploymentManager {
