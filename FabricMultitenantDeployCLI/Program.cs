@@ -23,6 +23,10 @@ class Program
         name: "--data-pipeline",
         description: "Deploy Data Pipeline solution.");
 
+    var itemDefinitionsOption = new Option<bool>(
+        name: "--item-definitions",
+        description: "Export item definitions from the workspace.");
+
     var targetWorkspaceArgument = new Argument<string>(
         name: "workspace",
         description: "Name of workspace to deploy to.");
@@ -64,6 +68,24 @@ class Program
       }
     },
     targetWorkspaceArgument, powerbiOption, notebookOption, shortcutOption, dataPipelineOption);
+
+    var exportCommand = new Command("export", "Export item definitions from a workspace.")
+    {
+        itemDefinitionsOption
+    };
+    exportCommand.AddArgument(targetWorkspaceArgument);
+    rootCommand.AddCommand(exportCommand);
+
+    exportCommand.SetHandler((workspace, itemDefinitions) =>
+    {
+      Console.WriteLine($"Exporting from {workspace}.");
+      if (itemDefinitions)
+      {
+        Console.WriteLine("Exporting item definitions.");
+        DeploymentManager.ExportItemDefinitionsFromWorkspace(workspace);
+      }
+    },
+    targetWorkspaceArgument, itemDefinitionsOption);
 
     return await rootCommand.InvokeAsync(args);
   }
