@@ -1,4 +1,6 @@
-﻿class SampleCustomerData {
+﻿namespace FabricSolutionDeployment;
+
+public class SampleCustomerData {
 
   public static DeploymentPlan AdventureWorks {
     get {
@@ -45,7 +47,7 @@
       return Deployment;
     }
   }
-  
+
   public static DeploymentPlan Fabricam {
     get {
       var Deployment = new DeploymentPlan("Fabrikam", DeploymentPlanType.CustomerTenantDeployment);

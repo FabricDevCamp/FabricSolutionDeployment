@@ -27,9 +27,13 @@ class Program
         name: "--item-definitions",
         description: "Export item definitions from the workspace.");
 
-    var targetWorkspaceArgument = new Argument<string>(
-        name: "workspace",
+    var targetWorkspaceOption = new Option<string?>(
+        name: "--workspace",
         description: "Name of workspace to deploy to.");
+
+    var deploymentPlanOption = new Option<string?>(
+        name: "--deployment-plan",
+        description: "Name of the deployment plan.");
 
     var rootCommand = new RootCommand("CLI for Fabric Multitenant Deployment");
 
@@ -38,42 +42,89 @@ class Program
         powerbiOption,
         notebookOption,
         shortcutOption,
-        dataPipelineOption
+        dataPipelineOption,
+        targetWorkspaceOption,
+        deploymentPlanOption
     };
-    deployCommand.AddArgument(targetWorkspaceArgument);
     rootCommand.AddCommand(deployCommand);
 
-    deployCommand.SetHandler((workspace, powerbi, notebook, shortcut, dataPipeline) =>
+    deployCommand.SetHandler((workspace, deploymentPlan, powerbi, notebook, shortcut, dataPipeline) =>
     {
-      Console.WriteLine($"Deploying to {workspace}.");
-      if (powerbi)
+      if (workspace == null && deploymentPlan == null)
       {
-        Console.WriteLine("Deploying Power BI solution.");
-        DeploymentManager.DeployPowerBiSolution(workspace);
+        Console.WriteLine("Either --workspace or --deployment-plan must be specified.");
+        return;
       }
-      if (notebook)
+
+      if (workspace != null)
       {
-        Console.WriteLine("Deploying Notebook solution.");
-        DeploymentManager.DeployNotebookSolution(workspace);
+        Console.WriteLine($"Deploying to {workspace}.");
+        if (powerbi)
+        {
+          Console.WriteLine("Deploying Power BI solution.");
+          DeploymentManager.DeployPowerBiSolution(workspace);
+        }
+        if (notebook)
+        {
+          Console.WriteLine("Deploying Notebook solution.");
+          DeploymentManager.DeployNotebookSolution(workspace);
+        }
+        if (shortcut)
+        {
+          Console.WriteLine("Deploying Shortcut solution.");
+          DeploymentManager.DeployShortcutSolution(workspace);
+        }
+        if (dataPipeline)
+        {
+          Console.WriteLine("Deploying Data Pipeline solution.");
+          DeploymentManager.DeployDataPipelineSolution(workspace);
+        }
       }
-      if (shortcut)
+
+      else if (deploymentPlan != null)
       {
-        Console.WriteLine("Deploying Shortcut solution.");
-        DeploymentManager.DeployShortcutSolution(workspace);
-      }
-      if (dataPipeline)
-      {
-        Console.WriteLine("Deploying Data Pipeline solution.");
-        DeploymentManager.DeployDataPipelineSolution(workspace);
+        Dictionary<string, DeploymentPlan> plans = new Dictionary<string, DeploymentPlan>
+        {
+          { "AdventureWorks", SampleCustomerData.AdventureWorks },
+          { "Contoso", SampleCustomerData.Contoso },
+          { "Fabricam", SampleCustomerData.Fabricam },
+          { "Northwind", SampleCustomerData.Northwind }
+        };
+        if (!plans.TryGetValue(deploymentPlan, out DeploymentPlan? plan))
+        {
+          Console.WriteLine($"Deployment plan {deploymentPlan} not found.");
+          return;
+        }
+
+        if (powerbi)
+        {
+          Console.WriteLine($"Deploying Power Bi solution using deployment plan from {deploymentPlan}.");
+          DeploymentManager.DeployPowerBiSolution(plan);
+        }
+        if (notebook)
+        {
+          Console.WriteLine($"Deploying Notebook solution using deployment plan from {deploymentPlan}.");
+          DeploymentManager.DeployNotebookSolution(plan);
+        }
+        if (shortcut)
+        {
+          Console.WriteLine($"Deploying Shortcut solution using deployment plan from {deploymentPlan}.");
+          DeploymentManager.DeployShortcutSolution(plan);
+        }
+        if (dataPipeline)
+        {
+          Console.WriteLine($"Deploying Data Pipeline solution using deployment plan from {deploymentPlan}.");
+          DeploymentManager.DeployDataPipelineSolution(plan);
+        }
       }
     },
-    targetWorkspaceArgument, powerbiOption, notebookOption, shortcutOption, dataPipelineOption);
+    targetWorkspaceOption, deploymentPlanOption, powerbiOption, notebookOption, shortcutOption, dataPipelineOption);
 
     var exportCommand = new Command("export", "Export item definitions from a workspace.")
     {
-        itemDefinitionsOption
+        itemDefinitionsOption,
+        targetWorkspaceOption
     };
-    exportCommand.AddArgument(targetWorkspaceArgument);
     rootCommand.AddCommand(exportCommand);
 
     exportCommand.SetHandler((workspace, itemDefinitions) =>
@@ -85,7 +136,7 @@ class Program
         DeploymentManager.ExportItemDefinitionsFromWorkspace(workspace);
       }
     },
-    targetWorkspaceArgument, itemDefinitionsOption);
+    targetWorkspaceOption, itemDefinitionsOption);
 
     return await rootCommand.InvokeAsync(args);
   }
