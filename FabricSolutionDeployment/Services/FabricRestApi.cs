@@ -1,14 +1,11 @@
-﻿using Microsoft.Fabric;
-using FabricAdmin = Microsoft.Fabric.Api.Admin.Models;
-using Microsoft.Fabric.Api;
+﻿using Microsoft.Fabric.Api;
 using Microsoft.Fabric.Api.Core.Models;
-using Microsoft.Fabric.Api.Notebook.Models;
 using Microsoft.Fabric.Api.Lakehouse.Models;
-using Microsoft.Fabric.Api.Warehouse.Models;
-using Microsoft.Fabric.Api.SemanticModel.Models;
+using Microsoft.Fabric.Api.Notebook.Models;
 using Microsoft.Fabric.Api.Report.Models;
+using Microsoft.Fabric.Api.SemanticModel.Models;
 using Microsoft.Fabric.Api.Utils;
-using System.Text;
+using Microsoft.Fabric.Api.Warehouse.Models;
 using System.Net.Http.Headers;
 
 public class FabricRestApi {
@@ -23,13 +20,13 @@ public class FabricRestApi {
 
     // set callback to refresh access token 5 minutes before it expires
     var expires = accessTokenResult.ExpiresOn;
-    var milliseconds = Convert.ToInt32( expires.Subtract(DateTimeOffset.UtcNow).TotalMilliseconds - (5 * 60 * 1000));
+    var milliseconds = Convert.ToInt32(expires.Subtract(DateTimeOffset.UtcNow).TotalMilliseconds - (5 * 60 * 1000));
     Timer timer = new Timer(new TimerCallback(RefreshAccessToken));
     timer.Change(milliseconds, Timeout.Infinite);
   }
 
   static void RefreshAccessToken(object timerstate = null) {
- 
+
     var accessTokenResult = EntraIdTokenManager.GetAccessTokenResult();
     accessToken = accessTokenResult.AccessToken;
     fabricApiClient = new FabricClient(accessToken, new Uri(AppSettings.FabricRestApiBaseUrl));
@@ -52,8 +49,8 @@ public class FabricRestApi {
 
   public static Capacity GetCapacity(Guid CapacityId) {
     var capacities = GetCapacities();
-    foreach(var capacity in capacities) {
-      if(capacity.Id == CapacityId) {
+    foreach (var capacity in capacities) {
+      if (capacity.Id == CapacityId) {
         return capacity;
       }
     }
@@ -94,7 +91,7 @@ public class FabricRestApi {
     createRequest.Description = Description;
 
     workspace = fabricApiClient.Core.Workspaces.CreateWorkspace(createRequest);
- 
+
     if (AppSettings.AuthenticationMode == AppAuthenticationMode.ServicePrincipalAuth &&
        (AppSettings.AdminUserId != "00000000-0000-0000-0000-000000000000")) {
       Guid AdminUserId = new Guid(AppSettings.AdminUserId);
@@ -178,7 +175,7 @@ public class FabricRestApi {
             return;
           }
         }
-      }     
+      }
     }
 
     fabricApiClient.Core.Workspaces.AssignToCapacity(WorkspaceId, assignRequest);
@@ -300,9 +297,9 @@ public class FabricRestApi {
 
       if (CreateConnectionRequest.PrivacyLevel == null) {
         CreateConnectionRequest.PrivacyLevel = PrivacyLevel.Organizational;
-      }    
+      }
 
-        var connection = fabricApiClient.Core.Connections.CreateConnection(CreateConnectionRequest).Value;
+      var connection = fabricApiClient.Core.Connections.CreateConnection(CreateConnectionRequest).Value;
 
       if ((AppSettings.AuthenticationMode == AppAuthenticationMode.ServicePrincipalAuth) &&
           (AppSettings.AdminUserId != "00000000-0000-0000-0000-000000000000")) {

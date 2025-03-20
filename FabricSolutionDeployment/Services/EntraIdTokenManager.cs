@@ -1,5 +1,4 @@
-﻿using Azure.Identity;
-using Microsoft.Identity.Client;
+﻿using Microsoft.Identity.Client;
 using System.Reflection;
 
 public enum AppAuthenticationMode {
@@ -180,14 +179,15 @@ public class EntraIdTokenManager {
     TokenCacheHelper.EnableSerialization(appPublic.UserTokenCache);
 
     AuthenticationResult authResult;
-    try {
-      // try to acquire token from token cache
-      var user = appPublic.GetAccountsAsync().Result.FirstOrDefault();
-      authResult = appPublic.AcquireTokenSilent(scopes, user).ExecuteAsync().Result;
-    }
-    catch {
-      authResult = appPublic.AcquireTokenInteractive(scopes).ExecuteAsync().Result;
-    }
+    //try {
+    //  // try to acquire token from token cache
+    //  var user = appPublic.GetAccountsAsync().Result.FirstOrDefault();
+    //  authResult = appPublic.AcquireTokenSilent(scopes, user).ExecuteAsync().Result;
+    //}
+    //catch {
+    //  authResult = appPublic.AcquireTokenInteractive(scopes).ExecuteAsync().Result;
+    //}
+    authResult = appPublic.AcquireTokenInteractive(scopes).ExecuteAsync().Result;
 
     // return access token result to caller
     return authResult;
