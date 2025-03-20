@@ -44,8 +44,13 @@ public class DeploymentManager {
       string url = "https://app.powerbi.com/groups/" + WorkspaceId;
       string chromeBrowserProfileName = "Profile 7";
       var process = new Process();
-      process.StartInfo = new ProcessStartInfo(@"C:\Program Files\Google\Chrome\Application\chrome.exe");
-      process.StartInfo.Arguments = url + $" --profile-directory=\"{chromeBrowserProfileName}\" ";
+      if (File.Exists(@"C:\Program Files\Google\Chrome\Application\chrome.exe")) {
+        process.StartInfo = new ProcessStartInfo(@"C:\Program Files\Google\Chrome\Application\chrome.exe");
+        process.StartInfo.Arguments = url + $" --profile-directory=\"{chromeBrowserProfileName}\" ";
+      }
+      else {
+        process.StartInfo = new ProcessStartInfo { FileName = url, UseShellExecute = true };
+      }
       process.Start();
     }
   }
